@@ -1,15 +1,55 @@
 body {
 	background: #f9e933;
+	/*width: 855px;
+	margin: auto;*/
+}
+
+header, main, footer {
+	min-width: 855px;
+}
+
+header .container, main .container, footer .container {
+	max-width: 855px;
+	margin: auto;
 }
 
 header {
 	background: white;
+	/*overflow: auto;*/
+}
+
+header h1 {
+	float: left;
+	width: 570px;
+}
+
+header nav {
+	float: right;
+	width: 285px;
 }
 
 main {
 	background: white;
 }
 
-header, main, footer {
-	min-width: 855px;
+.left-column {
+	float: left;
+	width: 570px;
 }
+
+/*.right-column {
+	float: right;
+	width: 285px;
+}*/
+
+.contact {
+	float: left;
+	width: 570px;
+}
+
+.sitemap {
+	float: right;
+	width: 285px;
+}
+
+
