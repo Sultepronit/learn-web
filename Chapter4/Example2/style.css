@@ -2,3 +2,57 @@
 	margin: 0;
 	padding: 0;
 }
+
+body {
+	width: 855px;
+	margin: auto;
+}
+
+main {
+	margin-top: 1.2em;
+	/*margin-bottom: 1.2em;*/
+}
+
+.comment-input {
+	margin-top: 9px;
+	float: left;
+	width: 285px;
+}
+
+.comment-input p {
+	margin-bottom: 0.5em;	
+}
+
+input {
+	float: left;
+	/*margin: 1px;*/
+	font-size: 1.2em;
+	margin-right: 0.2em;
+}
+
+button {
+	font-size: 1.2em;
+}
+
+.comments {
+	width: 570px;
+	float:right;
+}
+
+.comments p {
+	margin: 9px;
+	padding: 3px;
+}
+
+.comments p:nth-child(even) {
+	background: lavender;
+}
+
+.comments p:nth-child(odd) {
+	background: gainsboro;
+}
+
+footer {
+	clear:both;
+	margin-top: 1.2em;
+}
