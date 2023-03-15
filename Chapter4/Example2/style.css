@@ -27,12 +27,6 @@ h2 {
     margin-top: 0.4em;	
 }
 
-main {
-	/*margin-top: 1.2em;*/
-	/*margin-bottom: 1.2em;*/
-	
-}
-
 .comment-input {
 	margin-top: 9px;
 	float: left;
@@ -45,7 +39,6 @@ main {
 
 input {
 	float: left;
-	/*margin: 1px;*/
 	font-size: 1.2em;
 	margin-right: 0.2em;
 }
@@ -57,6 +50,7 @@ button {
 .comments {
 	width: 570px;
 	float:right;
+	margin-bottom: 1.2em;
 }
 
 .comments p {
@@ -75,4 +69,5 @@ button {
 footer {
 	clear:both;
 	margin-top: 1.2em;
+	font-size: 0.7em;
 }
