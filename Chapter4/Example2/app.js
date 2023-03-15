@@ -1,7 +1,9 @@
 var main = function () {
 	"use strict";
 	
-	window.alert("Hello world!");
+	$(".comment-input button").on("click", function (event) {
+		console.log("Hello World!");
+	});
 };
 
 $(document).ready(main);
