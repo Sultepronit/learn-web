@@ -1,15 +1,16 @@
-function addNewComment() {
-	//console.log("Hello World!");
+var addNewComment = function () {
 	
 	var comment_text = $(".comment-input input").val();
 	var $new_comment;
 	
 	if(comment_text !== "") {
 		$new_comment = $("<p>").text(comment_text);
+		$new_comment.hide();
 		$(".comments").append($new_comment);
+		$new_comment.fadeIn();
 		$(".comment-input input").val("");
 	}
-}
+};
 
 var main = function () {
 	"use strict";
@@ -19,9 +20,7 @@ var main = function () {
 	});
 	
 	$(".comment-input input").on("keypress", function (event) {
-		//console.log("keyCode: " + event.keyCode);
 		if(event.keyCode === 13) {
-			//console.log("Enter!");
 			addNewComment();
 		}
 	});
