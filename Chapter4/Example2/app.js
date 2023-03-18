@@ -3,15 +3,14 @@ var main = function () {
 	
 	$(".comment-input button").on("click", function (event) {
 		//console.log("Hello World!");
-		//$(".comments").append("<p>this is a new comment</p>");
-		
-		var $new_comment = $("<p>");
-		//$new_comment.text("this is a new comment!");
 		
 		var comment_text = $(".comment-input input").val();
-		$new_comment.text(comment_text);
+		var $new_comment;
 		
-		$(".comments").append($new_comment);
+		if(comment_text !== "") {
+			$new_comment = $("<p>").text(comment_text);
+			$(".comments").append($new_comment);
+		}
 		
 		
 	});
