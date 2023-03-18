@@ -10,6 +10,7 @@ var main = function () {
 		if(comment_text !== "") {
 			$new_comment = $("<p>").text(comment_text);
 			$(".comments").append($new_comment);
+			$(".comment-input input").val("");
 		}
 		
 		
