@@ -6,8 +6,13 @@ var main = function () {
 		//$(".comments").append("<p>this is a new comment</p>");
 		
 		var $new_comment = $("<p>");
-		$new_comment.text("this is a new comment!");
+		//$new_comment.text("this is a new comment!");
+		
+		var comment_text = $(".comment-input input").val();
+		$new_comment.text(comment_text);
+		
 		$(".comments").append($new_comment);
+		
 		
 	});
 };
