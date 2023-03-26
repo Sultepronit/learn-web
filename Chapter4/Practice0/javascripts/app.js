@@ -23,13 +23,20 @@ var main = function () {
 		
 		$newParagraph.appendTo($("footer"));
 		
-		$("ul li:first-child").remove();
+		//$("ul li:first-child").remove();
+		//$newUL.empty();
 		
-		$newUL.empty();
+		$("ul li:nth-child(2)").fadeOut(2000, function () {
+			$("ul li:nth-child(2)").remove(); // remove after fading
+		});
 		
 		$("footer p").fadeOut();
 	};
 	setTimeout(func, 3 * 1000);
+	
+	setTimeout(function () {
+		console.log("More elegant timeout!");
+	}, 4000);
 };
 
 $(document).ready(main);
