@@ -22,6 +22,12 @@ var main = function () {
 		$("main").prepend($newHeader);
 		
 		$newParagraph.appendTo($("footer"));
+		
+		$("ul li:first-child").remove();
+		
+		$newUL.empty();
+		
+		$("footer p").fadeOut();
 	};
 	setTimeout(func, 3 * 1000);
 };
