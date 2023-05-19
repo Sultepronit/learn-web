@@ -13,7 +13,7 @@ const internalServer = http.createServer(function(req, res) {
 	function getData(word) {
 		var data = '';
 		var article = '';
-		var options = {host: 'en.glosbe.com',path: '/en/uk/' + word};
+		var options = {host: 'en.glosbe.com', path: '/en/uk/' + word};
 
 		var request = https.request(options, function(res0) {
 			//var data = '';
