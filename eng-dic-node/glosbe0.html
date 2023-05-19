@@ -72,8 +72,8 @@ function contactServer(message) {
 	$.getScript(src, function(){
 		//console.log("Success!");
 	}).fail(function () {
-		alert("No connection!");
-		//console.log("No connection!");
+		//alert("No connection!");
+		console.log("No connection!");
 	});
 }
 
@@ -85,7 +85,7 @@ var main = function() {
 			$('.glosbe').empty();
 			$('.word').append(typed);
 			console.log(typed);
-			var request = 'dic-glosbe?word=' + typed;
+			var request = 'get?dic=glosbe&word=' + typed;
 			console.log(request);
 			//contactServer(typed);
 			contactServer(request);
