@@ -17,6 +17,10 @@ const server = http.createServer(function(req, res) {
 		res.end();
 	}
 	
+	function lingvo(page) {
+		console.log('almost ready!');
+	}
+	
 	function glosbe(page) {
 		var headless = page.split('<div id="tmem_first_examples">')[1];
 		var article = headless.split('<div id="tmem_more_')[0];
@@ -29,6 +33,9 @@ const server = http.createServer(function(req, res) {
 	function processPage(page, dic) {
 		//console.log('here we go!');
 		switch(dic) {
+			case 'lingvo':
+				lingvo(page);
+				break;
 			case 'glosbe':
 				glosbe(page);
 				break;
@@ -61,8 +68,10 @@ const server = http.createServer(function(req, res) {
 		console.log(word);
 		
 		switch(dic) {
+			case 'lingvo':
+				getPage({host: 'www.lingvolive.com', path: '/en-us/translate/en-uk/' + word}, dic);
+				break;
 			case 'glosbe':
-				//glosbe(word);
 				getPage({host: 'en.glosbe.com', path: '/en/uk/' + word}, dic);
 				break;
 			default:
