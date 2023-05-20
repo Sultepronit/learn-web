@@ -68,6 +68,9 @@ const server = http.createServer(function(req, res) {
 		var article = halves[1].split('<div id="tmem_more_')[0];
 		var string = JSON.stringify(article);
 		
+		var js = 'var glosbe = ' + string + ';\n';
+		js += '$(".glosbe").empty().append(glosbe);\n';
+		
 		var headlessImages = halves[0].split('<div class="snap')[1];
 		if(headlessImages) {
 			//fs.writeFile('./control2.html', headlessImages, function(err){console.log('rewritten!');});
@@ -77,11 +80,10 @@ const server = http.createServer(function(req, res) {
 				imagesBlock += '<img' + images[i].split('>')[0] + '>';
 			}
 			//fs.writeFile('./control2.html', imagesBlock, function(err){console.log('rewritten!');});
-			
+			js += 'var images = "' + imagesBlock + '";\n';
+			js += '$(".images").empty().append(images);\n';
 		}
 		
-		var js = 'var glosbe = ' + string + ';\n';
-		js += '$(".glosbe").empty().append(glosbe);\n';
 		sendResJs(js);
 	}
 	
