@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>English dic</title>
+	<meta charset="utf-8">
+	
+<style>
+* {	
+	font-size: 100%;
+	/*margin: 0.1em;*/
+	margin: 0;
+}
+
+body {
+	font-size: 1.5em;
+	margin: 1%;
+}
+
+.word {
+	font-size: 2em;
+}
+	
+._24CCn {
+	color: gray;
+	font-style: italic;
+}
+
+.dir-aware-text-right {
+	text-align: right;
+}
+
+.icon-dots-vertical {
+	display: none;
+}	
+.py-2 {
+	padding: 1%;
+	padding-bottom: 0;
+	border-top: solid black 2px;
+	font-style: italic;
+}
+
+.dir-aware-pr-1 {
+	/*color: blue;*/
+	border-bottom: dotted blue 2px;
+	width: fit-content;
+}
+
+/*.dir-aware-pl-1 {
+	color: green;
+}*/
+</style>
+
+</head>
+
+<body>
+	<input>
+	
+	<p class="word">word</p>
+	
+	<div class="lingvo">
+		<p>lingvo article</p>
+	</div>
+	
+	<div class="images"></div>
+	
+	<div class="glosbe">
+		<p>glosbe article</p>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+"use strict";
+
+function contactServer(message) {
+	var src = "http://localhost:8989/" + message;
+	$.getScript(src, function(){
+		//console.log("Success!");
+	}).fail(function () {
+		//alert("No connection!");
+		console.log("No connection!");
+	});
+}
+
+function display(word) {
+	$('.word').empty();
+	$('.glosbe').empty();
+	$('.lingvo').empty();
+	
+	$('.word').append(word);
+	//console.log(typed);
+	
+	var request = 'get?dic=lingvo&word=' + word;
+	console.log(request);
+	contactServer(request);
+	
+	request = 'get?dic=glosbe&word=' + word;
+	console.log(request);
+	contactServer(request);
+}
+
+var main = function() {
+	//$('input').focus();
+	
+	$('input').on('keypress', function(event) {
+		if(event.keyCode === 13) {
+			var typed = $('input').val();
+			//display(typed);
+			window.location.href = 'http://localhost:8989/' + typed;
+		}
+	});
+	
+	//replaceMe!
+}
+
+$(document).ready(main);
+</script>
+</body>
+</html>
