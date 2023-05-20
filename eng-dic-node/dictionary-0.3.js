@@ -17,8 +17,15 @@ const server = http.createServer(function(req, res) {
 		res.end();
 	}
 	
+	function google(page) {
+		fs.writeFile('./control.html', page, function(err){console.log('rewritten!');});
+		//class="ryNqvb"
+		var headless = '<div class="lRu31"' + page.split('<div class="lRu31"')[1];
+		fs.writeFile('./control2.html', headless, function(err){console.log('rewritten!');});
+	}
+	
 	function lingvo(page) {
-		console.log('almost ready!');
+		//console.log('almost ready!');
 		var headless = '<div ' + page.split('<div class="_1mexQ')[1];
 		article = headless.split('<div name="#addcard"')[0];
 		var tags = article.split('<');
@@ -61,10 +68,7 @@ const server = http.createServer(function(req, res) {
 	}
 	
 	function glosbe(page) {
-		//var headless = page.split('<div id="tmem_first_examples">')[1];
 		var halves = page.split('<div id="tmem_first_examples">');
-		//fs.writeFile('./control.html', halves[0], function(err){console.log('rewritten!');});
-		//var article = headless.split('<div id="tmem_more_')[0];
 		var article = halves[1].split('<div id="tmem_more_')[0];
 		var string = JSON.stringify(article);
 		
@@ -76,7 +80,6 @@ const server = http.createServer(function(req, res) {
 		
 		var headlessImages = halves[0].split('<div class="snap')[1];
 		if(headlessImages) {
-			//fs.writeFile('./control2.html', headlessImages, function(err){console.log('rewritten!');});
 			var images = headlessImages.split('<img');
 			var imagesBlock = '';
 			for(var i = 1; i < images.length; i++) {
@@ -100,6 +103,9 @@ const server = http.createServer(function(req, res) {
 				break;
 			case 'glosbe':
 				glosbe(page);
+				break;
+			case 'google':
+				google(page);
 				break;
 			default:
 				console.log(dic + '!!!');
@@ -135,6 +141,10 @@ const server = http.createServer(function(req, res) {
 				break;
 			case 'glosbe':
 				getPage({host: 'en.glosbe.com', path: '/en/uk/' + word}, dic);
+				break;
+			case 'google':
+				//getPage({host: 'translate.google.com', path: '/?hl=uk&sl=en&tl=uk&text=' + word}, dic);
+				getPage({host: 'www.deepl.com', path: '/en/translator#en/uk/' + word}, dic);
 				break;
 			default:
 				console.log(dic + '!!!');
