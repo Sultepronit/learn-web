@@ -28,6 +28,7 @@ const server = http.createServer(function(req, res) {
 		var mainDivControl = 1;
 		var out = 0;
 		for(var i = 2; i < tags.length; i++) {
+			//if(i < 40) console.log(tags[i]);
 			
 			if(tags[i].slice(0,3) == 'div') {
 				mainDivControl++;
