@@ -68,8 +68,11 @@ const server = http.createServer(function(req, res) {
 		var article = halves[1].split('<div id="tmem_more_')[0];
 		var string = JSON.stringify(article);
 		
-		var js = 'var glosbe = ' + string + ';\n';
-		js += '$(".glosbe").empty().append(glosbe);\n';
+		var js = '$(".glosbe").empty();\n';
+		js += '$(".images").empty();\n';
+		js += 'var glosbe = ' + string + ';\n';
+		js += '$(".glosbe").append(glosbe);\n';
+		
 		
 		var headlessImages = halves[0].split('<div class="snap')[1];
 		if(headlessImages) {
@@ -80,8 +83,10 @@ const server = http.createServer(function(req, res) {
 				imagesBlock += '<img' + images[i].split('>')[0] + '>';
 			}
 			//fs.writeFile('./control2.html', imagesBlock, function(err){console.log('rewritten!');});
-			js += 'var images = "' + imagesBlock + '";\n';
-			js += '$(".images").empty().append(images);\n';
+			string = JSON.stringify(imagesBlock);
+			
+			js += 'var images = ' + string + ';\n';
+			js += '$(".images").append(images);\n';
 		}
 		
 		sendResJs(js);
