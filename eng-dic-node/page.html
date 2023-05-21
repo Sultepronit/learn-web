@@ -20,6 +20,10 @@ body {
 .word {
 	font-size: 2em;
 }
+
+input {
+	font-size: 2em;
+}
 	
 ._24CCn {
 	color: gray;
@@ -56,7 +60,7 @@ body {
 <body>
 	<input>
 	
-	<p class="word">word</p>
+	<!--<p class="word">word</p>-->
 	
 	<div class="lingvo">
 		<p>lingvo article</p>
@@ -83,11 +87,11 @@ function contactServer(message) {
 }
 
 function display(word) {
-	$('.word').empty();
+	//$('.word').empty();
 	$('.glosbe').empty();
 	$('.lingvo').empty();
 	
-	$('.word').append(word);
+	//$('.word').append(word);
 	//console.log(typed);
 	
 	var request = 'get?dic=lingvo&word=' + word;
