@@ -22,7 +22,30 @@ body {
 }
 
 input {
-	font-size: 2em;
+	position: fixed;
+	top: 0.1em;
+	font-size: 1.5em;
+	/*max-width: 98%;*/
+	width: 97%;
+}
+
+main {
+	margin-top: 2.6em;
+}
+
+.lingvo {
+	margin: 1%;
+	padding: 1%;
+}
+
+h2 a {
+	color: red;
+}
+
+._2xKEq {
+	/*margin-block-start: 0;*/
+	/*padding-inline-start: 1em;*/
+	list-style: upper-roman;
 }
 	
 ._24CCn {
@@ -46,13 +69,21 @@ input {
 
 .dir-aware-pr-1 {
 	/*color: blue;*/
-	border-bottom: dotted blue 2px;
+	/*border-bottom: dotted blue 2px;*/
 	width: fit-content;
+	background-color: #cdfbf0;
 }
 
 /*.dir-aware-pl-1 {
 	color: green;
 }*/
+
+.truncate {
+	color: gray;
+	font-size: 0.7em;
+	/*float: right;*/
+	margin-top: -0.3em;
+}
 </style>
 
 </head>
@@ -60,17 +91,19 @@ input {
 <body>
 	<input>
 	
-	<!--<p class="word">word</p>-->
-	
-	<div class="lingvo">
-		<p>lingvo article</p>
-	</div>
-	
-	<div class="images"></div>
-	
-	<div class="glosbe">
-		<p>glosbe article</p>
-	</div>
+	<main>
+		<!--<p class="word">word</p>-->
+		
+		<div class="lingvo">
+			<p>lingvo article</p>
+		</div>
+		
+		<div class="images"></div>
+		
+		<div class="glosbe">
+			<p>glosbe article</p>
+		</div>
+	</main>
 
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script>
@@ -86,19 +119,29 @@ function contactServer(message) {
 	});
 }
 
+function neglectLingvo() {
+	$('.lingvo').css('border', 'solid red 2px');
+	$('.lingvo').css('overflow', 'auto');
+	$('.lingvo').css('max-height', '10em');
+}
+
 function display(word) {
 	//$('.word').empty();
-	$('.glosbe').empty();
 	$('.lingvo').empty();
+	$('.images').empty();
+	$('.glosbe').empty();
+	
 	
 	//$('.word').append(word);
 	//console.log(typed);
 	
-	var request = 'get?dic=lingvo&word=' + word;
+	//var request = 'get?dic=lingvo&word=' + word;
+	var request = 'get?dic=lingvo';
 	console.log(request);
 	contactServer(request);
 	
-	request = 'get?dic=glosbe&word=' + word;
+	//request = 'get?dic=glosbe&word=' + word;
+	request = 'get?dic=glosbe';
 	console.log(request);
 	contactServer(request);
 }
@@ -110,7 +153,8 @@ var main = function() {
 		if(event.keyCode === 13) {
 			var typed = $('input').val();
 			//display(typed);
-			window.location.href = 'http://localhost:8989/' + typed;
+			//window.location.href = 'http://localhost:8989/' + typed;
+			window.location.href = typed;
 		}
 	});
 	
