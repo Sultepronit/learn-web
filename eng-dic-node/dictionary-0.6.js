@@ -3,12 +3,13 @@
 const https = require('https');
 const http = require('http');
 const url = require('url');
-
 var fs = require('fs');
 
+var soundObject = {};
 var encodedWord = '';
 var initionalWord = '';
-var soundObject = {};
+var lingvoPage = '';
+var glosbePage = '';
 
 console.log('Go to http://localhost:8989');
 
@@ -18,24 +19,18 @@ fs.readFile('./soundObject.json', 'utf8', function(err, data) {
 	console.log('sounds loaded!');
 });
 
-/*function prepareUtterance() {
-	var urls = soundObject[initionalWord];
-	if(urls) {
-		
-	}
-}*/
-
 const server = http.createServer(function(req, res) {
 	
-	///////////////////////////
+	//////////////////////////
 	function sendResJs(js) {
 		res.writeHead(200, {'Content-Type': 'text/plain'});
 		res.write(js);
-		console.log('done!');
+		//console.log('done!');
 		res.end();
 	}
 	
 	function lingvo(page) {
+		lingvoPage = page;
 		var headless = '<div ' + page.split('<div class="_1mexQ')[1];
 		article = headless.split('<div name="#addcard"')[0];
 		var tags = article.split('<');
@@ -99,10 +94,11 @@ const server = http.createServer(function(req, res) {
 	}
 	
 	function glosbe(page) {
+		glosbePage = page;
 		var halves = page.split('<div id="tmem_first_examples">');
 		//var article = halves[1].split('<div id="tmem_more_')[0];
 		var firstTry = halves[1].split('<div id="tmem_more_');
-		console.log('------------> ' + firstTry[1]);
+		//console.log('------------> ' + firstTry[1]);
 		if(firstTry[1]) {
 			var string = JSON.stringify(firstTry[0]);
 		} else {
@@ -179,9 +175,34 @@ const server = http.createServer(function(req, res) {
 		}
 	}
 	//-------------------------------
-	function sendPage(parts) {
-		//console.log('Ready!');
-		encodedWord = parts.pathname.slice(1);
+	function showLingvoOrig() {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		lingvoPage = lingvoPage.replace('<html>', '<html lang="uk">');
+		lingvoPage = lingvoPage.replace('<head>', '<head><meta charset="utf-8">');
+		res.write(lingvoPage);
+		res.end();
+	}
+	
+	function showGlosbeOrig() {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		/*lingvoPage = lingvoPage.replace('<html>', '<html lang="uk">');
+		lingvoPage = lingvoPage.replace('<head>', '<head><meta charset="utf-8">');*/
+		res.write(glosbePage);
+		res.end();
+	}
+	
+	
+	function sendMainPage(parts) {
+		//console.log(parts);
+		var splitted = parts.pathname.split('/');
+		//console.log(splitted);
+		if(splitted.length > 2) {
+			console.log('ghost');
+			sendResJs('');
+			return;
+		}
+		//encodedWord = parts.pathname.slice(1);
+		encodedWord = splitted[1];
 		initialWord = decodeURI(encodedWord);
 		
 		console.log(initialWord + ' / ' + encodedWord);
@@ -228,12 +249,18 @@ const server = http.createServer(function(req, res) {
 		case '/get':
 			getDic(parts);
 			break;
+		case '/lingvo-orig':
+			showLingvoOrig();
+			break;
+		case '/glosbe-orig':
+			showGlosbeOrig();
+			break;
 		case '/favicon.ico':
 			
 			break;
 		default:
 			//console.log('something is wrong?..');
-			sendPage(parts);
+			sendMainPage(parts);
 			break;
 	}
 });
