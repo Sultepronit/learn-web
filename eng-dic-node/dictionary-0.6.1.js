@@ -15,7 +15,6 @@ console.log('Go to http://localhost:8989');
 
 fs.readFile('./soundObject.json', 'utf8', function(err, data) {
 	soundObject = JSON.parse(data);
-	//console.log(soundObject['apple']);
 	console.log('sounds loaded!');
 });
 
@@ -56,20 +55,13 @@ const server = http.createServer(function(req, res) {
 			if(tags[i].slice(0,3) == 'use') continue;
 			if(tags[i] == '/use>') continue;
 			
-			/*if(tags[i].slice(0,2) == 'h3') {
-				out++;
-				continue;
-			}*/
 			if(out > 0) {
-				/*if(tags[i] == '/h3>') {
-					out--;
-				}*/
-				
+
 				if(tags[i] == '/h1>') {
 					out--;
-					console.log(tags[i - 2]);
+					//console.log(tags[i - 2]);
 					lingvoWord = tags[i - 2].split('">')[1];
-					console.log(lingvoWord);
+					//console.log(lingvoWord);
 					if(lingvoWord != initialWord) {
 						var a = '<a href="' + lingvoWord + '">' + lingvoWord + '</a>';
 						mainPart += '<h2>' + a + '</h2>';
@@ -79,11 +71,6 @@ const server = http.createServer(function(req, res) {
 				continue;
 			}
 			
-			/*if(tags[i] == '/h1>') {
-				console.log('!!!!!!!!!!');
-			}*/
-			
-	
 			mainPart += '<' + tags[i];
 		}
 		
@@ -96,18 +83,13 @@ const server = http.createServer(function(req, res) {
 	function glosbe(page) {
 		glosbePage = page;
 		var halves = page.split('<div id="tmem_first_examples">');
-		//var article = halves[1].split('<div id="tmem_more_')[0];
 		var firstTry = halves[1].split('<div id="tmem_more_');
-		//console.log('------------> ' + firstTry[1]);
 		if(firstTry[1]) {
 			var string = JSON.stringify(firstTry[0]);
 		} else {
 			var secondTry = halves[1].split('class="py-4 text-xs');
 			var string = JSON.stringify(secondTry[0]);
 		}
-		
-		//var string = JSON.stringify(article);
-		//var string = JSON.stringify(firstTry[0]);
 		
 		var js = 'var glosbe = ' + string + ';\n';
 		js += '$(".glosbe").append(glosbe);\n';
@@ -161,7 +143,7 @@ const server = http.createServer(function(req, res) {
 	
 	function getDic(parts) {
 		var dic = parts.query.dic;
-		console.log(dic);
+		//console.log(dic);
 		
 		switch(dic) {
 			case 'lingvo':
@@ -220,7 +202,7 @@ const server = http.createServer(function(req, res) {
 				data = data.replace('<input>', replacement);
 				
 				var urls = soundObject[initialWord];
-				console.log(urls);
+				//console.log(urls);
 				if(urls) {
 					data = data.replace('//utter//', 'playSound();\n');
 					
