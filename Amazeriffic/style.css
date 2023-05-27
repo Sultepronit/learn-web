@@ -8,6 +8,7 @@ body {
 	font-family: "droid-sans", sans-serif;
 	font-weight: 400;
 	font-style: normal;
+	font-size: 100%
 }
 
 header, main, footer {
@@ -20,22 +21,27 @@ header .container, main .container, footer .container {
 }
 
 header {
-	background: white;
-	/*overflow: auto;*/
+    background: white;
+    overflow: auto;
+    border-bottom: solid gray 1px;
 }
 
 h1, h2, h3, h4 {
 	font-family: 'Ubuntu', sans-serif;
 }
 
-/*header*/ h1 {
+h1 {
 	float: left;
-	width: 570px;
+    width: 570px;
+    font-size: 3em;
+    font-style: italic;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-header nav {
-	float: right;
-	width: 285px;
+nav {
+    margin-top: 1em;
+    float: left;
 }
 
 main {
@@ -47,19 +53,55 @@ main {
 	width: 570px;
 }
 
+h2 {
+    font-size: 2.2em;
+    margin-top: 0.8em;
+    margin-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 1.4em;
+    margin-top: 1.5em;
+    margin-bottom: 0.4em;
+}
+
 /*.right-column {
 	float: right;
 	width: 285px;
 }*/
+
+img {
+	margin: 0.3em;
+}
 
 .contact {
 	float: left;
 	width: 570px;
 }
 
+h4 {
+    font-size: 1.3em;
+    margin-top: 2.2em;
+    margin-bottom: 1em;
+}
+
+.amaz {
+	font-style: italic;
+}
+
 .sitemap {
 	float: right;
 	width: 285px;
 }
+
+.sitemap ul {
+	margin-right: 4em;
+}
+
+.left-block {
+	float: left;
+}
+
+
 
 
