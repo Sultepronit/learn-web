@@ -31,7 +31,6 @@ function getData() {
         }
     };
     try { xhr.send(); } catch (err) {console.log(err) }
-	
 }
 
 var main = function() {	
