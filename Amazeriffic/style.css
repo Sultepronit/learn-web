@@ -26,6 +26,14 @@ header {
     border-bottom: solid gray 1px;
 }
 
+a {
+    color: red;
+    text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
 h1, h2, h3, h4 {
 	font-family: 'Ubuntu', sans-serif;
 }
@@ -34,9 +42,13 @@ h1 {
 	float: left;
     width: 570px;
     font-size: 3em;
-    font-style: italic;
     margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.8em;
+}
+
+.amaz {
+    font-style: italic;
+    color: #d04646;
 }
 
 nav {
@@ -46,6 +58,8 @@ nav {
 
 main {
 	background: white;
+	/*overflow: auto;*/
+	min-height: 10em;
 }
 
 .left-column {
@@ -83,10 +97,6 @@ h4 {
     font-size: 1.3em;
     margin-top: 2.2em;
     margin-bottom: 1em;
-}
-
-.amaz {
-	font-style: italic;
 }
 
 .sitemap {
