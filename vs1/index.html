@@ -10,7 +10,25 @@
 </head>
 <body>
     <main>
-        <div><h1>My Page</h1></div>
+        <div>
+            <h1>My Page</h1>
+        </div>
+
+        <p id="demo"></p>
+        <p id="demo2"></p>
+        <script>
+            document.getElementById("demo").innerHTML = 5 + 6;
+            document.getElementById("demo2").innerHTML = '5 + 6';
+            // in this case script must be below the html!!!
+            //document.getElementById("demo3").innerHTML = 'Not working!';
+        </script>
+        <p id="demo3"></p>
+
+        <script>
+            document.write('<p>Just after script!</p>');
+        </script>
+        <button onclick="document.write('almost nothing')">Rewrite!</button>
+        <button onclick="print()">Pring page!</button>
     </main>
 </body>
 </html>

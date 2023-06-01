@@ -61,3 +61,16 @@ console.log(isNaN(nan)); // ture
 console.log(isNaN(1)); // false
 console.log(isNaN('1')); // false
 console.log(isNaN('text')); // ture
+
+// in this case script must be below the html!!!
+//document.getElementById("demo3").innerHTML = 'Not working!';
+
+document.write('first thing in body!');
+
+//window.alert('Hey!');
+// same thing
+//alert('Hey!');
+
+//window.print();
+// same thing
+//print();
