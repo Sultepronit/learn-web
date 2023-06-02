@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<div id="demo">
+<p>Let AJAX change this text.</p>
+<button type="button" onclick="readTextFile('http://localhost:3000/ttt')">Change Content</button>
+</div>
+
+<script>
+/*function readTextFile(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+//readTextFile("http://localhost:3000/ttt");
+
+fetch('http://localhost:3000/ttt')
+  .then(response => response.text())
+  .then(text => console.log(text))
+  // outputs the content of the text file
+ */
+/*function previewFile() {
+  const content = document.querySelector(".content");
+  const [file] = document.querySelector("input[type=file]").files;
+  const reader = new FileReader();
+
+  reader.addEventListener(
+    "load",
+    () => {
+      // this will then display a text file
+      content.innerText = reader.result;
+    },
+    false
+  );
+
+  if (file) {
+    reader.readAsText(file);
+  }
+}
+
+previewFile();*/
+
+var loadJS = function(url, implementationCode, location){
+    //url is URL of external file, implementationCode is the code
+    //to be called from the file, location is the location to 
+    //insert the <script> element
+
+    var scriptTag = document.createElement('script');
+    scriptTag.src = url;
+
+    scriptTag.onload = implementationCode;
+    scriptTag.onreadystatechange = implementationCode;
+
+    location.appendChild(scriptTag);
+};
+var yourCodeToBeCalled = function(){
+//your code goes here
+}
+loadJS('radyk.js', yourCodeToBeCalled, document.body);
+loadJS('http://localhost:3000/radyk.js', yourCodeToBeCalled, document.body);
+
+</script>
+
+</body>
+</html>
