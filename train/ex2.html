@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div>
+		<p>Look at console!</p>
+	</div>
+	
+	<script>
+		//code that will return random letter from my name
+		const name = 'Stepan';
+		for(let i = 0; i < 9; i++) {
+			let randomIndex = Math.round((Math.random() * (name.length - 1)));
+			console.log(randomIndex);
+			console.log(name.charAt(randomIndex));
+		}
+		
+		// now we will see if there is a difference between rounding and fooring randoms
+		// you're sucks at math....
+		let counter = 0;
+		for(let i = 0; i < 10000; i++) {
+			let random01 = Math.round((Math.random() * (2-1)));
+			counter += random01;
+		}
+		console.log(counter);
+
+		counter = 0;
+		for(let i = 0; i < 10000; i++) {
+			let random01 = Math.floor((Math.random() * 2));
+			counter += random01;
+		}
+		console.log(counter);
+
+		const word = {en: 'apple', ua: 'яблуко'};
+		console.log(`"${word.ua}" will be "${word.en}" in English`);
+
+		//const number = -5.58;
+		//const number = 5.58;
+		//const number = 558;
+		const number = -58;
+		let status = (number > 0)
+			? (Math.trunc(number) === number) ? 'positive integer' : 'positive float'
+			: (Math.trunc(number) === number) ? 'negative integer' : 'negative float';
+		console.log(status);
+	</script>	
+</body>
+</html>
