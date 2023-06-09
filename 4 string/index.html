@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div>
+		<p>Look at console!</p>
+	</div>
+	
+	<script>
+		let string0 = '0123456789';
+		console.log(string0.slice(2,6)); // 2345
+		console.log(string0.slice(5)); // 56789
+		console.log(string0.slice(0,6)); // 012345
+		console.log(string0.slice(-1)); // 9
+		console.log(string0.slice(-2)); // 89
+		console.log(string0.slice(8)); // 89
+		console.log(string0.slice(string0.length - 2)); // 89
+		console.log(string0.slice(-3,-1)); // 78
+		console.log(string0.substring(2,6)); // 2345
+		console.log(string0.substring(5)); // 56789
+		console.log(string0.substring(0,6)); // 012345
+		console.log(string0.substring(-3,6)); // 012345 // -3 = 0!!!
+		console.log(string0.substr(2,1)); // 2
+		console.log(string0.substr(2,3)); // 234
+		console.log(string0.substr(5)); // 56789
+		console.log(string0.substr(-4,3)); // 678
+		console.log(string0.substr(2,13)); // 23456789
+
+		let string1 = 'apple';
+		console.log(string1.replace('p','P')); // aPple
+		console.log(string1.replace(/p/g, 'P')); // aPPle // [global]
+		let string2 = 'magicMachine';
+		console.log(string2.replace(/ma/g, 'WA')); // WAgicMachine
+		console.log(string2.replace(/ma/ig, 'WA')); // WAgicWAchine // [insensitive]
+		console.log(string1.replaceAll('p', 'P')); // aPPle // 2021+
+		console.log(string2.replaceAll('ma', 'WA')); // WAgicMachine
+		// String.prototype.replaceAll called with a non-global RegExp argument !!!
+		//console.log(string2.replaceAll(/ma/i, 'WA'));
+		console.log(string2.replaceAll(/ma/ig, 'WA')); // WAgicWAchine		
+		
+		console.log(('hello' + ' ' + 'world') === 'hello'.concat(' ', 'world')); // true
+		
+		let string3 = '     hello		 ';
+		console.log('[' + string3.trim() + ']'); // [hello] 
+		console.log('[' + string3.trimStart() + ']'); // [hello		 ] // 2019+
+		console.log('[' + string3.trimEnd() + ']'); // [     hello] // 2019+
+
+		let string4 = '12';
+		console.log(string4.padStart(4,'0')); // 0012 // 2017+
+		let n = 5.1;
+		let string5 = n.toString();
+		console.log(string5.padEnd(5,'0')); // 5.100 // 2017+
+
+		let string6 = '心当たり';
+		console.log(string6.charCodeAt(0)); // 24515 // a UTF-16 code (an integer between 0 and 65535).
+		console.log(string6.charAt(9) === ''); // true
+		console.log(string6[9]); // undefined
+
+		let string7 = 'hello world';
+		console.log(string7.split(' ')); // ['hello', 'world']
+		console.log(string7.split('')); // ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+		console.log(string7.split()); // ['hello world']
+
+
+		
+
+		
+
+	</script>	
+</body>
+</html>
