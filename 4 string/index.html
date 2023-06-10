@@ -60,7 +60,18 @@
 		console.log(string7.split('')); // ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
 		console.log(string7.split()); // ['hello world']
 
-
+		let string8 = 'big apple is good apple';
+		console.log(string8.indexOf('apple')); // 4
+		console.log(string8.lastIndexOf('apple')); // 18
+		console.log(string8.indexOf('orage')); // -1
+		let string9 = '01234012340123401234';
+		console.log(string9.indexOf('123')); // 1
+		console.log(string9.indexOf('123',9)); // 11 // search after index 9
+		console.log(string9.lastIndexOf('123', 9)); // 6 // search before index 9
+		console.log(string8.search('apple')); // 4
+		console.log(string8.search(/Apple/i)); // 4 // can uses regExp, but without starting position
+		console.log(string8.search(/apple/g)); // 4 // nothing interesting.....
+		
 		
 
 		
