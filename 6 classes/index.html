@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+	<p>Look at console!</p>
+</div>
+
+<script>
+
+class Pizza {
+	constructor(pizzaType, pizzaSize) {
+		this.type = pizzaType;
+		this.size = pizzaSize;
+		this.crust = 'original';
+	}
+	get pizzaCrust() {
+		return this.crust;
+	}
+	set pizzaCrust(pizzaCrust) {
+		this.crust = pizzaCrust;
+	}
+	getSize() {
+		return this.size;
+	}
+	setSize(pizzaSize) {
+		this.size = pizzaSize;
+	}
+	bake() {
+		console.log(
+			`Baking a ${this.size} ${this.type} ${this.crust} crust pizza.`
+		);
+	}
+}
+
+const myPizza = new Pizza('pepperoni', 'small');
+//created in constructor - like object's own fields, others - like inherited
+console.log(myPizza);
+myPizza.bake();
+
+// not a best practice
+myPizza.type = 'supreme';
+// good practice
+myPizza.pizzaCrust = 'thin';
+myPizza.setSize('big');
+myPizza.bake();
+console.log(myPizza.pizzaCrust);
+console.log(myPizza.getSize());
+</script>	
+</body>
+</html>
