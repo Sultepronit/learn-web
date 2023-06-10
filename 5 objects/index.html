@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+	<p>Look at console!</p>
+</div>
+
+<script>
+
+const vehicle = {
+	wheels: 4,
+	engine: function() {
+		return 'Vroooom!';
+	}
+}
+console.log(vehicle);
+
+// inheritance!
+const truck = Object.create(vehicle); 
+truck.doors = 2;
+console.log(truck);
+console.log(truck.wheels);
+console.log(truck.engine());
+console.log(truck.engine);
+	
+const car = Object.create(vehicle);
+car.doors = 4;
+car.engine = function() {return 'Wooosh!'};
+console.log(car);
+console.log(car.engine());
+
+const tesla = Object.create(car);
+console.log(tesla);
+tesla.engine = function() {return 'Shhhhhh...'};
+console.log(tesla.engine());
+
+console.log(Object.keys(tesla)); // ['engine'] 
+
+const band = {
+	vocals: 'Yui',
+	guitar: 'Azusa',
+	bass: 'Mio',
+	drums: 'Ritsu'
+}
+console.log(Object.keys(band)); // ['vocals', 'guitar', 'bass', 'drums'] 
+console.log(Object.values(band)); // ['Yui', 'Azusa', 'Mio', 'Ritsu']
+for(let job in band) {	
+	console.log(`On ${job}, it's ${band[job]}!`);
+}
+
+console.log(band.hasOwnProperty('guitar')); // true
+delete band.guitar;
+console.log(band.hasOwnProperty('guitar')); // false
+console.log(band);
+
+// destructuring objects
+const { vocals: myVariable } = band;
+console.log(myVariable); // Yui
+
+const { bass : myBass, drums: myDrums } = band;
+console.log(myBass); // Mio
+console.log(myDrums); // Ritsu
+
+const { vocals, bass, drums } = band;
+console.log(bass); // Mio
+
+function sings({ vocals }) {return `${vocals} sings!`;}
+console.log(sings(band)); // Yui sings!
+
+</script>	
+</body>
+</html>
