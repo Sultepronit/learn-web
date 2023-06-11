@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+	<p>Look at console!</p>
+</div>
+
+<script>
+const myArray = ['0', '100', '2000', '30000'];
+console.log(myArray);
+// remove last item & get it
+let lastItem = myArray.pop();
+console.log(myArray); // ['0', '100', '2000']
+console.log(lastItem); // 30000
+// add first item & get new length
+let newLength = myArray.unshift(-1);
+console.log(myArray); // [-1, '0', '100', '2000']
+console.log(newLength); // 4
+// add last item & get new length
+newLength = myArray.push('new!'); 
+console.log(myArray); // [-1, '0', '100', '2000', 'new!']
+console.log(newLength); // 5
+// remove first item & get it
+let firstItem = myArray.shift();
+console.log(myArray); // ['0', '100', '2000', 'new!']
+console.log(firstItem); // -1
+
+// remove any item
+// leave it empty
+delete myArray[1];
+console.log(myArray); // ['0', empty, '2000', 'new!']
+console.log(myArray[1]); // undefined
+// splice it
+myArray.splice(1, 1);
+console.log(myArray); // ['0', '2000', 'new!']
+// splice more
+// replace & get old part
+let snippet = myArray.splice(1, 1, 'here we go!'); 
+console.log(myArray); // ['0', 'here we go!', 'new!']  
+console.log(snippet); // ['2000']
+// insert on a position (& get empty array)
+snippet = myArray.splice(1, 0, 'me too!'); 
+console.log(myArray); // ['0', 'me too!', 'here we go!', 'new!']
+console.log(snippet); // []
+// insert several
+snippet = myArray.splice(1, 0, 'one', 'two', 'three'); 
+console.log(myArray); // ['0', 'one', 'two', 'three', 'me too!', 'here we go!', 'new!']
+// remove all after index (inclusively) & get the "tail"
+const tail = myArray.splice(4);
+console.log(myArray); // ['0', 'one', 'two', 'three']
+console.log(tail); // ['me too!', 'here we go!', 'new!']
+// remove several
+snippet = myArray.splice(1,2);
+console.log(myArray); // ['0', 'three']
+console.log(snippet); // ['one', 'two']
+
+const array2 = ['a', 'b', 'c', 'd', 'e', 'f'];
+// reverse
+array2.reverse();
+console.log(array2); // ['f', 'e', 'd', 'c', 'b', 'a']
+// to string
+let joined = array2.join();
+console.log(joined); // f,e,d,c,b,a
+joined = array2.join(' ');
+console.log(joined); // f e d c b a
+joined = array2.join('');
+console.log(joined); // fedcba
+// concat
+const array3 = ['x', 'y', 'z'];
+const array4 = array2.concat(array3);
+console.log(array4); // ['f', 'e', 'd', 'c', 'b', 'a', 'x', 'y', 'z']
+// spread operator - gets the contents of array
+const array5 = [...array2, ...array3];
+console.log(array5);
+console.log(...array5); // f e d c b a x y z
+array2.splice(0, 0, ...array3);
+console.log(array2); // ['x', 'y', 'z', 'f', 'e', 'd', 'c', 'b', 'a']
+
+
+
+</script>	
+</body>
+</html>
