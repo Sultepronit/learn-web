@@ -6,12 +6,13 @@
 </div>
 
 <script>
-
-class Pizza {
+// first example
+class Pizza0 {
 	constructor(pizzaType, pizzaSize) {
 		this.type = pizzaType;
 		this.size = pizzaSize;
 		this.crust = 'original';
+		this.toppings = [];
 	}
 	get pizzaCrust() {
 		return this.crust;
@@ -25,6 +26,12 @@ class Pizza {
 	setSize(pizzaSize) {
 		this.size = pizzaSize;
 	}
+	getToppings() {
+		return this.toppings;
+	}
+	setToppings(topping) {
+		this.toppings.push(topping);
+	}
 	bake() {
 		console.log(
 			`Baking a ${this.size} ${this.type} ${this.crust} crust pizza.`
@@ -32,7 +39,7 @@ class Pizza {
 	}
 }
 
-const myPizza = new Pizza('pepperoni', 'small');
+const myPizza = new Pizza0('pepperoni', 'small');
 //created in constructor - like object's own fields, others - like inherited
 console.log(myPizza);
 myPizza.bake();
@@ -45,6 +52,97 @@ myPizza.setSize('big');
 myPizza.bake();
 console.log(myPizza.pizzaCrust);
 console.log(myPizza.getSize());
+myPizza.setToppings('sousage');
+myPizza.setToppings('olives');
+console.log(myPizza.getToppings());
+
+// second example: inheritance
+// parent/super class
+class Pizza {
+	constructor(pizzaSize) {
+		this.size = pizzaSize;
+		this.crust = 'original';
+	}
+	getCrust() {
+		return this.crust;
+	}
+	setCrust(pizzaCrust) {
+		this.crust = pizzaCrust;
+	}
+}
+console.log(new Pizza('medium'));
+
+// child class
+class SpecialtyPizza extends Pizza {
+	constructor(pizzaSize) {
+		super(pizzaSize);
+		this.type = 'The Works';
+	}
+	slice() {
+		console.log(`Our ${this.type} ${this.size} pizza has 8 slices.`);
+	}
+}
+
+const mySpecialty = new SpecialtyPizza('medium');
+console.log(mySpecialty); // super's fields like it's own
+mySpecialty.slice();
+
+// third example: encapsulation
+class PizzaEncaps {
+	constructor(pizzaSize) {
+		this._size = pizzaSize; 
+		this._crust = 'original';
+		// marked as "private" by naming convenction, but still accessable
+	}
+	getCrust() {
+		return this._crust;
+	}
+	setCrust(pizzaCrust) {
+		this._crust = pizzaCrust;
+	}
+}
+
+// 4 example: Factory Function
+// an old method that literally prevent access to private fields
+function pizzaFactory(pizzaSize) {
+	const crust = 'original';
+	const size = pizzaSize;
+	return {
+		bake: () => console.log(`Baking a ${size} ${crust} crust pizza.`)
+	}
+}
+const myPizza2 = pizzaFactory('small');
+myPizza2.bake();
+
+// 5 example: real encapsulation, new way
+// now we declare public $ private fields above the constructor
+// supported by 93.4% browsers globally (06/11/23) caniuse.com
+class PizzaPrivates {
+	crust = 'original'; // public field
+	#size; // private field
+	constructor(pizzaSize) {
+		this.#size = pizzaSize; 
+	}
+	getCrust() {
+		return this.crust;
+	}
+	setCrust(pizzaCrust) {
+		this.crust = pizzaCrust;
+	}
+	hereYouGo() {
+		console.log(
+			`Here's your ${this.crust} crust ${this.#size} pizza.`
+		);
+	}
+}
+const myPizza3 = new PizzaPrivates('large');
+console.log(myPizza3);
+myPizza3.hereYouGo();
+console.log(myPizza3.crust); // not recomended, but working
+console.log(myPizza3.getCrust()); // works how it should
+// Uncaught SyntaxError: Private field '#size' must be declared in an enclosing class
+//console.log(myPizza3.#size);
+
 </script>	
 </body>
 </html>
