@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+	<p>Look at console!</p>
+</div>
+
+<script>
+
+const obj1 = {
+	name: 'Mihal',
+	status: 'good',
+	greeting: function() {
+		console.log('Hello there!')
+	}
+}
+console.log(obj1); // {name: 'Mihal', status: 'good', greeting: ƒ}
+obj1.greeting();
+
+const json1 = JSON.stringify(obj1);
+console.log(json1); // {"name":"Mihal","status":"good"}
+
+const obj2 = JSON.parse(json1);
+console.log(obj2); // {name: 'Mihal', status: 'good'}
+</script>	
+</body>
+</html>
