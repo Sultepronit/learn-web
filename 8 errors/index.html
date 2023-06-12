@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+	<p>Look at console!</p>
+</div>
+
+<script>
+'use strict';
+
+// ReferenceError: var0 is not defined
+//var0 = 'apple';
+
+// SyntaxError: Unexpected token '.'
+//Object..create();
+
+// TypeError: Assignment to constant variable.
+const const1 = 1;
+//const1 = 2;
+
+
+const makeError = () => {
+	try {
+		const1 = 7;
+	} catch (err) {
+		// TypeError: Assignment to constant variable.
+		console.log(err); 
+		console.error(err); 
+		console.warn(err); 
+		console.table(err); 
+
+		console.error(err.name); // TypeError
+		console.error(err.message); // Assignment to constant variable.
+		console.error(err.stack); // TypeError: Assignment to constant variable. // ?.....
+	}
+};
+makeError();
+
+function customError(message) {
+	this.message = message;
+	this.name = 'customError';
+	this.stack = `${this.name}: ${this.message}`;
+}
+
+const makeError2 = () => {
+	try {
+		throw new customError('This is custom error!');
+	} catch (err) {
+		console.error(err); // customError {message: 'This is custom error!', name: 'customError', stack: 'customError: This is custom error!'}
+		console.error(err.stack); // customError: This is custom error!
+	}
+}
+makeError2();
+
+const makeError3 = () => {
+	try {
+		throw new Error('This is an error!');
+	} catch (err) {
+		console.error(err); // Error: This is custom error!
+		console.error(err.stack); // Error: This is custom error!
+	} finally {
+		console.log('We finally did it!');
+	}
+	console.log('But I still don\'t know purpose of finally block....');
+}
+makeError3();
+
+console.log('still running...');
+
+</script>	
+</body>
+</html>
