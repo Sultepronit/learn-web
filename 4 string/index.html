@@ -60,6 +60,8 @@
 		console.log(string7.split('')); // ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
 		console.log(string7.split()); // ['hello world']
 
+		//search
+		// cannot use regExp, but with starting position
 		let string8 = 'big apple is good apple';
 		console.log(string8.indexOf('apple')); // 4
 		console.log(string8.lastIndexOf('apple')); // 18
@@ -68,12 +70,32 @@
 		console.log(string9.indexOf('123')); // 1
 		console.log(string9.indexOf('123',9)); // 11 // search after index 9
 		console.log(string9.lastIndexOf('123', 9)); // 6 // search before index 9
+		// can use regExp, but without starting position
 		console.log(string8.search('apple')); // 4
-		console.log(string8.search(/Apple/i)); // 4 // can uses regExp, but without starting position
-		console.log(string8.search(/apple/g)); // 4 // nothing interesting.....
-		
-		
-
+		console.log(string8.search(/Apple/i)); // 4		
+		// returns very unusual array as result 
+		let re = string8.match('apple');
+		console.log(re); // ['apple', index: 4, input: 'big apple is good apple', groups: undefined]
+		for(let i of re) console.log(i); // apple
+		console.log(re[0]); // apple
+		console.log(re.index); // 4 
+		console.log(re.input); // big apple is good apple
+		// no comments...
+		let str10 = 'Cats and dogs and other cats';
+		re = str10.match(/cats/gi);
+		console.log(re); // ['Cats', 'cats']
+		// something else......
+		re = str10.matchAll('cats'); // 2020+
+		console.log(Array.from(re)); // [['cats', index: 24, input: 'Cats and dogs and other cats', groups: undefined]]
+		re = str10.matchAll(/cats/gi); 
+		re = Array.from(re);
+		console.log(re); // [Array(1), Array(1)]
+		console.log(re[0]); // ['Cats', index: 0, input: 'Cats and dogs and other cats', groups: undefined]
+		console.log(re[1]); // ['cats', index: 24, input: 'Cats and dogs and other cats', groups: undefined]
+		//
+		console.log(str10.includes('Cats')); // true
+		console.log(str10.includes('CATS')); // false
+		console.log(str10.includes('Cats', 5)); // false // after index 5
 		
 
 	</script>	
