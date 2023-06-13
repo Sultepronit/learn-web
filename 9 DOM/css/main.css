@@ -1,8 +1,17 @@
+* {
+    color: white;
+    margin: 0;
+}
+
 body {
     margin: 0;
 }
 
 nav {
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+    
     background-color: black;
 }
 
@@ -15,6 +24,7 @@ h1 {
 .view {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #view2 {
