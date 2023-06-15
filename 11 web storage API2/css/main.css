@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+    background-color: black;
+}
+
+h1 {
+    margin: 0;
+    padding: 5px;
+    color: white;
+}
+
+main {
+    margin-top: 40px;
+    padding: 5%;
+    background-color: gray;
+}
+
+.view {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    padding: 5%;
+}
+
+.darkblue {
+    background-color: darkblue;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.black {
+    background-color: black;
+}
+
+.blue {
+    background-color: blue;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    width: 200px;
+    height: 200px;  
+}
+
+.height100 {
+    height: 100px;
+}
+
+#view3 {
+    color: black;
+}
