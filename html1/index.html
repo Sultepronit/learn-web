@@ -8,74 +8,90 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <header>
     <h1>Header!</h1>
     
-    <nav>
-        <a href="#chem">Chem</a>
-    </nav>
-        
-    <p>I <em>emphasize part of my text</em> using "em" tag.</p>
-    <p><strong>Really strong text!</strong></p>
-    <p>"abbr" tag is very interesting, though does only one thing, like here: <abbr title="United States of America">USA</abbr></p>
-    <address>Kyiv, Ukraine</address>
-    <p>And now I'll use "hr" tag - Horizontal Rule to split our page.</p>
-    <hr>
-    <h2>And here are the HTML entities:</h2>
-    <p>Spaces:&nbsp;&nbsp;&nbsp;&nbsp;- 4 of them!</p>
-    <p>&lt;&lt;&lt; &copy; stefffko &gt;&gt;&gt;</p>
-    <hr>
+        <nav aria-label="primari-navigation">
+            <a href="#chem">Chem</a>
+        </nav>
+            
+        <p>I <em>emphasize part of my text</em> using "em" tag.</p>
+        <p><strong>Really strong text!</strong></p>
+        <p>"abbr" tag is very interesting, though does only one thing, like here: <abbr title="United States of America">USA</abbr></p>
+        <address>Kyiv, Ukraine</address>
+        <p>And now I'll use "hr" tag - Horizontal Rule to split our page.</p>
+        <hr>
+        <h2>And here are the HTML entities:</h2>
+        <p>Spaces:&nbsp;&nbsp;&nbsp;&nbsp;- 4 of them!</p>
+        <p>&lt;&lt;&lt; &copy; stefffko &gt;&gt;&gt;</p>
+        <hr>
+    </header>
 
-    <h2>Some lists</h2>
-    <p>Nested unordered list!</p>
-    <ul>
-        <li>
-            <p>This is a paragraph of text.</p>
-        </li>
-        <li>
-            <p>Another paragraph.</p>
-        </li>
-        <li>
-            <p>And now, first...</p>
-            <p>...And second paragraphs!</p>
-        </li>
-    </ul>
-    <p>Description list!<br>"dt" - descrition term, "dd" - description details</p>
-    <dl id="chem">
-        <dt>Atom</dt>
-        <dd>Single nucleus, neutral.</dd>
+    <main>
+        <article id="lists">
+            <h2>Some lists</h2>
+            <p>Nested unordered list!</p>
+            <ul>
+                <li>
+                    <p>This is a paragraph of text.</p>
+                </li>
+                <li>
+                    <p>Another paragraph.</p>
+                </li>
+                <li>
+                    <p>And now, first...</p>
+                    <p>...And second paragraphs!</p>
+                </li>
+            </ul>
+            <p>Description list!<br>"dt" - descrition term, "dd" - description details</p>
+            <dl id="chem">
+                <dt>Atom</dt>
+                <dd>Single nucleus, neutral.</dd>
 
-        <dt>Molecule</dt>
-        <dd>Two or more nuclei, neutral.</dd>
+                <dt>Molecule</dt>
+                <dd>Two or more nuclei, neutral.</dd>
 
-        <dt>Ion</dt>
-        <dd>Like atom or molecule, but charged.</dd>
-    </dl>
+                <dt>Ion</dt>
+                <dd>Like atom or molecule, but charged.</dd>
+            </dl>
+            <hr>
+        </article>
 
-    <hr>
-    <h2>Some Links</h2>
-    <p>Download an <a href="html.png" download>HTML5 favicon</a></p>
-    <p>Contact me at <a href="mailto:something@gmail.com">my email address</a>.</p>
-    <p>Dial <a href="tel:+380661233445">my phone number</a>.</p>
-    <p>Open <a href="https://www.google.com" target="_blank">Google</a> in a new tab.</p>
-    <p>Go to <a href="another.html">another page</a>.</p>
+        <article id="links">
+            <h2>Some Links</h2>
+            <p>Download an <a href="html.png" download>HTML5 favicon</a></p>
+            <p>Contact me at <a href="mailto:something@gmail.com">my email address</a>.</p>
+            <p>Dial <a href="tel:+380661233445">my phone number</a>.</p>
+            <p>Open <a href="https://www.google.com" target="_blank">Google</a> in a new tab.</p>
+            <p>Go to <a href="another.html">another page</a>.</p>
+            <hr>
+        </article>
 
-    <hr>
-    <figure>
-        <img src="html.png" alt="HTML5 logo" width="480px" height="480px" loading="lazy">
-        <figcaption>
-            THe HTML5 logo
-        </figcaption>
-    </figure>
+        <figure>
+            <img src="html.png" alt="HTML5 logo" width="480" height="480" loading="lazy">
+            <figcaption>
+                THe HTML5 logo
+            </figcaption>
+        </figure>
 
-    <figure>
-        <figcaption>An Example of HTML Code:</figcaption>
-        <p>
-            <code>
-                &lt;h1&gt;Hello World!&lt;/h1&gt;
-            </code>
-        </p>
-    </figure>
+        <figure>
+            <figcaption>An Example of HTML Code:</figcaption>
+            <p>
+                <code>
+                    &lt;h1&gt;Hello World!&lt;/h1&gt;
+                </code>
+            </p>
+        </figure>
+        <aside>
+            <details>
+                <summary>Guess the <mark>number of hours</mark> I code per day</summary>
+                <p>And the right answer is <time datetime="PT4H">4</time>!</p>
+            </details>
+        </aside>
+    </main>
 
-    <p><a href="#">Back to Top</a></p>
+    <footer>
+        <p><a href="#">Back to Top</a></p>
+    </footer>
 </body>
 </html>
