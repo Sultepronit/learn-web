@@ -88,6 +88,100 @@
                 <p>And the right answer is <time datetime="PT4H">4</time>!</p>
             </details>
         </aside>
+
+        <hr>
+
+        <article id="schedule">
+            <h2>Table!</h2>
+            <table>
+                <caption>My schedule</caption>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th id="time" scope="col">Time</th>
+                        <th scope="col">Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th id="morning" scope="row">Morning</th>
+                        <td headers="time morning">
+                            <time datetime="08:00">8am</time> - <time datetime="11:00">11am</time>
+                        </td>
+                        <td>Write code</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Break</th>
+                        <td>
+                            <time datetime="11:00">11am</time> - <time datetime="12:00">12pm</time>
+                        </td>
+                        <td>Eat lunch</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Afternoon</th>
+                        <td>
+                            <time datetime="12:00">12pm</time> - <time datetime="17:00">5pm</time>
+                        </td>
+                        <td>Study for other courses</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" rowspan="2">Evening<br>& Night</th>
+                        <td rowspan="2">Other time</td>
+                        <td>Rest</td>
+                    </tr>
+                    <tr>
+                        <td>Sleep</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">That's all, folks!</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </article>
+
+        <hr>
+
+        <article id="Contact">
+            <h2>Contact me</h2>
+            <form action="https://httpbin.org/get" method="get">
+                <p>
+                    <label for="firstName">First Name:</label>
+                    <input type="text" name="firstName" id="firstName" placeholder="Anna" autocomplete="on" required autofocus>
+                </p>
+                <p>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" name="lastName" id="lastName" placeholder="Yamada" autocomplete="on" required>
+                </p>
+                <p>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="your secret" required>
+                </p>
+                <p>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" name="phone" id="phone" placeholder="0991233445" pattern="[0-9]{10}" autocomplete="on" required>
+                </p>
+                <p>
+                    <label for="decade">Favorite Decade:</label>
+                    <input type="number" min="1950" max="2020" step="10" value="1990">
+                </p>
+                <p>
+                    <label for="coffee">Favorite Coffee:</label>
+                    <select name="coffee" id="coffee" multiple size="4">
+                        <optgroup label="Coffees">
+                            <option value="regular coffee">Regular Coffee</option>
+                            <option value="iced coffee">Iced Coffee</option>
+                        </optgroup>
+                        <optgroup label="Espresso Drinks">
+                            <option value="latte">Latte</option>
+                            <option value="cappuccino">Cappuccino</option>
+                        </optgroup>
+                        <option value="other" selected>Other</option>
+                    </select>
+                </p>
+            </form>
+        </article>
     </main>
 
     <footer>

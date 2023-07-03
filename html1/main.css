@@ -10,7 +10,8 @@ a:hover, a:active {
     color: rgb(221, 0, 255);
 }
 
-img {
-    width: 480px;
-    height: 480px;
+table, tr, th, td, caption {
+    border: 2px solid green;
+    border-collapse: collapse;
+    padding: 0.5rem;
 }
