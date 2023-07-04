@@ -30,7 +30,40 @@ fs.appendFile(filePath2, text2, err => {
 
 const quiqPath = (fn) => path.join(__dirname, 'files', fn);
 
-fs.rename(quiqPath('file2.txt'), quiqPath('file3.txt'), err => {
-    if(err) throw err;
-    console.log('renamed');
-});
+function rename() {
+    fs.rename(quiqPath('file2.txt'), quiqPath('file3.txt'), err => {
+        if(err) throw err;
+        console.log('renamed');
+    });
+}
+//rename();
+
+async function fileOps() {
+    try {
+        const data = await fs.promises.readFile(quiqPath('starter.txt'), 'utf8');
+        console.log('fileOps: ')
+        console.log(data);
+        await fs.promises.writeFile(quiqPath('promiseWrite.txt'), data);
+        await fs.promises.appendFile(quiqPath('promiseWrite.txt'), '\nNext line...');
+        await fs.promises.rename(quiqPath('promiseWrite.txt'), quiqPath('promiseComplete.txt'));
+        const newData = await fs.promises.readFile(quiqPath('promiseComplete.txt'), 'utf8');
+        console.log(newData);
+    } catch (err) {
+        console.log(err);
+    }
+}
+fileOps();
+
+async function createDelete() {
+    try {
+        await fs.promises.writeFile(quiqPath('file.txt'), 'Hello there!');
+        const data = await fs.promises.readFile(quiqPath('file.txt'), 'utf8');
+        console.log('Form new file:')
+        console.log(data);
+        await fs.promises.unlink(quiqPath('file.txt'));
+        console.log('File was deleted!');
+    } catch(err) {
+        console.log(err);
+    }
+}
+createDelete();
