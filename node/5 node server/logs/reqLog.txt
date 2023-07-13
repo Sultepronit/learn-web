@@ -1,0 +1,7 @@
+2023.07.13	12:35:35	f761f77a-0d9c-45ba-bb9a-faa4b518ef0a	/new-page	GET
+2023.07.13	12:35:35	8d803c2c-f3af-489b-96ee-058361d7aaef	/css/style.css	GET
+2023.07.13	12:35:35	bff5f828-f436-4707-bac3-fb99ce27b8a8	/img/bird.jpeg	GET
+2023.07.13	12:35:35	b3b4d9ea-713d-457e-94d3-f5ba95fb4f07	/favicon.ico	GET
+2023.07.13	12:39:04	e0c5e3e4-8af6-4a01-aa37-8450acd6e409	/new-page	GET
+2023.07.13	12:39:31	bb352229-df3e-4e9e-9892-dd837d89aa06	/img/	GET
+2023.07.13	12:39:31	bd589210-8a7b-4fd8-a215-cda148fa72f5	/img/css/style.css	GET
