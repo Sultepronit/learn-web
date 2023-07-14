@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.display {
+  width: 300px;
+  height: 300px;
+  margin: 0.5em;
+  border: 2px solid black;
+  box-shadow: 2px 2px 5px black;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#input {
+  width: 300px;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  padding: 0.3em;
+  box-shadow: 2px 2px 5px black;
+  outline: none;
+}
