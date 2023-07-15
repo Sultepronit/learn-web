@@ -38,3 +38,5 @@
 2023.07.15	11:04:53	4097feda-c557-4dd6-b619-12c8f75f6c87	GET	undefined	/old
 2023.07.15	11:06:04	e41f71d8-d310-4688-9643-937cd4dcc2e4	GET	undefined	/old
 2023.07.15	11:06:04	afbe0e4f-c585-4573-bb11-fdf9014eead3	GET	undefined	/css/style.css
+2023.07.15	12:03:41	4abdad9b-7add-4bdd-acb5-a67a708bf785	GET	undefined	/
+2023.07.15	12:03:42	ca502005-3f1f-4992-98e7-40e4d8824f18	GET	undefined	/css/style.css

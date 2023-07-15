@@ -5,27 +5,41 @@ import Contents from './Contents';
 import Footer from './Footer';
 import { useState, useEffect } from 'react';
 
+// to use json-server:
+// npx jason-server -p 3502 -w data/db.json
 function App() {
+  const API_URL = 'http://localhost:3502/items';
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
+  const [fetchErr, setFetchErr] = useState(null);
+  const [loadedDB, setLoadedDb] = useState(false);
 
   // useEffect demostration
   useEffect(() => console.log('render')); //shows at any action
   useEffect(() => {console.log('loaded!')}, []); // shows only at load time
   // but in my case - two times!
-  /*
-  useEffect(() => {
-    let x = 0;
-    setInterval(() => {console.log(++x);}, 1000);
-  }, []);
-  // also evetithing appears two times...
-  */
-  useEffect(() => {console.log('items state updated!')}, [items]);
+  useEffect(() => {console.log('items state updated!')}, [items]); // shows at items change
 
   // actual implementation
   useEffect(() => {
-    setItems(JSON.parse(localStorage.getItem('shoppinglist')));
+    //setItems(JSON.parse(localStorage.getItem('shoppinglist')));
+    async function fetchItems() {
+      try {
+        const response = await fetch(API_URL);
+        // response !== 200
+        if(!response.ok) throw Error('Did not receive the data');
+        const listItems = await response.json();
+        setItems(listItems);
+        setFetchErr(null);
+      } catch(err) {
+        //console.log(err.stack);
+        setFetchErr(err.message);
+      } finally {
+        setLoadedDb(true);
+      }
+    }
+    fetchItems();
   }, []);
 
   useEffect(() => {
@@ -76,11 +90,15 @@ function App() {
         search={search}
         setSearch={setSearch}
       />
-      <Contents
-        items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
-      />
+      <main>
+        {!loadedDB && <p>Loading Items...</p>}
+        {fetchErr && <p style={{color: 'red'}}>{`Error: ${fetchErr}`}</p>}
+        {loadedDB && !fetchErr && <Contents
+          items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />}
+      </main>
       <Footer length={items.length} />
     </div>
   );
