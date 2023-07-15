@@ -1,0 +1,40 @@
+2023.07.13	12:35:35	f761f77a-0d9c-45ba-bb9a-faa4b518ef0a	/new-page	GET
+2023.07.13	12:35:35	8d803c2c-f3af-489b-96ee-058361d7aaef	/css/style.css	GET
+2023.07.13	12:35:35	bff5f828-f436-4707-bac3-fb99ce27b8a8	/img/bird.jpeg	GET
+2023.07.13	12:35:35	b3b4d9ea-713d-457e-94d3-f5ba95fb4f07	/favicon.ico	GET
+2023.07.13	12:39:04	e0c5e3e4-8af6-4a01-aa37-8450acd6e409	/new-page	GET
+2023.07.13	12:39:31	bb352229-df3e-4e9e-9892-dd837d89aa06	/img/	GET
+2023.07.13	12:39:31	bd589210-8a7b-4fd8-a215-cda148fa72f5	/img/css/style.css	GET
+2023.07.13	13:55:39	c1c8e7fd-0da9-4dd8-9cb3-027c78715513	/img	GET
+2023.07.13	13:55:40	091976ee-5876-44d4-9e33-b334c3b1c5c3	/css/style.css	GET
+2023.07.15	09:51:12	6f2f03d8-c5a0-423e-9425-276d9b837105	GET	undefined	/new-page
+2023.07.15	09:51:12	f33214ee-ccae-4926-8ec8-81fa24441fb5	GET	undefined	/css/style.css
+2023.07.15	09:51:12	b1fad724-b0ec-434e-9376-0f67564b266a	GET	undefined	/img/bird.jpeg
+2023.07.15	09:52:34	7378dd8c-51ab-4d78-97bd-c444f8034e24	GET	undefined	/new-page
+2023.07.15	09:52:35	c341fed7-30a9-4257-979c-bc2a34cabc84	GET	undefined	/css/style.css
+2023.07.15	09:52:35	0407ae28-0e9f-449d-a041-4389175bd275	GET	undefined	/img/bird.jpeg
+2023.07.15	09:57:51	eb0b4065-92cd-4060-a79c-ad0aead39794	GET	undefined	/old
+2023.07.15	09:57:51	1da2011f-36c2-4531-8d63-9cb02569a0be	GET	undefined	/css/style.css
+2023.07.15	10:04:43	2cabccc6-4e80-4fdb-b59b-a5c02ada0809	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:04:43	8edffe5d-52bf-4882-8d29-2f8e5a1f8a23	GET	https://www.google.com.ua	/
+2023.07.15	10:13:51	385824f9-6de7-47f5-9720-d2627f268c09	GET	https://www.google.com.ua	/
+2023.07.15	10:13:51	5b01e02e-3b34-432c-8d09-f31c4d55d773	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:52:19	7611f08e-3626-41ef-80a6-28f2dad23b45	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:52:19	d1e05c37-08b7-4112-a3a5-cf3f69a369ee	GET	https://www.google.com.ua	/
+2023.07.15	10:52:24	e73072c6-dd67-4b60-b187-bf58bf5af1c4	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:52:24	f59ac89f-ed80-422a-94ff-2b01f6818b66	GET	https://www.google.com.ua	/
+2023.07.15	10:52:39	deb2c463-d030-43c3-81cd-fd17613257e8	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:52:39	1d6018ae-81e5-4eea-a5ad-8cf1d88db847	GET	https://www.google.com.ua	/
+2023.07.15	10:53:38	3399efe3-afe1-4858-af3c-1585d979ac17	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:53:38	ab605446-02d5-437e-93ff-d36c798b2860	GET	https://www.google.com.ua	/
+2023.07.15	10:53:42	3587cf83-8153-48a2-9593-abc3960c9c3e	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:53:43	18fa0683-50b1-4001-b8ba-dc8d4e474e29	GET	https://www.google.com.ua	/
+2023.07.15	10:54:30	2a68a5ca-9ba8-4986-8ed7-03ce24485bee	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:54:30	e3f56aa0-e1c0-441a-9785-ba6bdb0ceae9	GET	https://www.google.com.ua	/
+2023.07.15	10:58:18	618beeb5-f251-431e-87a5-c0b2747f4074	OPTIONS	https://www.google.com.ua	/
+2023.07.15	10:58:18	85ff46a7-1ced-4daf-9e2e-76ba272bfeb6	GET	https://www.google.com.ua	/
+2023.07.15	11:02:57	85c0e598-ac0b-497e-8ea8-04e94d8116d7	GET	undefined	/css/style.css
+2023.07.15	11:02:58	78d6d71b-7406-4dd9-acf3-6ee2af5597e9	GET	undefined	/old
+2023.07.15	11:04:53	4097feda-c557-4dd6-b619-12c8f75f6c87	GET	undefined	/old
+2023.07.15	11:06:04	e41f71d8-d310-4688-9643-937cd4dcc2e4	GET	undefined	/old
+2023.07.15	11:06:04	afbe0e4f-c585-4573-bb11-fdf9014eead3	GET	undefined	/css/style.css
