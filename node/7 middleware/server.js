@@ -6,6 +6,7 @@ const path = require('path');
 // npm i cors
 const cors = require('cors');
 const { logger } = require('./middleware/logEvents');
+const errorHandler = require('./middleware/errorHandler');
 
 const pj = (...args) => path.join(__dirname, ...args);
 const PORT = process.env.PORT || 3500;
@@ -79,13 +80,18 @@ const three = (req, res) => { console.log('three'); res.send('Finished!'); };
 
 app.get('/chain(.html)?', [one, two, three]);
 
-app.get('/*', (req, res) => {
-    res.status(404).sendFile(pj('views', '404.html'));
+//app.get('/*', (req, res) => {
+app.all('*', (req, res) => {
+    res.status(404);
+    if(req.accepts('html')) {
+        res.sendFile(pj('views', '404.html'));
+    } else if(req.accepts('json')) {
+        res.json({ error: '404 Not Found' });
+    } else {
+        res.type('txt').send('404 Not Found');
+    }
 });
 
-app.use(function(err, req, res, next) {
-    console.error(err.stack);
-    res.status(500).send(err.message);
-});
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server rnunning on port ${PORT}`));

@@ -1,1 +1,2 @@
 2023.07.13	12:39:04	8dfd4f49-4623-47eb-bf60-bf9b389db982	TypeError: contentType.include is not a function
+2023.07.16	13:55:17	b4883a75-685a-48e7-835e-f94521919591	Error: Not allowed by CORS!
