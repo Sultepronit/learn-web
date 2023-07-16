@@ -4,9 +4,10 @@ import AddItem from './AddItem';
 import Contents from './Contents';
 import Footer from './Footer';
 import { useState, useEffect } from 'react';
+import apiRequest from './apiRequest';
 
 // to use json-server:
-// npx jason-server -p 3502 -w data/db.json
+// npx json-server -p 3502 -w data/db.json
 function App() {
   const API_URL = 'http://localhost:3502/items';
   const [items, setItems] = useState([]);
@@ -48,25 +49,52 @@ function App() {
     }
   }, [items]);
 
+  //async function addItem(item) {
   function addItem(item) {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
-    const detailedItem = {id, cheked: false, item};
-    console.log(detailedItem);
+    const detailedItem = {id, checked: false, item};
     const listItems = [...items, detailedItem];
     setItems(listItems);
+    /*const postOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(detailedItem)
+    }
+    const re = await apiRequest(API_URL, postOptions);
+    if(re) setFetchErr(re);*/
+    apiRequest(API_URL, setFetchErr, 'POST', detailedItem);
   }
 
+  //async function handleCheck(id) {
   function handleCheck(id) {
-    console.log(`key: ${id}`);
-    const listItems = items.map(item => (item.id === id) ? { ...item, checked: !item.checked } : item);
-    console.log(listItems);
-    setItems(listItems);
+    //const listItems = items.map(item => (item.id === id) ? { ...item, checked: !item.checked } : item);
+    const updatedItems = [...items];
+    let checked = false;
+    for(let item of updatedItems) {
+      if(item.id === id) {
+        checked = !item.checked;
+        item.checked = checked;
+        break;
+      }
+    }
+    setItems(updatedItems);
+
+    /*const updateOptions = {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ checked })
+    };
+    const reqUrl = `${API_URL}/${id}`;
+    const re = await apiRequest(reqUrl, updateOptions);
+    if(re) setFetchErr(re);*/
+    apiRequest(`${API_URL}/${id}`, setFetchErr, 'PATCH', { checked });
   }
 
   function handleDelete(id) {
     const listItems = items.filter(item => item.id !== id);
     console.log(listItems);
     setItems(listItems);
+    apiRequest(`${API_URL}/${id}`, setFetchErr, 'DELETE');
   }
 
   function handleSubmit(e) {

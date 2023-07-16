@@ -1,3 +1,33 @@
 {
-    "items" : []
+  "items": [
+    {
+      "id": 2,
+      "cheked": false,
+      "item": "second!",
+      "checked": true
+    },
+    {
+      "id": 4,
+      "cheked": false,
+      "item": "onions!",
+      "checked": false
+    },
+    {
+      "id": 5,
+      "cheked": false,
+      "item": "one more!",
+      "checked": true
+    },
+    {
+      "id": 6,
+      "cheked": false,
+      "item": "carrots",
+      "checked": true
+    },
+    {
+      "id": 7,
+      "checked": true,
+      "item": "apples"
+    }
+  ]
 }
