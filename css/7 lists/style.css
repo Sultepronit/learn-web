@@ -1,0 +1,54 @@
+* {
+    
+}
+
+body {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.ol1 {
+    list-style-type: lower-alpha;
+}
+
+.ol2 {
+    list-style-type: decimal-leading-zero;
+}
+
+.ol3 {
+    list-style-type: disc;
+}
+
+.ol4 {
+    list-style-type: circle;
+}
+
+.ol5 {
+    list-style-type: upper-roman;
+}
+
+.ol6 {
+    list-style-type: none;
+}
+
+.ul1 {
+    list-style-type: square;
+}
+
+.ul2 {
+    text-align: center;
+}
+
+.ul3 {
+    text-align: center;
+    list-style-position: inside;
+}
+
+.ul4 {
+    text-align: center;
+    list-style-position: outside;
+}
