@@ -1,12 +1,15 @@
-function Buttons() {
+function Buttons({ clicked }) {
+    const names = ['users', 'posts', 'comments'];
+    let i = 0;
     return (
-        <section>
-            <button 
-                onClick={() => console.log('Users!')}
-            >users</button>
-            <button>posts</button>
-            <button>comments</button>
-        </section>
+        names.map(name =>
+            <button
+            key={i++}
+            onClick={() => clicked(name)}
+            >
+                {name}
+            </button>
+        )
     );
 }
 
