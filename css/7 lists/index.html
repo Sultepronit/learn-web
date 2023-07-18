@@ -12,7 +12,7 @@
     </header>
     <main>
         <h2>&lt;ol&gt; list-style-type:</h2>
-        <ol>
+        <ol class="first">
             <li>default</li>
             <li class="ol1">lower-alpha</li>
             <li class="ol2">decimal-leading-zero</li>
@@ -31,13 +31,31 @@
         </ol>
         <hr>
 
-        <h2>list-style-type: disc</h2>
+        <h2></h2>
+        <ol class="ol7">
+            <li>One</li>
+            <li value="25"><code>&lt;li value="25"&gt;</code></li>
+            <li>Three</li>
+        </ol>
+        <hr>
+
+        <h2>&lt;ul&gt;</h2>
         <ul>
             <li class="ul1">list-style-type: squre</li>
             <li class="ul2">text-align: center</li>
             <li class="ul3">text-align: center; list-style-position: inside;</li>
             <li class="ul4">text-align: center; list-style-position: outside;</li>
+            <li class="ul5">list-style-image: url("...")</li>
+            <li class="ul6">list-style: square url("...") inside; [square would work if image inaccessible]</li>
         </ul>
+        <hr>
+
+        <h2><code>&lt;ul&gt;</code></h2>
+        <ul class="with-marker">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ol>
         <hr>
     </main>
 </body>
