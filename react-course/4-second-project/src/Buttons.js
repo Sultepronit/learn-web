@@ -1,10 +1,9 @@
 function Buttons({ clicked }) {
     const names = ['users', 'posts', 'comments'];
-    let i = 0;
     return (
         names.map(name =>
             <button
-            key={i++}
+            key={name}
             onClick={() => clicked(name)}
             >
                 {name}
