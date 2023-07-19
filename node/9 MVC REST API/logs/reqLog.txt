@@ -166,3 +166,7 @@
 2023.07.19	13:30:03	48843a88-b179-46ec-a2d0-076fbbef5be9	GET	undefined	/employees/2
 2023.07.19	13:30:07	6452c887-5a92-41f3-ab6f-3c4b2ee16474	GET	undefined	/employees/1
 2023.07.19	13:30:10	609dbf2a-80ac-4468-b8e1-421b565d828f	GET	undefined	/employees/0
+2023.07.19	19:30:15	f0d09599-60d9-4e40-82f4-51a6befb1c8f	GET	undefined	/employees/a
+2023.07.19	19:30:22	0d56d048-0be9-4b24-9869-e61dd38e5537	GET	undefined	/employees/1
+2023.07.19	19:30:31	0cbd0eab-16a4-46ad-9934-fec7c95bfe97	GET	undefined	/employees/2
+2023.07.19	19:30:38	cf48fe16-ddc3-4400-a65d-8f7a34b55114	GET	undefined	/employees/

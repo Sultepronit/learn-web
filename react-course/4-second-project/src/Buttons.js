@@ -4,7 +4,7 @@ function Buttons({ clicked, selected }) {
         names.map(name =>
             <button
                 key={name}
-                className={name == selected ? 'selected' : ''}
+                className={name == selected ? 'selected' : null}
                 onClick={() => clicked(name)}
             >
                 {name}
