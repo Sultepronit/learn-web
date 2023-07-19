@@ -6,26 +6,19 @@ import List from './List';
 function App() {
   const [loadingDb, setLoadingDb] = useState(false);
   const [items, setItems] = useState([]);
-  const defaultClasses = {
-    'users': '',
-    'posts': '',
-    'comments': ''
-  };
-  const [butClasses, setButClasses] = useState(defaultClasses);
+  const [selected, setSelected] = useState('');
 
   function clickedButton(listName) {
+    setSelected(listName);
     getData(listName, setLoadingDb, setItems);
-    const n = { ...defaultClasses };
-    n[listName] = 'selected'; 
-    setButClasses(n);
   }
 
   return (
     <div className="App">
       <header>
         <Buttons
-          classes={butClasses}
           clicked={clickedButton}
+          selected={selected}
         />
       </header>
       <main>

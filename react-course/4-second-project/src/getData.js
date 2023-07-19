@@ -7,9 +7,6 @@ const BACE_URL = "https://jsonplaceholder.typicode.com";
       if(!response.ok) throw Error("Didn't receive the data");
       const objArray = await response.json();
       const result = [];
-      /*for(let item of objArray) {
-        result.push(JSON.stringify(item));
-      }*/
       for(let i = 0; i < objArray.length; i++) {
         result.push({id: i, contents: JSON.stringify(objArray[i])});
       }
