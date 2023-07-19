@@ -8,3 +8,8 @@ button {
   font-size: 1.1rem;
   padding: 0.4em;
 }
+
+.selected {
+  color: white;
+  background: black;
+}
