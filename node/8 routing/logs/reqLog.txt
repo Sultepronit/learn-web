@@ -114,3 +114,6 @@
 2023.07.17	19:15:08	dce96b17-0662-489c-a8c4-aab829991bb6	PUT	undefined	/employees
 2023.07.17	19:15:42	a349416f-3a73-4fd1-aa7c-c424acfa541f	DELETE	undefined	/employees
 2023.07.17	19:16:27	60b477e2-4f9c-4f15-95b3-855af048a777	GET	undefined	/employees/1
+2023.07.19	09:56:02	e730c310-77cb-44eb-963e-f4f4a2fc8ba4	POST	undefined	/employees
+2023.07.19	13:04:10	896468b2-46dc-44c9-9d6f-5ee41cd19eca	GET	undefined	/employees/1
+2023.07.19	13:04:18	41ed86a1-5f4b-4fd4-9dd8-355cc95f61d9	GET	undefined	/employees/1

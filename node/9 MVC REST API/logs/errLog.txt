@@ -1,3 +1,7 @@
 2023.07.13	12:39:04	8dfd4f49-4623-47eb-bf60-bf9b389db982	TypeError: contentType.include is not a function
 2023.07.16	13:55:17	b4883a75-685a-48e7-835e-f94521919591	Error: Not allowed by CORS!
 2023.07.17	14:41:00	d60d43c3-e4ba-4767-ae88-f394cf19b3cb	Error: ENOENT: no such file or directory, stat '/mnt/storage/WEB/node/8 routing/views/sbudir/test.html'
+2023.07.19	10:00:13	e408bd3c-8455-4b38-9307-a1af09a05914	TypeError: Cannot read properties of undefined (reading 'id')
+2023.07.19	11:17:34	0e01e2a9-6872-4b65-8dfa-1fbb28c6e78e	TypeError: Cannot read properties of undefined (reading 'id')
+2023.07.19	13:06:40	374f5dd4-a705-4987-999f-aa7a22dfb530	ReferenceError: employee is not defined
+2023.07.19	13:28:24	887f3ab0-198e-4771-b4a5-0becfebcae1c	ReferenceError: Cannot access 'employee' before initialization
