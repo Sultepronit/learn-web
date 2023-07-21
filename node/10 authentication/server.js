@@ -36,6 +36,7 @@ app.use('/subdir', require('./routes/subdir'));
 // for api
 app.use('/employees', require('./routes/api/employees'));
 app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
 
 //app.get('/*', (req, res) => {
 app.all('*', (req, res) => {
