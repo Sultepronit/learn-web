@@ -2,6 +2,7 @@ import { useState } from 'react';
 import getData from './getData';
 import Buttons from './Buttons';
 import List from './List';
+import Table from './Table';
 
 function App() {
   const [loadingDb, setLoadingDb] = useState(false);
@@ -23,7 +24,8 @@ function App() {
       </header>
       <main>
         {loadingDb && <p>Loading data from db...</p>}
-        {items && <List items={items} />}
+        {items && <Table items={items} />}
+        {/* {items && <List items={items} />} */}
       </main>
     </div>
   );
