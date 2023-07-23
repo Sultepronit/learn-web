@@ -54,7 +54,7 @@ function juu(n) {
 function ichi(n) {
     let kj = n29[n].kj;
     let kn = n29[n].kn;
-    if(n === 1) {
+    if(n == 1) {
         kj = '一';
         kn = 'いち';
     }
@@ -65,7 +65,7 @@ function ichi_(n) {
     let kj = n29[n].kj;
     //let kn = n29[n].kn;
     let kn = typeof n29[n].kn === 'string' ? n29[n].kn : n29[n].kn[0];
-    if(n === 1) {
+    if(n == 1) {
         kj = '一';
         kn = 'いち';
     }
@@ -180,8 +180,10 @@ function generate(min, max, reqNum = '') {
     console.log(re.kj);
     if(typeof re.kn === 'string') {
         console.log(re.kn);
+        //speak(re.kn);
     } else {
         console.log(re.kn[0]);
+        //speak(re.kn[0]);
         console.log(re.kn[1]);
     }
     //console.log(re.num);
