@@ -1,3 +1,38 @@
+const jaVoices = [];
+function getVoices() {
+    setTimeout(() => {
+        const voices = speechSynthesis.getVoices();
+        //console.log(voices);
+        for(let voice of voices) {
+            //console.log(voice.lang);
+            if(voice.lang.match('ja')) {
+                jaVoices.push(voice);
+                //console.log(voice);
+            }
+        }
+        console.log(jaVoices);
+    }, 1 * 1000);
+}
+getVoices();
+
+function speak(read)
+{   
+    speechSynthesis.cancel();
+    //const utterance = new SpeechSynthesisUtterance("千三百六十二");
+    //const utterance = new SpeechSynthesisUtterance('Microsoft Keita Online (Natural)');
+    const utterance = new SpeechSynthesisUtterance(read);
+    utterance.lang = "ja";
+    utterance.rate = 0.7;
+    if(jaVoices.length > 1) {
+        utterance.voice = jaVoices[ randomInt(0, jaVoices.length - 1) ];
+    }
+    speechSynthesis.speak(utterance);
+}
+
+function sayIt() {
+    speak('千三百');
+}
+
 console.log('----------');
 //generate(1,11);
 //generate(1,12);
@@ -12,44 +47,6 @@ generate(2,5);
 //generate(1,4);
 //generate(1,1);
 console.log('----------');
-generate(0,0, '2023');
+//generate(0,0, '2023');
 console.log('----------');
-generate(0,0, '100010001000');
-/* 
-const synth = speechSynthesis;
-console.log(synth);
-const voices = synth.getVoices();
-console.log(voices);
-
-const utterance = new SpeechSynthesisUtterance('こんにちは');
-utterance.lang = 'jp';
-synth.speak(utterance); */
-
-function speak(read)
-{
-    //const utterance = new SpeechSynthesisUtterance("千三百六十二");
-    //speechSynthesis.cancel();
-    let utterance = new SpeechSynthesisUtterance(read);
-    const voices = speechSynthesis.getVoices();
-    console.log(voices);
-    utterance.lang = "ja";
-    utterance.rate = 0.8;
-    speechSynthesis.speak(utterance);
-    /* utterance.onend = () => {
-        //speechSynthesis.speak(utterance);
-        //console.log(voices);
-        console.log(speechSynthesis.getVoices());
-    };
-    setTimeout(() => {
-        console.log(speechSynthesis.getVoices());
-    }, 1 * 1000);
-    for(let voice of voices) {
-        //console.log(voice.lang);
-        if(voice.lang.match('ja')) {
-            console.log(voice);
-            utterance.voice = voice;
-            //speechSynthesis.speak(utterance);
-        }
-    } */
-
-}
+//generate(0,0, '100010001000');

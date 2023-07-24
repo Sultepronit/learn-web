@@ -180,10 +180,10 @@ function generate(min, max, reqNum = '') {
     console.log(re.kj);
     if(typeof re.kn === 'string') {
         console.log(re.kn);
-        //speak(re.kn);
+        speak(re.kn);
     } else {
         console.log(re.kn[0]);
-        //speak(re.kn[0]);
+        speak(re.kn[0]);
         console.log(re.kn[1]);
     }
     //console.log(re.num);
