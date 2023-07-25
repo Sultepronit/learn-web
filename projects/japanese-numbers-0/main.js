@@ -1,3 +1,7 @@
+function randomInt(from, to) {
+    return (Math.floor(Math.random() * (to - from + 1)) + from);
+}
+
 const jaVoices = [];
 function getVoices() {
     setTimeout(() => {
@@ -11,7 +15,7 @@ function getVoices() {
             }
         }
         console.log(jaVoices);
-    }, 1 * 1000);
+    }, 1 * 200);
 }
 speak('');
 getVoices();
@@ -34,24 +38,15 @@ function sayIt() {
     speak('千三百');
 }
 
-console.log('----------');
-//generate(1,11);
-//generate(1,12);
-//generate(11,12);
-//generate(10,11);
-//generate(9,10);
-//generate(7,9);
-//generate(5,8);
-//generate(4,8);
-//generate(2,5);
-//generate(1,5);
-//generate(1,4);
-//generate(1,1);
-console.log('----------');
-//generate(0,0, '2023');
-console.log('----------');
-//generate(0,0, '100010001000');
-//const rn = randomInt(1,99999) * 1000;
-const rn = randomInt(1,9999) * 10000;
-console.log(rn);
-generate(0,0, rn);
+setTimeout(() => {
+    //const rn = randomInt(1,99999) * 1000;
+    //const rn = randomInt(1,9999) * 10000;
+    //const rn = randomInt(1,999) * 1000000000;
+    //const rn = randomInt(1,99) * 10000000000;
+    //const rn = randomInt(1,9) * 100000000000;
+    //const rn = randomInt(1,999) * 1000000000;
+    //const rn = randomInt(1,999) * 100000000;
+    const rn = randomInt(1,999) * 10000000;
+    console.log(rn);
+    convertNumber(rn);
+}, 300);
