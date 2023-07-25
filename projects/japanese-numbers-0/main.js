@@ -13,6 +13,7 @@ function getVoices() {
         console.log(jaVoices);
     }, 1 * 1000);
 }
+speak('');
 getVoices();
 
 function speak(read)
@@ -42,7 +43,7 @@ console.log('----------');
 //generate(7,9);
 //generate(5,8);
 //generate(4,8);
-generate(2,5);
+//generate(2,5);
 //generate(1,5);
 //generate(1,4);
 //generate(1,1);
@@ -50,3 +51,7 @@ console.log('----------');
 //generate(0,0, '2023');
 console.log('----------');
 //generate(0,0, '100010001000');
+//const rn = randomInt(1,99999) * 1000;
+const rn = randomInt(1,9999) * 10000;
+console.log(rn);
+generate(0,0, rn);

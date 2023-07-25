@@ -1,23 +1,46 @@
 'use strict';
 
-let number = '';
+let strn = '';
 let index = 0;
 
 const n29 = [
-    {kj: '', kn: ' '},
-    {kj: '', kn: ''},
-    {kj: '二', kn: 'に'},
-    {kj: '三', kn: 'さん'},
+    {kj: '', kn: ['']},
+    {kj: '', kn: ['']},
+    {kj: '二', kn: ['に']},
+    {kj: '三', kn: ['さん']},
     {kj: '四', kn: ['よん','し']},
-    {kj: '五', kn: 'ご'},
-    {kj: '六', kn: 'ろく'},
+    {kj: '五', kn: ['ご']},
+    {kj: '六', kn: ['ろく']},
     {kj: '七', kn: ['なな','しち']},
-    {kj: '八', kn: 'はち'},
+    {kj: '八', kn: ['はち']},
     {kj: '九', kn: ['きゅう','く']}
 ];
 
+function man(n) {
+    const cases = { '1': 'いちまん', '4': 'よんまん', '7': 'ななまん', '9': 'きゅうまん' };
+    const kj = n != 1 ? n29[n].kj + '万' :  n29[n].kj + '一万';
+    const kn = [];
+    if(cases[n]) {
+        kn.push(cases[n]);
+    } else {
+        kn.push(n29[n].kn[0] + 'まん');
+        if(n29[n].kn.length > 1) kn.push(n29[n].kn[1] + 'まん');
+    }
+    return { kj, kn };
+}
+
 function sen(n) {
+    const cases = { '3': 'さんぜん', '8': 'はっせん', '9': 'きゅうせん' };
     const kj = n29[n].kj + '千';
+    const kn = [];
+    if(cases[n]) {
+        kn.push(cases[n]);
+    } else {
+        kn.push(n29[n].kn[0] + 'せん');
+        if(n29[n].kn.length > 1) kn.push(n29[n].kn[1] + 'せん');
+    }
+    return { kj, kn };
+    /* const kj = n29[n].kj + '千';
     const cases = { '3': 'さんぜん', '8': 'はっせん', '9': 'きゅうせん' };
     let kn = cases[n];
     if(!kn) {
@@ -26,29 +49,27 @@ function sen(n) {
             [n29[n].kn[0] + 'せん', n29[n].kn[1] + 'せん'];
     }
     const num = n * 1000;
-    return { kj, kn, num };
+    return { kj, kn, num }; */
 }
 
 function hyaku(n) {
-    const kj = n29[n].kj + '百';
     const cases = { '3': 'さんびゃく', '4': 'よんひゃく', '6': 'ろっぴゃく', '8': 'はっぴゃく' };
-    let kn = cases[n];
-    if(!kn) {
-        kn = typeof n29[n].kn === 'string' ?
-            n29[n].kn + 'ひゃく' :
-            [n29[n].kn[0] + 'ひゃく', n29[n].kn[1] + 'ひゃく'];
+    const kj = n29[n].kj + '百';
+    const kn = [];
+    if(cases[n]) {
+        kn.push(cases[n]);
+    } else {
+        kn.push(n29[n].kn[0] + 'ひゃく');
+        if(n29[n].kn.length > 1) kn.push(n29[n].kn[1] + 'ひゃく');
     }
-    const num = n * 100;
-    return { kj, kn, num };
+    return { kj, kn };
 }
 
 function juu(n) {
     const kj = n29[n].kj + '十';
-    const kn = typeof n29[n].kn === 'string' ?
-        n29[n].kn + 'じゅう' :
-        [n29[n].kn[0] + 'じゅう', n29[n].kn[1] + 'じゅう'];
-    const num = n * 10;
-    return { kj, kn, num };
+    const kn = [n29[n].kn[0] + 'じゅう'];
+    if(n29[n].kn.length > 1) kn.push(n29[n].kn[1] + 'じゅう');
+    return { kj, kn };
 }
 
 function ichi(n) {
@@ -56,9 +77,9 @@ function ichi(n) {
     let kn = n29[n].kn;
     if(n == 1) {
         kj = '一';
-        kn = 'いち';
+        kn = ['いち'];
     }
-    return { kj, kn, num: n };
+    return { kj, kn };
 }
 
 function ichi_(n) {
@@ -88,30 +109,30 @@ function randomInt(from, to) {
 
 function addNext(r, re) {
     re.kj += ' ' + r.kj;
-    //re.kn += ' ' + r.kn;
-    if(typeof r.kn !== 'string') {
-        if(typeof re.kn !== 'string') re.kn = re.kn[0];
-        re.kn = [re.kn + ' ' + r.kn[0], re.kn + ' ' + r.kn[1]];
-    } else if(typeof re.kn !== 'string') {
-        re.kn[0] += ' ' + r.kn;
-        re.kn[1] += ' ' + r.kn;
+    if(r.kn.length > 1) {
+        re.kn = [re.kn[0] + ' ' + r.kn[0], re.kn[0] + ' ' + r.kn[1]];
     } else {
-        re.kn += ' ' + r.kn;
+        re.kn[0] += ' ' + r.kn[0];
+        if(re.kn.length > 1) re.kn[1] += ' ' + r.kn[0];
     }
-    
-    re.num += r.num;
 }
 
 function block(min, max, ich, re) {
-    const tens = [0, ich, juu, hyaku, sen];
+    const tens = [0, ich, juu, hyaku, sen, man, juu, hyaku, sen];
     for(let i = max; i >= min; i--) {
-        const n = number ? Number(number[index++]) : randomInt(0, 9);
+        //const n = strn ? Number(strn[index++]) : randomInt(0, 9);
+        const n = strn[index++];
         console.log(n, i);
         if(n) {
             const r = tens[i](n);
             console.log(r);
             addNext(r, re);
-            re.update = true;
+        } else {
+            if(i === 5) {
+                const r = tens[i](n);
+                console.log(r);
+                addNext(r, re);
+            }
         }
         console.log(re);
     }
@@ -128,16 +149,17 @@ function splitNumber(str, div) {
     return r;
 }
 
-function generate(min, max, reqNum = '') {
+function generate(min, max, reqNum) {
     if(reqNum) {
-        number = reqNum;
+        strn = '' + reqNum;
         index = 0;
         min = 1;
-        max = reqNum.length;
+        max = strn.length;
     }
     
-    const re = { kj: '', kn: '', num: 0 };
-    
+    const re = { kj: '', kn: [''], num: 0 };
+    block(min, max, ichi, re);
+    /* 
     if(max > 8) { // oku
         const mx = max - 8;
         const mn = min > 8 ? min - 8 : 1;
@@ -173,28 +195,21 @@ function generate(min, max, reqNum = '') {
     if(min <= 4) { // 1-1000
         let mx = max > 4 ? 4 : max;
         block(min, mx, ichi, re);
-    }
-
-    if(re.num < 1) wholeNumber(min, max);
+    } */
 
     console.log(re.kj);
-    if(typeof re.kn === 'string') {
-        console.log(re.kn);
-        //speak(re.kn);
-    } else {
-        console.log(re.kn[0]);
-        //speak(re.kn[0]);
-        console.log(re.kn[1]);
-    }
+    console.log(re.kn[0]);
+    if(re.kn.length > 1) console.log(re.kn[1]);
+   
     //console.log(re.num);
     const str = '' + re.num;
-    if(re.num > 9999) {
-        const n4 = splitNumber(str, 4);
-        const n3 = splitNumber(str, 3);
+    if(reqNum > 9999) {
+        const n4 = splitNumber(strn, 4);
+        const n3 = splitNumber(strn, 3);
         console.log(n4);
         console.log(n3);
     } else {
-        console.log(str);
+        console.log(strn);
     }
 }
 
