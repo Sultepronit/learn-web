@@ -35,11 +35,12 @@ app.use('/', require('./routes/root'))
 // for subdir pages
 app.use('/subdir', require('./routes/subdir'));
 // for api
-app.use('/employees', require('./routes/api/employees'));
 app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
 
 app.use(verifyJWT);
-app.use('/auth', require('./routes/auth'));
+app.use('/employees', require('./routes/api/employees'));
+
 
 //app.get('/*', (req, res) => {
 app.all('*', (req, res) => {

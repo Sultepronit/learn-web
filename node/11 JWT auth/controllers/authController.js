@@ -19,7 +19,7 @@ async function handleLogin(req, res) {
     if(match) {
         // create JWTs
         const accessToken = jwt.sign(
-            { uresname: foundUser.username },
+            { username: foundUser.username },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '30s' }
         );
@@ -36,7 +36,8 @@ async function handleLogin(req, res) {
             path.join(__dirname, '..', 'model', 'users.json'),
             JSON.stringify(usersDB.users)
         );
-        res.cookie('jwt', refreshToken, { httpOnly: true, maxage: 24 * 60 * 60 * 1000 });
+        // 'jwt' is a random name of cookie
+        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
         res.json({ accessToken });
     } else {
         res.sendStatus(401);
