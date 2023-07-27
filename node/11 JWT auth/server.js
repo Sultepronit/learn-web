@@ -8,6 +8,7 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
+const verifyJWT = require('./middleware/verifyJWT');
 
 const pj = (...args) => path.join(__dirname, ...args);
 const PORT = process.env.PORT || 3501;
@@ -36,6 +37,8 @@ app.use('/subdir', require('./routes/subdir'));
 // for api
 app.use('/employees', require('./routes/api/employees'));
 app.use('/register', require('./routes/register'));
+
+app.use(verifyJWT);
 app.use('/auth', require('./routes/auth'));
 
 //app.get('/*', (req, res) => {
