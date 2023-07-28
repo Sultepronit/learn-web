@@ -7,3 +7,4 @@
 2023.07.19	13:28:24	887f3ab0-198e-4771-b4a5-0becfebcae1c	ReferenceError: Cannot access 'employee' before initialization
 2023.07.27	10:42:27	ff98d8f8-d90b-4dce-8915-84a2e4fa46b6	JsonWebTokenError: verify must be called asynchronous if secret or public key is provided as a callback
 2023.07.27	10:45:20	d6b8cb0e-dd34-407f-987f-6da8f5191947	JsonWebTokenError: verify must be called asynchronous if secret or public key is provided as a callback
+2023.07.28	16:27:01	107057cd-266f-465b-9f0f-0e90771cbf93	ReferenceError: sendStatus is not defined

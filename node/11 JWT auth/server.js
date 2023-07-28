@@ -9,6 +9,7 @@ const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 
 const pj = (...args) => path.join(__dirname, ...args);
 const PORT = process.env.PORT || 3501;
@@ -22,6 +23,8 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 // for json
 app.use(express.json());
+// for cookies
+app.use(cookieParser());
 // for static file (required by main pages)
 app.use(express.static(pj('/public')));
 // same thing:
@@ -37,6 +40,7 @@ app.use('/subdir', require('./routes/subdir'));
 // for api
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
+app.use('/refresh', require('./routes/refresh'));
 
 app.use(verifyJWT);
 app.use('/employees', require('./routes/api/employees'));
