@@ -250,3 +250,4 @@
 2023.07.28	16:36:52	5702b7ce-7cb9-4e40-b1dc-3abacbb0e983	POST	undefined	/auth
 2023.07.28	16:37:14	2a3836f8-0c3f-4868-ba3e-b2f7a6d52fad	GET	undefined	/refresh
 2023.07.28	16:37:48	3174d929-bc2d-4fa9-9f48-7ec220eb7ee4	GET	undefined	/refresh
+2023.07.28	17:00:59	8302609f-af24-4112-863b-69eccc4402d7	POST	undefined	/auth
