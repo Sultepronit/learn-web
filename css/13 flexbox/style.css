@@ -9,11 +9,12 @@ body {
     padding: 20px;
 }
 
-main {
+.six {
     max-width: 800px;
     min-height: 400px;
     margin-inline: auto;
     border: 1px solid black;
+
     display: flex;
     /* justify-content - horizontal alignment */
     /* flex-start - default */
@@ -27,10 +28,17 @@ main {
     /* flex-start - default */
     align-items: flex-end;
     align-items: center;
-    /* now justify-content not working, align-items works horizonally */
     flex-direction: column;
-    /* justify-content not working */
+    flex-direction: column-reverse;
     flex-direction: row;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    /* to align rows */
+    align-content: flex-start;
+    align-content: flex-end;
+    align-content: center;
+    align-content: space-around;
 }
 
 .box {
@@ -41,4 +49,70 @@ main {
     font-size: 2rem;
     padding: 0.5em;
     margin: 2px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order {
+    /* for only one ordered element -1 = start, 1 = end */
+    order: 1;
+}
+
+.two {
+    max-width: 800px;
+    /* min-height: 400px; */
+    margin-inline: auto;
+    border: 1px solid black;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+    align-content: space-around;
+}
+
+.second {
+    /* like min-width */
+    flex-basis: 100px;
+    /* now they will grow evenly, if there is enoutgh space */
+    flex-grow: 1;
+}
+
+.second:nth-child(2) {
+    /* now it will grow twise as big as 1-st, plus to 100px! */
+    flex-grow: 2;
+}
+
+.three {
+    max-width: 800px;
+    margin-inline: auto;
+    border: 1px solid black;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row nowrap;
+    align-content: space-around;
+}
+
+.third {
+    /* now it's like max-width */
+    flex-basis: 250px;
+    flex-shrink: 1;
+}
+
+.third:nth-child(2) {
+    flex-shrink: 2;
+}
+
+.third-x {
+    /* grow, shrink, basis */
+    flex: 1 1 200px;
+}
+
+.third-x:nth-child(2) {
+    /* now it shrinks more & grows more! */
+    flex: 3 3 200px;
 }
