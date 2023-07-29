@@ -84,17 +84,17 @@ function convertNumber(reqNum) {
     const order = ['ichi', 'juu', 'hyaku', 'sen', 'man', 'juu', 'hyaku', 'sen', 'oku', 'juu', 'hyaku', 'sen'];
     for(let i = strn.length - 1, j = 0; i >= 0; i--, j++) {
         const d = strn[j];
-        console.log(d, i);
+        //console.log(d, i);
         if(d != 0 || i === 8 || i === 4) {
             if(d == 0 && i === 4) {
-                console.log(re.kj);
+                //console.log(re.kj);
                 if(re.kj.charAt(re.kj.length - 1) === '億') continue;
             }
             const r = convertDigit(d, order[i]);
-            console.log(r);
+            //console.log(r);
             addNext(r, re);
         }
-        console.log(re);
+        //console.log(re);
     }
     
     console.log(re.kj);
@@ -109,8 +109,15 @@ function convertNumber(reqNum) {
         const n3 = splitNumber(strn, 3);
         console.log(n4);
         console.log(n3);
+        const numberElement = document.querySelector('.number');
+        console.log(numberElement);
+        numberElement.textContent = n4;
     } else {
         console.log(strn);
+    }
+    return {
+        kj: re.kj.trim(),
+        kn: re.kn.map(kn => kn.trim())
     }
 }
 

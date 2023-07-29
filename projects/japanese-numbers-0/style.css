@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.number {
+    font-size: 3rem;
+}
+
+.kanji {
+    font-size: 4rem;
+}
+
+.okuri-roma {
+    font-size: 3rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.jap-sent {
+    display: flex;
+}
+
+.jap-symb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.oku-r {
+    font-size: 0.5em;
+    /* text-align: center; */
+}
+
+.kana {
+    margin-top: -0.35em;
+}

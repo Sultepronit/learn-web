@@ -48,5 +48,14 @@ setTimeout(() => {
     //const rn = randomInt(1,999) * 100000000;
     const rn = randomInt(1,999) * 10000000;
     console.log(rn);
-    convertNumber(rn);
+    const jNum = convertNumber(rn);
+    console.log(jNum);
+    const kanjiElement = document.querySelector('.kanji');
+    kanjiElement.textContent = jNum.kj;
+    const pkNum = processKana(jNum.kn[0]);
+    const okuriRomaNum = createOkuriRoma(pkNum);
+    console.log(okuriRomaNum);
+    const okuriRomaElement = document.querySelector('.okuri-roma');
+    console.log(okuriRomaElement);
+    okuriRomaElement.innerHTML = okuriRomaNum;
 }, 300);
