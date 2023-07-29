@@ -105,13 +105,12 @@ function convertNumber(reqNum) {
     //console.log(re.num);
     const str = '' + re.num;
     const numberElement = document.querySelector('.number');
+    console.log(numberElement);
     if(reqNum > 9999) {
         const n4 = splitNumber(strn, 4);
         const n3 = splitNumber(strn, 3);
         console.log(n4);
         console.log(n3);
-       
-        console.log(numberElement);
         numberElement.textContent = n4;
     } else {
         console.log(strn);

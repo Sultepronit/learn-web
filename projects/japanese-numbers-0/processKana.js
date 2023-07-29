@@ -1,21 +1,13 @@
 'use strict';
 
 const getKana = (sentence) => {
-    /* const words = sentence.split(' ');
-    console.log(words);
-    const splittedWords = [];
-    for(let word of words) {
-        //processWord(word);
-        splittedWords.push(word.split(''));
-    }
-    console.log(splittedWords); */
-
     const sentenceKana = sentence.split('').map(char => {
         //console.log(char);
         if(char === ' ') return { type: 'special', value: 'space' };
+        //if(char === '_') return { type: 'special', value: 'ignored-space' };
         for(let kana of detailedKana) {
-            if(kana.h === char) return kana;
-            if(kana.k === char) return { ...kana, hiragana: false };
+            if(kana.h === char) return JSON.parse(JSON.stringify(kana));
+            if(kana.k === char) return JSON.parse(JSON.stringify({ ...kana, hiragana: false }));
         }
         return { type: 'symbol', value: char };
     });
@@ -25,19 +17,34 @@ const getKana = (sentence) => {
     return sentenceKana;
 }
 
+const hideSpaces = (sentence) => {
+    const result = [];
+    for(let char of sentence) {
+        if(char.type === 'special' && char.value === 'space') {
+            const lei = result.length - 1;
+            result[lei].spaceAfter = true;
+            continue;
+        }
+        result.push(char);
+    }
+    return result;
+}
+
 const hadnleRules = (crude) => {
     const result = [];
-    for(let kana of crude) {
-        if(kana.type === 'kana') {
-            if(kana.r[0] === 'y') {
+    for(let char of crude) {
+        if(char.type === 'kana') {
+            if(char.r[0] === 'y') {
                 const lei = result.length - 1;
-                result[lei].h += kana.h;
-                result[lei].k += kana.k;
+                /* console.log(result[lei]);
+                console.log(kana); */
+                result[lei].h += char.h;
+                result[lei].k += char.k;
                 //console.log(result[lei]);
                 if(result[lei].r[0] === 'J') {
-                    result[lei].r = 'J' + kana.r[1];
+                    result[lei].r = 'J' + char.r[1];
                 } else {
-                    result[lei].r = result[lei].r.slice(0, -1) + kana.r.toUpperCase();
+                    result[lei].r = result[lei].r.slice(0, -1) + char.r.toUpperCase();
                 }
                 result[lei].rule = true;
                 continue;
@@ -46,31 +53,44 @@ const hadnleRules = (crude) => {
             const lei = result.length - 1;
             if(lei >= 0) {
                 if(result[lei].r === 'tu') {
-                    result[lei].h += kana.h;
-                    result[lei].k += kana.k;
-                    result[lei].r = kana.r[0] + kana.r;
+                    result[lei].h += char.h;
+                    result[lei].k += char.k;
+                    result[lei].r = char.r[0] + char.r;
                     result[lei].rule = true;
                     continue;
                 }
 
                 if(result[lei].r === 'N') {
-                    if(kana.r[0] === 'P' || kana.r[0] === 'B' || kana.r[0] === 'M') {
+                    if(char.r[0] === 'P' || char.r[0] === 'B' || char.r[0] === 'M') {
+                        console.log(result[lei]);
+                        console.log(char);
                         result[lei].r = 'M';
                         result[lei].rule = true;
                         //continue;
                     }
                 }
             }
-
         }
-        result.push(kana);
+        result.push(char);
+        //if(char.spaceAfter) result.push({ type: 'special', value: 'space' });
     }
     console.log(result);
     return result;
 }
 
-const processKana = (sentence) => {
-    const kanaFirstStage = getKana(sentence);
+const returnSpaces = (sentence) => {
+    const result = [];
+    for(let char of sentence) {
+        result.push(char);
+        if(char.spaceAfter) result.push({ type: 'special', value: 'space' });
+    }
+    return result;
+}
 
-    return hadnleRules(kanaFirstStage);
+const processKana = (sentence) => {
+    let processed = getKana(sentence);
+    processed = hideSpaces(processed);
+    processed = hadnleRules(processed);
+    processed = returnSpaces(processed);
+    return processed;
 }

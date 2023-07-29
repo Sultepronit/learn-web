@@ -19,6 +19,7 @@ const createFuriRoma = (sentence) => {
             }
             continue;
         }
+
         if(char.type === 'symbol') {
             //re += `<div class="jap-symb">${char.value}</div>`;
             const kanaDiv = `<div class="kana">${char.value}</div>`;

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +8,14 @@
 }
 
 .number {
-    font-size: 3rem;
+    font-size: 4rem;
+    text-align: center
 }
 
 .kanji {
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 4rem;
+    text-align: center;
 }
 
 .furi-roma {
@@ -17,6 +23,7 @@
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .jap-word {
@@ -32,11 +39,13 @@
 }
 
 .fu-r {
+    font-family: 'Noto Sans', sans-serif;
     font-size: 0.5em;
     /* text-align: center; */
 }
 
 .kana {
+    font-family: 'Noto Sans JP', sans-serif;
     margin-top: -0.35em;
 }
 

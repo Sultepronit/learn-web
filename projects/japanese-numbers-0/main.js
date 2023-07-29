@@ -38,7 +38,7 @@ function sayIt() {
     speak('千三百');
 }
 
-setTimeout(() => {
+function generate() {
     //const rn = randomInt(1,99999) * 1000;
     //const rn = randomInt(1,9999) * 10000;
     //const rn = randomInt(1,999) * 1000000000;
@@ -46,8 +46,8 @@ setTimeout(() => {
     //const rn = randomInt(1,9) * 100000000000;
     //const rn = randomInt(1,999) * 1000000000;
     //const rn = randomInt(1,999) * 100000000;
-    //const rn = randomInt(1,999) * 10000000;
-    const rn = randomInt(1,999) * 100
+    const rn = randomInt(1,999) * 10000000;
+    //const rn = randomInt(1,999) * 1000;
     console.log(rn);
     const jNum = convertNumber(rn);
     console.log(jNum);
@@ -59,4 +59,5 @@ setTimeout(() => {
     const furiRomaElement = document.querySelector('.furi-roma');
     console.log(furiRomaElement);
     furiRomaElement.innerHTML = furiRomaNum;
-}, 100);
+}
+generate();
