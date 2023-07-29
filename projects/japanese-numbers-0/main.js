@@ -15,7 +15,7 @@ function getVoices() {
             }
         }
         console.log(jaVoices);
-    }, 1 * 200);
+    }, 1 * 300);
 }
 speak('');
 getVoices();
@@ -46,16 +46,17 @@ setTimeout(() => {
     //const rn = randomInt(1,9) * 100000000000;
     //const rn = randomInt(1,999) * 1000000000;
     //const rn = randomInt(1,999) * 100000000;
-    const rn = randomInt(1,999) * 10000000;
+    //const rn = randomInt(1,999) * 10000000;
+    const rn = randomInt(1,999) * 100
     console.log(rn);
     const jNum = convertNumber(rn);
     console.log(jNum);
     const kanjiElement = document.querySelector('.kanji');
     kanjiElement.textContent = jNum.kj;
     const pkNum = processKana(jNum.kn[0]);
-    const okuriRomaNum = createOkuriRoma(pkNum);
-    console.log(okuriRomaNum);
-    const okuriRomaElement = document.querySelector('.okuri-roma');
-    console.log(okuriRomaElement);
-    okuriRomaElement.innerHTML = okuriRomaNum;
-}, 300);
+    const furiRomaNum = createFuriRoma(pkNum);
+    //console.log(furiRomaNum);
+    const furiRomaElement = document.querySelector('.furi-roma');
+    console.log(furiRomaElement);
+    furiRomaElement.innerHTML = furiRomaNum;
+}, 100);

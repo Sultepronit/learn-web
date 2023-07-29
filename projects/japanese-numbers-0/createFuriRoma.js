@@ -1,17 +1,21 @@
-const createOkuriRoma = (sentence) => {
-    let re = '<div class="jap-sent">';
+const createFuriRoma = (sentence) => {
+    let re = '<div class="jap-word">';
     for(let char of sentence) {
         if(char.type === 'kana') {
             const kana = char.hiragana === true ? char.h : char.k;
-            const okuri = char.r;
-            const okuriDiv = `<div class="oku-r">${okuri}</div>`;
+            const furi = char.r;
+            const furiDiv = `<div class="fu-r">${furi}</div>`;
             const kanaDiv = `<div class="kana">${kana}</div>`;
-            re += `<div class="jap-symb">${okuriDiv}${kanaDiv}</div>`;
+            if(char.rule) {
+                re += `<div class="jap-symb rule">${furiDiv}${kanaDiv}</div>`;
+                continue;
+            }
+            re += `<div class="jap-symb">${furiDiv}${kanaDiv}</div>`;
             continue;
         }
         if(char.type === 'special') {
             if(char.value === 'space') {
-                re += '</div><div class="jap-sent">';
+                re += '</div><div class="jap-word">';
             }
             continue;
         }
