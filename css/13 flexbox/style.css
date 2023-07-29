@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+main {
+    max-width: 800px;
+    min-height: 400px;
+    margin-inline: auto;
+    border: 1px solid black;
+    display: flex;
+    /* justify-content - horizontal alignment */
+    /* flex-start - default */
+    justify-content: flex-end;
+    justify-content: center;
+    /* gap: 1rem; */
+    justify-content: space-around;
+    justify-content: space-between;
+    justify-content: space-evenly;
+    /* align-items - vertical alignment */
+    /* flex-start - default */
+    align-items: flex-end;
+    align-items: center;
+    /* now justify-content not working, align-items works horizonally */
+    flex-direction: column;
+    /* justify-content not working */
+    flex-direction: row;
+}
+
+.box {
+    min-width: 100px;
+    height: 100px;
+    background: black;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5em;
+    margin: 2px;
+}
