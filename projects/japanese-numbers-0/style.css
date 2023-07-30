@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+html {
+    /*font-size: 0.5em;*/
+    font-size: 1.5vw;
+}
+
 .number {
     font-size: 4rem;
     text-align: center
@@ -21,7 +26,7 @@
 .furi-roma {
     font-size: 3rem;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
 }
