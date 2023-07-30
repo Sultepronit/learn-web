@@ -99,7 +99,7 @@ function convertNumber(reqNum) {
     
     console.log(re.kj);
     console.log(re.kn[0]);
-    speak(re.kn[0]);
+    //speak(re.kn[0]);
     if(re.kn.length > 1) console.log(re.kn[1]);
    
     //console.log(re.num);

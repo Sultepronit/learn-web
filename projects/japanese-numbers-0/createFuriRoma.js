@@ -10,6 +10,10 @@ const createFuriRoma = (sentence) => {
                 re += `<div class="jap-symb rule">${furiDiv}${kanaDiv}</div>`;
                 continue;
             }
+            if(char.reduct) {
+                re += `<div class="jap-symb reduct">${furiDiv}${kanaDiv}</div>`;
+                continue;
+            }
             re += `<div class="jap-symb">${furiDiv}${kanaDiv}</div>`;
             continue;
         }

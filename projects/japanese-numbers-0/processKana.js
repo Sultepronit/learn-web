@@ -51,22 +51,39 @@ const hadnleRules = (crude) => {
             }
 
             const lei = result.length - 1;
-            if(lei >= 0) {
-                if(result[lei].r === 'tu') {
-                    result[lei].h += char.h;
-                    result[lei].k += char.k;
-                    result[lei].r = char.r[0] + char.r;
-                    result[lei].rule = true;
+            if(result.length > 0) {
+                const le = result[result.length - 1];
+                if(le.r === 'tu') {
+                    le.h += char.h;
+                    le.k += char.k;
+                    le.r = char.r[0] + char.r;
+                    le.rule = true;
                     continue;
                 }
 
-                if(result[lei].r === 'N') {
+                if(le.r === 'N') {
                     if(char.r[0] === 'P' || char.r[0] === 'B' || char.r[0] === 'M') {
-                        console.log(result[lei]);
-                        console.log(char);
-                        result[lei].r = 'M';
-                        result[lei].rule = true;
-                        //continue;
+                        le.r = 'M';
+                        le.rule = true;
+                    }
+                }
+
+                if(le.r === 'KU') {
+                    if(char.r[0] === 'S' && char.r[1] !== 'H') {
+                        le.r = 'Ku';
+                        le.reduct = true;
+                    }
+                }
+
+                if(le.r === 'KU') {
+                    if(char.r[0] === 'S' && char.r[1] !== 'H') {
+                        le.r = 'Ku';
+                        le.reduct = true;
+                    }
+                }if(le.r === 'SHI') {
+                    if(char.r[0] === 'C') {
+                        le.r = 'SHi';
+                        le.reduct = true;
                     }
                 }
             }
