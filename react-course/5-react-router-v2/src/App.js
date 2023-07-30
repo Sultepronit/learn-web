@@ -12,10 +12,11 @@ import { Route, Routes, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function App() {
+  const [search, setSearch] = useState('');
   return (
     <div className="App">
-      <Header />
-      <Nav />
+      <Header title="React JS Blog" />
+      <Nav search={search} setSearch={setSearch} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/post" element={<NewPost />} />
