@@ -12,13 +12,34 @@ import { Route, Routes, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: 'first',
+      datetime: '29/07/2023',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+    },
+    {
+      id: 2,
+      title: 'second',
+      datetime: '30/07/2023',
+      body: 'Asperiores voluptate iusto natus obcaecati aliquam aperiam culpa perferendis repellat nam quaerat.'
+    },
+    {
+      id: 3,
+      title: 'third',
+      datetime: '31/07/2023',
+      body: 'Ostrum deserunt veniam rem corrupti. Id illum aspernatur suscipit aliquam!'
+    }
+  ]);
   const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   return (
     <div className="App">
       <Header title="React JS Blog" />
       <Nav search={search} setSearch={setSearch} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home posts={posts} />} />
         <Route path="/post" element={<NewPost />} />
         <Route path="/post/:id" element={<PostPage />} />
         <Route path="/about" element={<About />} />
