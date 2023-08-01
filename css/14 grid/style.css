@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.container {
+    display: grid;
+
+    /* default is row */
+    /* grid-auto-flow: column; */
+
+    grid-template-columns: 200px 100px 200px;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 200px 1fr 1fr;
+}
+
+.box {
+    background: black;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5em;
+    margin: 0.1em;
+}
