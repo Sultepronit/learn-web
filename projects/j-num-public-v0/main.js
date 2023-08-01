@@ -10,7 +10,7 @@ getVoices();
 
 const trainSection = document.querySelector('.train');
 const menuSection = document.querySelector('.menu');
-trainSection.style.display = 'none';
+//trainSection.style.display = 'none';
 
 const backToMenu = () => {
     trainSection.style.display = 'none';
@@ -33,9 +33,13 @@ const nums0_10 = () => nums(0, 10, 1, 0);
 const nums11_20 = () => nums(11, 20, 1, 0);
 const nums10_100 = () => nums(1, 10, 10, 0);
 const nums100_1000 = () => nums(1, 10, 100, 0);
+const nums1000_10000 = () => nums(1, 10, 1000, 0);
+const nums10000_100000 = () => nums(1, 10, 10000, 0);
 
 const nums0_100 = () => nums(0, 100, 1, 0);
 const nums0_1000 = () => nums(0, 1000, 1, 0);
+const nums10_10000 = () => nums(1, 1000, 10, 0);
+const nums100_100000 = () => nums(1, 1000, 100, 0);
 
 const playButton = document.querySelector('.play-button');
 function toggleMute() {
