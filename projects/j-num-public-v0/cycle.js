@@ -12,8 +12,9 @@ const generateNumber = () => {
 
     //const rn = randomInt(1,999) * order;
     const rn = randomInt(0,100); */
-    for(let i = randomInt(0, range.order); i > 0; i--) range.mult *= 10;
-    const rn = randomInt(range.min, range.max) * range.mult;
+    let mult = range.mult;
+    for(let i = randomInt(0, range.order); i > 0; i--) mult *= 10;
+    const rn = randomInt(range.min, range.max) * mult;
     console.log(rn);
     const jNum = convertNumber(rn);
     console.log(jNum);

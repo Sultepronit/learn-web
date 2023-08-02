@@ -24,6 +24,7 @@ const nums = (min, max, mult, order) => {
     range.mult = mult;
     range.order = order;
     console.log(range);
+    askQuestion = true;
     next();
     trainSection.style.display = 'block';
     menuSection.style.display = 'none'
@@ -35,11 +36,19 @@ const nums10_100 = () => nums(1, 10, 10, 0);
 const nums100_1000 = () => nums(1, 10, 100, 0);
 const nums1000_10000 = () => nums(1, 10, 1000, 0);
 const nums10000_200000 = () => nums(1, 20, 10000, 0);
+const nums20man_100man = () => nums(20, 100, 10000, 0);
+const nums100man_1oku = () => nums(1, 100, 10000 * 100, 0);
+const nums1oku_20oku = () => nums(1, 20, 10000 * 10000, 0);
+const nums20oku_200oku = () => nums(2, 20, 10000 * 10000 * 10, 0);
+const nums200oku_9000oku = () => nums(2, 90, 10000 * 10000 * 100, 0);
 
 const nums0_100 = () => nums(0, 100, 1, 0);
 const nums0_1000 = () => nums(0, 1000, 1, 0);
 const nums10_10000 = () => nums(1, 1000, 10, 0);
 const nums100_100000 = () => nums(1, 1000, 100, 0);
+const nums1000_100man  = () => nums(1, 1000, 1000, 0);
+const nums1000_10oku = () => nums(1, 1000, 1000, 3);
+const nums100man_1000oku = () => nums(1, 1000, 1000000, 2);
 
 const playButton = document.querySelector('.play-button');
 function toggleMute() {
