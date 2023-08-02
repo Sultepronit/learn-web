@@ -86,6 +86,7 @@ button.next {
     width: 98%;
     margin: 1%;
     height: 80px;
+    max-height: 10vh;
 }
 
 .jap-word {
