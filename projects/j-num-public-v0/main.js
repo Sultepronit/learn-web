@@ -34,7 +34,7 @@ const nums11_20 = () => nums(11, 20, 1, 0);
 const nums10_100 = () => nums(1, 10, 10, 0);
 const nums100_1000 = () => nums(1, 10, 100, 0);
 const nums1000_10000 = () => nums(1, 10, 1000, 0);
-const nums10000_100000 = () => nums(1, 10, 10000, 0);
+const nums10000_200000 = () => nums(1, 20, 10000, 0);
 
 const nums0_100 = () => nums(0, 100, 1, 0);
 const nums0_1000 = () => nums(0, 1000, 1, 0);
