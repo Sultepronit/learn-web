@@ -7,17 +7,29 @@ const getData = async (dic, word) => {
     const dom = await JSDOM.fromURL(`${urlBase}${word}`);
     //const article = dom.window.document.querySelector('[name="#dictionary"]');
     const article = dom.window.document.querySelector('._1mexQ');
-    if(!article) return('');
-    article.children['0'].outerHTML = '';
-    article.children['1'].outerHTML = '';
-    let result = article.innerHTML;
+    if(!article) return({});
+
+    const result = {};
+    const foundWord = article.querySelector('h1').textContent;
+    //if(word !== foundWord) console.log(foundWord + '!');
+    if(word !== foundWord) result.foundWord = foundWord;
+    article.querySelector('h1').outerHTML = '';
+
+    article.children[0].outerHTML = '';
+    if(article.children[0].textContent == '') article.children[0].outerHTML = '';
+
+    result.article = article.innerHTML;
+
     const forms = dom.window.document.querySelector('.R-Y1-');
     if(forms) {
         const rows = forms.querySelectorAll('tr');
-        rows[0].outerHTML = '';
-        rows[2].outerHTML = '';
-        rows[3].outerHTML = '';
-        result += '\n' + forms.outerHTML;
+        console.log(rows[0].textContent);
+        if(rows[0].textContent === 'Basic forms') {
+            rows[0].outerHTML = '';
+            rows[2].outerHTML = '';
+            rows[3].outerHTML = '';
+            result.article += '\n' + forms.outerHTML;
+        }
     }
     return result; 
 }

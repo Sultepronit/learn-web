@@ -124,19 +124,28 @@ console.log(input);
 const sendRequest = async () => {
 	const inputted = input.value
 	if(!inputted) return;
+	lingvo.innerHTML = '';
 	console.log(inputted);
 	const encoded = encodeURIComponent(inputted);
 	console.log(encoded);
 	//http://localhost:8900/?dic=lingvo&word=sheep
-	const urlBase = 'http://localhost:8900/?dic=lingvo&word=';
-	const lingvoArticle = await fetch(urlBase + encoded);
-	console.log(lingvoArticle);
-	const lingvoArticleHTML = await lingvoArticle.text();
-	//console.log(await lingvoArticle.text());
+	//https://dic0.onrender.com/?dic=lingvo&word=input
+	//const urlBase = 'http://localhost:8900/?dic=lingvo&word=';
+	const urlBase = 'https://dic0.onrender.com/?dic=lingvo&word=';
+	const json = await fetch(urlBase + encoded);
+	console.log(json);
+	//const lingvoArticleHTML = await lingvoArticle.text();
+	const obj = await json.json();
+	let lingvoArticleHTML = obj.article;
+	//console.log(lingvoArticleHTML);
+	//if(obj.foundWord) console.log(obj.foundWord);
+	if(obj.foundWord) lingvoArticleHTML = `<h2>${obj.foundWord}</h2>${lingvoArticleHTML}`;
 	lingvo.innerHTML = lingvoArticleHTML;
 
 }
 input.onkeyup = e => {if(e.key === 'Enter') sendRequest()};
+
+setInterval(() => sendRequest(), 1 * 60 * 1000);
 
 </script>
 </body>
