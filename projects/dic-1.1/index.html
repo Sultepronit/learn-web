@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EngDic</title>
+	<meta charset="utf-8">
+	
+<style>
+* {	
+	font-size: 100%;
+	/*margin: 0.1em;*/
+	margin: 0;
+}
+
+body {
+	font-size: 1.5em;
+	margin: 1%;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	padding: 0.1em;
+	width: 97%;
+	background-color: white;
+	display: flex;
+}
+
+input {
+	/*position: fixed;
+	top: 0.1em;*/
+	/*float: right;*/
+	font-size: 1.5em;
+	max-width: 88%;
+	/*width: -webkit-fill-available;*/
+}
+
+.play {
+	/*float: left;*/
+	width: 1.5em;
+	height: 1.5em;
+	margin: 0.3em;
+	/*margin-top: 0.2em;*/
+}
+
+main {
+	margin-top: 2.6em;
+}
+
+a.orig {
+	float: right;
+	color: green;
+}
+
+h2 a {
+	color: red;
+}
+
+._2xKEq {
+	/*margin-block-start: 0;*/
+	/*padding-inline-start: 1em;*/
+	list-style: upper-roman;
+}
+	
+._24CCn {
+	color: gray;
+	font-style: italic;
+}
+
+.dir-aware-text-right {
+	text-align: right;
+}
+
+.icon-dots-vertical {
+	display: none;
+}	
+.py-2 {
+	padding: 1%;
+	padding-bottom: 0;
+	border-top: solid black 2px;
+	font-style: italic;
+}
+
+.dir-aware-pr-1 {
+	/*color: blue;*/
+	/*border-bottom: dotted blue 2px;*/
+	width: fit-content;
+	background-color: #cdfbf0;
+}
+.truncate {
+	color: gray;
+	font-size: 0.7em;
+	/*float: right;*/
+	margin-top: -0.3em;
+}
+</style>
+
+</head>
+
+<body>
+	<header>
+		<button class="play"></button>
+		<input>
+	</header>
+	
+	<main>
+		<div class="lingvo">
+			<p>lingvo article</p>
+		</div>
+		
+		<div class="images">images</div>
+		
+		<a class="orig" href="glosbe-orig" target="_blank">glosbe</a>
+		<div class="glosbe">
+			<p>glosbe article</p>
+		</div>
+	</main>
+
+<script>
+"use strict";
+const input = document.querySelector('input');
+const lingvo = document.querySelector('.lingvo');
+input.select();
+console.log(input);
+const sendRequest = async () => {
+	const inputted = input.value
+	if(!inputted) return;
+	console.log(inputted);
+	const encoded = encodeURIComponent(inputted);
+	console.log(encoded);
+	//http://localhost:8900/?dic=lingvo&word=sheep
+	const urlBase = 'http://localhost:8900/?dic=lingvo&word=';
+	const lingvoArticle = await fetch(urlBase + encoded);
+	console.log(lingvoArticle);
+	const lingvoArticleHTML = await lingvoArticle.text();
+	//console.log(await lingvoArticle.text());
+	lingvo.innerHTML = lingvoArticleHTML;
+
+}
+input.onkeyup = e => {if(e.key === 'Enter') sendRequest()};
+
+</script>
+</body>
+</html>
