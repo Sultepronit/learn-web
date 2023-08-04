@@ -161,6 +161,7 @@ const sendRequest = async () => {
 	lingvo.innerHTML = lingvoArticleHTML;
 
 	const urlGlosbe = 'http://localhost:8900/?dic=glosbe&word=';
+	//const urlGlosbe = 'https://dic0.onrender.com/?dic=glosbe&word=';
 	resp = await fetch(urlGlosbe + encoded);
 	console.log(resp);
 	obj = await resp.json();
