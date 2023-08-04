@@ -51,8 +51,10 @@ a.orig {
 	color: green;
 }
 
-h2 a {
+.found {
 	color: red;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 ._2xKEq {
@@ -103,10 +105,13 @@ h2 a {
 	</header>
 	
 	<main>
+		<h2 class="found">-</h2>
 		<div class="lingvo">
 			<p>lingvo article</p>
 		</div>
 		
+		<!-- <hr> -->
+
 		<div class="images">images</div>
 		
 		<a class="orig" href="glosbe-orig" target="_blank">glosbe</a>
@@ -118,34 +123,75 @@ h2 a {
 <script>
 "use strict";
 const input = document.querySelector('input');
+const found = document.querySelector('.found');
 const lingvo = document.querySelector('.lingvo');
-input.select();
+const images = document.querySelector('.images');
+const glosbe = document.querySelector('.glosbe')
+//input.select();
 console.log(input);
+
+let history = JSON.parse(localStorage.getItem('history')) || [];
+
 const sendRequest = async () => {
 	const inputted = input.value
 	if(!inputted) return;
+
+	input.select();
+	found.textContent = '';
 	lingvo.innerHTML = '';
+	images.innerHTML = '';
+	glosbe.innerHTML = '';
 	console.log(inputted);
+	
+	if(history[history.length - 1] !== inputted) {
+		history.push(inputted);
+		localStorage.setItem('history', JSON.stringify(history));
+	}
+	
 	const encoded = encodeURIComponent(inputted);
 	console.log(encoded);
-	//http://localhost:8900/?dic=lingvo&word=sheep
-	//https://dic0.onrender.com/?dic=lingvo&word=input
-	//const urlBase = 'http://localhost:8900/?dic=lingvo&word=';
-	const urlBase = 'https://dic0.onrender.com/?dic=lingvo&word=';
-	const json = await fetch(urlBase + encoded);
-	console.log(json);
-	//const lingvoArticleHTML = await lingvoArticle.text();
-	const obj = await json.json();
-	let lingvoArticleHTML = obj.article;
-	//console.log(lingvoArticleHTML);
-	//if(obj.foundWord) console.log(obj.foundWord);
-	if(obj.foundWord) lingvoArticleHTML = `<h2>${obj.foundWord}</h2>${lingvoArticleHTML}`;
+
+	const urlLingvo = 'http://localhost:8900/?dic=lingvo&word=';
+	//const urlLingvo = 'https://dic0.onrender.com/?dic=lingvo&word=';
+	let resp = await fetch(urlLingvo + encoded);
+	console.log(resp);
+	let obj = await resp.json();
+	const lingvoArticleHTML = obj.article;
+	if(obj.foundWord) found.textContent = obj.foundWord;
 	lingvo.innerHTML = lingvoArticleHTML;
 
+	const urlGlosbe = 'http://localhost:8900/?dic=glosbe&word=';
+	resp = await fetch(urlGlosbe + encoded);
+	console.log(resp);
+	obj = await resp.json();
+	/* console.log(obj);
+	const glosbeExamples = obj.examples;
+	glosbe.innerHTML = glosbeExamples; */
+	if(obj.examples) glosbe.innerHTML = obj.examples;
+	if(obj.images) images.innerHTML = obj.images;
 }
 input.onkeyup = e => {if(e.key === 'Enter') sendRequest()};
 
-setInterval(() => sendRequest(), 1 * 60 * 1000);
+if(history.length > 0) {
+	input.value = history[history.length - 1];
+	sendRequest();
+}
+
+found.onclick = () => {
+	input.value = found.textContent;
+	sendRequest();
+}
+
+let timer = 0;
+setInterval(() => {
+	timer++;
+	console.log(timer);
+	if(timer === 15) {
+		timer = 0;
+		fetch('https://dic0.onrender.com/?dic=lingvo&word=input');
+	}
+	
+}, 1 * 60 * 1000);
 
 </script>
 </body>

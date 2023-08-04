@@ -2,10 +2,36 @@
 //const { JSDOM } = require('jsdom');
 const { JSDOM } = require('jsdom');
 
-const getData = async (dic, word) => {
+const handleGlosbe = async (word) => {
+    const urlBase = 'https://uk.glosbe.com/en/uk/';
+    const dom = await JSDOM.fromURL(`${urlBase}${word}`);
+    const result = {};
+
+    const examplesOuter = dom.window.document.querySelector('#tmem_first_examples');
+    if(examplesOuter) {
+        const examples = examplesOuter.querySelector('.px-1');
+        /* console.log(examples);
+        console.log(examples.textContent); */
+        //result.examples = examples.outerHTML;
+        result.examples = examples.innerHTML;
+    }
+    const imagesOuter = dom.window.document.querySelector('div.snap');
+    if(imagesOuter) {
+        /* console.log(images);
+        console.log(images.innerHTML); */
+        const images = imagesOuter.querySelectorAll('img');
+        /* console.log(images); */
+        let imagesHTML = '';
+        images.forEach(img => imagesHTML += img.outerHTML);
+        result.images = imagesHTML;
+    }
+
+    return result;
+}
+
+const handleLingvo = async (word) => {
     const urlBase = 'https://www.lingvolive.com/en-us/translate/en-uk/';
     const dom = await JSDOM.fromURL(`${urlBase}${word}`);
-    //const article = dom.window.document.querySelector('[name="#dictionary"]');
     const article = dom.window.document.querySelector('._1mexQ');
     if(!article) return({});
 
@@ -37,11 +63,17 @@ const getData = async (dic, word) => {
 async function dicParser(req, res, next) {
     if(req.query.dic && req.query.word) {
         console.log(req.query);
-        //getData(req.query.dic, req.query.word);
-        //res.send('<h1>Hello!</h1>');
-        res.send(await getData(req.query.dic, req.query.word));
-    } else next(); 
-} 
-//function dicParser(req, res, next) {};
+        if(req.query.dic === 'lingvo') {
+            res.send(await handleLingvo(req.query.word));
+            return;
+        }
+        if(req.query.dic === 'glosbe') {
+            res.send(await handleGlosbe(req.query.word));
+            return;
+        }
+        //res.send(await getData(req.query.dic, req.query.word));
+    } //else next();
+    next();
+}   
 
 module.exports = dicParser;
