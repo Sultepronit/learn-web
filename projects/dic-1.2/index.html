@@ -120,6 +120,7 @@ a.orig {
 		</div>
 	</main>
 
+<script src="html-parser.js"></script>
 <script>
 "use strict";
 const input = document.querySelector('input');
@@ -133,14 +134,42 @@ console.log(input);
 let history = JSON.parse(localStorage.getItem('history')) || [];
 
 const handleLingvo = async (encoded) => {
-	//const urlLingvo = 'http://localhost:8900/?dic=lingvo&word=';
-	const urlLingvo = 'https://dic0.onrender.com/?dic=lingvo&word=';
+	const urlLingvo = 'http://localhost:8901/?dic=lingvo&word=';
+	//const urlLingvo = 'https://dic0.onrender.com/?dic=lingvo&word=';
 	const resp = await fetch(urlLingvo + encoded);
 	console.log(resp);
 	const obj = await resp.json();
-	const lingvoArticleHTML = obj.article;
+	console.log(obj);
+	/* const lingvoArticleHTML = obj.article;
 	if(obj.foundWord) found.textContent = obj.foundWord;
-	lingvo.innerHTML = lingvoArticleHTML;
+	lingvo.innerHTML = lingvoArticleHTML; */
+	const parsedPage = parseHTML(obj.page);
+	const article = getBlock(parsedPage, 'div', 'class="_1mexQ');
+	console.log(article);
+
+	const h1 = getBlock(article, 'h1');
+	console.log(h1);
+	const h1st = getTextContent(h1);
+	console.log('h1', h1st);
+	found.textContent = h1st;
+
+	const paragraphs = getBlock(article, 'p', null, true, 'ol');
+	console.log(paragraphs);
+
+	let results = '';
+	for(let p of paragraphs) {
+		const cont = getTextContent(p);
+		console.log('p', cont);
+		if(cont) results += '<p>' + cont + '</p>';
+	}
+
+	const list = getBlock(article, 'ol');
+
+	//const results = stringifyTags(article)
+	//const results = stringifyTags(list);
+	results += stringifyTags(list);
+	//console.log(results);
+	lingvo.innerHTML = results;
 }
 
 const handleGlosbe = async (encoded) => {
