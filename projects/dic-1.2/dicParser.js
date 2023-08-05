@@ -3,7 +3,7 @@
 const { JSDOM } = require('jsdom');
 const https = require('https');
 
-const getData = async (url) => {
+/* const getData = async (url) => {
     let result = null;
     try {
         result = await JSDOM.fromURL(url);
@@ -12,7 +12,7 @@ const getData = async (url) => {
     } finally {
         return result;
     }
-}
+} */
 
 /* const handleGlosbe = async (word) => {
     const result = {};
@@ -38,62 +38,34 @@ const getData = async (url) => {
     return result;
 } */
 
-const handleLingvo0 = async (word) => {
-    /* const urlBase = 'https://www.lingvolive.com/en-us/translate/en-uk-/';
-    const dom = await JSDOM.fromURL(`${urlBase}${word}`);
-    const article = dom.window.document.querySelector('._1mexQ');
-    if(!article) return {}; */
-    const result = {};
-    const urlBase = 'https://www.lingvolive.com/en-us/translate/en-uk/';
-    const dom = await getData(`${urlBase}${word}`);
-    if(!dom) return result;
+const getPage = (options) => {
+    return new Promise((resolve, reject) => {
+        let data = '';
+        const request = https.request(options, (response) => {
+            response.on('data', (chunk) => data += chunk);
+            response.on('end', () => resolve(data));
+        });
+        request.on('error', (e) => {
+            console.log(e.message);
+            reject(e);
+        });
+        request.end(); 
+    });
+}
 
-    const article = dom.window.document.querySelector('._1mexQ');
-    if(!article) return result; 
-    
-    const foundWord = article.querySelector('h1').textContent;
-    if(word !== foundWord) result.foundWord = foundWord;
-    article.querySelector('h1').outerHTML = '';
-
-    article.children[0].outerHTML = '';
-    if(article.children[0].textContent == '') article.children[0].outerHTML = '';
-
-    result.article = article.innerHTML;
-
-    const forms = dom.window.document.querySelector('.R-Y1-');
-    if(forms) {
-        const rows = forms.querySelectorAll('tr');
-        console.log(rows[0].textContent);
-        if(rows[0].textContent === 'Basic forms') {
-            rows[0].outerHTML = '';
-            rows[2].outerHTML = '';
-            rows[3].outerHTML = '';
-            result.article += '\n' + forms.outerHTML;
-        }
-    }
-    return result; 
+const handleGlosbe = async (word) => {
+    const page = await getPage({
+        host: 'en.glosbe.com',
+        path: '/en/uk/' + word
+    });
+    return { page };
 }
 
 const handleLingvo = async (word) => {
-    function getPage(options) {
-        return new Promise((resolve, reject) => {
-            let data = '';
-            const request = https.request(options, (response) => {
-                response.on('data', (chunk) => data += chunk);
-                response.on('end', () => resolve(data));
-            });
-            request.on('error', (e) => {
-                console.log(e.message);
-                reject(e);
-            });
-            request.end(); 
-        });
-    }
     const page = await getPage({
         host: 'www.lingvolive.com',
         path: '/en-us/translate/en-uk/' + word
     });
-    //getPage({host: 'en.glosbe.com', path: '/en/uk/' + 'word'});
     return { page };
 }
 
@@ -104,10 +76,10 @@ async function dicParser(req, res, next) {
             res.send(await handleLingvo(req.query.word));
             return;
         }
-        /* if(req.query.dic === 'glosbe') {
+        if(req.query.dic === 'glosbe') {
             res.send(await handleGlosbe(req.query.word));
             return;
-        } */
+        }
     } 
     next();
 }   

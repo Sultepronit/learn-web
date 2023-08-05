@@ -145,21 +145,21 @@ const handleLingvo = async (encoded) => {
 	lingvo.innerHTML = lingvoArticleHTML; */
 	const parsedPage = parseHTML(obj.page);
 	const article = getBlock(parsedPage, 'div', 'class="_1mexQ');
-	console.log(article);
+	//console.log(article);
 
 	const h1 = getBlock(article, 'h1');
-	console.log(h1);
+	//console.log(h1);
 	const h1st = getTextContent(h1);
-	console.log('h1', h1st);
+	//console.log('h1', h1st);
 	found.textContent = h1st;
 
 	const paragraphs = getBlock(article, 'p', null, true, 'ol');
-	console.log(paragraphs);
+	//console.log(paragraphs);
 
 	let results = '';
 	for(let p of paragraphs) {
 		const cont = getTextContent(p);
-		console.log('p', cont);
+		//console.log('p', cont);
 		if(cont) results += '<p>' + cont + '</p>';
 	}
 
@@ -185,6 +185,8 @@ const handleLingvo = async (encoded) => {
 		}
 		if(cont.includes('Common case')) { // noun
 			const tds = getBlock(tr, 'td', null, true);
+			//console.log(tds);
+			if(tds.length < 3) continue;
 			results += `<p>n: ${getTextContent(tds[1])} / ${getTextContent(tds[2])} </p>`;
 		}
 	}
@@ -198,14 +200,32 @@ const handleLingvo = async (encoded) => {
 }
 
 const handleGlosbe = async (encoded) => {
-	//const urlGlosbe = 'http://localhost:8900/?dic=glosbe&word=';
-	const urlGlosbe = 'https://dic0.onrender.com/?dic=glosbe&word=';
+	const urlGlosbe = 'http://localhost:8901/?dic=glosbe&word=';
+	//const urlGlosbe = 'https://dic0.onrender.com/?dic=glosbe&word=';
 	const resp = await fetch(urlGlosbe + encoded);
 	console.log(resp);
 	const obj = await resp.json();
-	if(obj.examples) glosbe.innerHTML = obj.examples;
-	if(obj.images) images.innerHTML = obj.images;
+	console.log(obj);
+	/* if(obj.examples) glosbe.innerHTML = obj.examples;
+	if(obj.images) images.innerHTML = obj.images; */
 	//console.log(glosbe.innerHTML);
+	const parsedPage = parseHTML(obj.page);
+	//console.log(parsedPage);
+	const examplesOuter = getBlock(parsedPage, 'div', 'id="tmem_first_examples"');
+	//console.log(examplesOuter);
+	const examples = getBlock(examplesOuter, 'div', 'class="px-1');
+	//console.log(examples);
+	const results = stringifyTags(examples)
+	//console.log(results);
+	glosbe.innerHTML = results;
+	
+	const imagesOuter = getBlock(parsedPage, 'div', 'class="snap');
+	//console.log(imagesOuter);
+	const imgs = getSingle(imagesOuter, 'img', null, true);
+	//console.log(imgs);
+	const imgHTML = stringifyTags(imgs);
+	//console.log(imgHTML);
+	images.innerHTML = imgHTML;
 }
 
 const newRequest = async () => {

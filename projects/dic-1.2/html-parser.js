@@ -10,7 +10,7 @@ const parseHTML = (htmlString) => {
         const contents = splitted[1];
         return {details, contents};
     });
-    console.log(tags1);
+    //console.log(tags1);
     return tags1;
 }
 
@@ -53,6 +53,22 @@ const getBlock = (tags, tagName, tagAttribute = null, getAll = false, stopTag = 
         }
     }
     return getAll ? allResults : result;
+}
+
+const getSingle = (tags, tagName, tagAttribute = null, getAll = false) => {
+    const allResults = [];
+    for(let tag of tags) {
+        if(tag.details[0] === tagName) {
+            if(tagAttribute === tag.details[1] || !tagAttribute) {
+                if(getAll) {
+                    allResults.push(tag);
+                } else {
+                    return tag;
+                }
+            } 
+        }
+    }
+    return allResults;
 }
 
 const getTextContent = (tags, splitter = '') => {
