@@ -164,10 +164,35 @@ const handleLingvo = async (encoded) => {
 	}
 
 	const list = getBlock(article, 'ol');
-
-	//const results = stringifyTags(article)
-	//const results = stringifyTags(list);
 	results += stringifyTags(list);
+
+	const trs = getBlock(parsedPage, 'tr', null, true);
+	//console.log('trs', trs);
+	const verbForms = [];
+	for(let tr of trs) {
+		const cont = getTextContent(tr, ' ');
+		if(cont.includes('Imperative')) { // verb 1
+			verbForms[0] = cont.split('Imperative ')[1];
+			continue;
+		}
+		if(cont.includes('Past') && !verbForms[1]) { // verb 2
+			verbForms[1] = cont.split('Past ')[1];
+			continue;
+		}
+		if(cont.includes('(Participle II) ')) { // verb 3
+			verbForms[2] = cont.split('(Participle II) ')[1];
+			continue;
+		}
+		if(cont.includes('Common case')) { // noun
+			const tds = getBlock(tr, 'td', null, true);
+			results += `<p>n: ${getTextContent(tds[1])} / ${getTextContent(tds[2])} </p>`;
+		}
+	}
+	if(verbForms.length > 0) {
+		results += `<p>v: ${verbForms[0]} / ${verbForms[1]} / ${verbForms[2]} </p>`;
+	}
+	console.log(verbForms);
+
 	//console.log(results);
 	lingvo.innerHTML = results;
 }
@@ -180,7 +205,7 @@ const handleGlosbe = async (encoded) => {
 	const obj = await resp.json();
 	if(obj.examples) glosbe.innerHTML = obj.examples;
 	if(obj.images) images.innerHTML = obj.images;
-	comnsole.log(glosbe.innerHTML);
+	//console.log(glosbe.innerHTML);
 }
 
 const newRequest = async () => {
@@ -223,7 +248,7 @@ setInterval(() => {
 	console.log(timer);
 	if(timer === 15) {
 		timer = 0;
-		fetch('https://dic0.onrender.com/?dic=lingvo&word=input');
+		//fetch('https://dic0.onrender.com/?dic=lingvo&word=input');
 	}
 	
 }, 1 * 60 * 1000);

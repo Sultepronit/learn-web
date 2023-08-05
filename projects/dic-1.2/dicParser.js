@@ -78,14 +78,11 @@ const handleLingvo = async (word) => {
     function getPage(options) {
         return new Promise((resolve, reject) => {
             let data = '';
-            const request = https.request(options, function(response) {
-                //var data = '';
-                response.on('data', function(chunk) {
-                    data += chunk;
-                });
+            const request = https.request(options, (response) => {
+                response.on('data', (chunk) => data += chunk);
                 response.on('end', () => resolve(data));
             });
-            request.on('error', function(e) {
+            request.on('error', (e) => {
                 console.log(e.message);
                 reject(e);
             });
@@ -96,6 +93,7 @@ const handleLingvo = async (word) => {
         host: 'www.lingvolive.com',
         path: '/en-us/translate/en-uk/' + word
     });
+    //getPage({host: 'en.glosbe.com', path: '/en/uk/' + 'word'});
     return { page };
 }
 

@@ -30,7 +30,7 @@ const getBlock = (tags, tagName, tagAttribute = null, getAll = false, stopTag = 
                 }
             } else {
                 nested++;
-                console.log(nested);
+                //console.log(nested);
             }
         }
 
@@ -38,7 +38,7 @@ const getBlock = (tags, tagName, tagAttribute = null, getAll = false, stopTag = 
             result.push(tag);
             if(tag.details[0] === '/' + tagName) {
                 nested--;
-                console.log(nested);
+                //console.log(nested);
                 //if(nested === 0) break;
                 if(nested === 0) {
                     if(getAll) {
@@ -55,10 +55,10 @@ const getBlock = (tags, tagName, tagAttribute = null, getAll = false, stopTag = 
     return getAll ? allResults : result;
 }
 
-const getTextContent = (tags) => {
+const getTextContent = (tags, splitter = '') => {
     let result = '';
     for(let tag of tags) {
-        if(tag.contents) result += tag.contents;
+        if(tag.contents) result += splitter + tag.contents;
     }
     return result;
 }
