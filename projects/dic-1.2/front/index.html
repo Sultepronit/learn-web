@@ -195,7 +195,8 @@ setInterval(() => {
 	console.log(timer);
 	if(timer === 15) {
 		timer = 0;
-		fetch('https://dic0.onrender.com/?dic=glosbe&word=get');
+		const prom = fetch('https://dic0.onrender.com/?dic=glosbe&word=get');
+		console.log(prom);
 	}
 	
 }, 1 * 60 * 1000);
