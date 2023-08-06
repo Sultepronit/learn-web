@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Nav({ search, setSearch }) {
   return(
     <nav className="Nav">
-      <form className="seatchForm" onSubmit={e => e.preventDefault()}>
+      <form className="searchForm" onSubmit={e => e.preventDefault()}>
         <label htmlFor="search">Search Posts</label>
         <input
           id="search"

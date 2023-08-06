@@ -8,7 +8,7 @@ import NewPost from './NewPost';
 import PostPage from './PostPage';
 import About from './About';
 import Missing from './Missing';
-import { Route, Routes, useHistory } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -32,8 +32,17 @@ function App() {
       body: 'Ostrum deserunt veniam rem corrupti. Id illum aspernatur suscipit aliquam!'
     }
   ]);
+
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
+
+  const handleDelete = (id) => {
+    const postList = posts.filter(post => post.id !== id);
+    setPosts(postList);
+    navigate('/');
+  }
+  
   return (
     <div className="App">
       <Header title="React JS Blog" />
@@ -41,7 +50,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home posts={posts} />} />
         <Route path="/post" element={<NewPost />} />
-        <Route path="/post/:id" element={<PostPage />} />
+        <Route path="/post/:id" element={
+          <PostPage posts={posts} handleDelete={handleDelete} />
+        } />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Missing />} />
       </Routes>
