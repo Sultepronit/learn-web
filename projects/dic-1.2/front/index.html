@@ -134,8 +134,8 @@ console.log(input);
 let history = JSON.parse(localStorage.getItem('history')) || [];
 
 const handleLingvo = async (encoded) => {
-	const urlLingvo = 'http://localhost:8901/?dic=lingvo&word=';
-	//const urlLingvo = 'https://dic0.onrender.com/?dic=lingvo&word=';
+	//const urlLingvo = 'http://localhost:8901/?dic=lingvo&word=';
+	const urlLingvo = 'https://dic0.onrender.com/?dic=lingvo&word=';
 	const resp = await fetch(urlLingvo + encoded);
 	console.log(resp);
 	const data = await resp.json();
@@ -145,8 +145,8 @@ const handleLingvo = async (encoded) => {
 }
 
 const handleGlosbe = async (encoded) => {
-	const urlGlosbe = 'http://localhost:8901/?dic=glosbe&word=';
-	//const urlGlosbe = 'https://dic0.onrender.com/?dic=glosbe&word=';
+	//const urlGlosbe = 'http://localhost:8901/?dic=glosbe&word=';
+	const urlGlosbe = 'https://dic0.onrender.com/?dic=glosbe&word=';
 	const resp = await fetch(urlGlosbe + encoded);
 	console.log(resp);
 	const data = await resp.json();
@@ -195,7 +195,7 @@ setInterval(() => {
 	console.log(timer);
 	if(timer === 15) {
 		timer = 0;
-		//fetch('https://dic0.onrender.com/?dic=lingvo&word=input');
+		fetch('https://dic0.onrender.com/?dic=glosbe&word=get');
 	}
 	
 }, 1 * 60 * 1000);
