@@ -61,3 +61,23 @@ function toggleMute() {
         playButton.style.display = 'block';
     }
 }
+
+async function sendEmail(message) {
+    const url = 'https://script.google.com/macros/s/AKfycbx43vtV5VcEe1Bv7sHfXLvX92Ep7iEY5_cH1aLPT4usk6ioLlYT0ylEa5tTyPnuL3DIMQ/exec';
+
+    const parameters = {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: JSON.stringify(message)
+    }
+
+    try {
+        const resp = await fetch(url, parameters);
+        const val = await resp.json();
+        console.log(val);
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+sendEmail({subject: "App activity!", body: "Someone is using app!"});

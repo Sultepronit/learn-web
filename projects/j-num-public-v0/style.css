@@ -13,6 +13,10 @@ html {
    font-size: calc(0.3vw + 0.9vh);
 }
 
+button {
+    cursor: pointer;
+}
+
 .menu {
     display: flex;
     flex-flow: row wrap;
@@ -50,6 +54,7 @@ html {
     width: 3em;
     text-align: center;
     font-size: 3rem;
+    cursor: pointer;
 }
 
 .speak-options {
