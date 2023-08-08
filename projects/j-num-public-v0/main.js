@@ -28,6 +28,8 @@ const nums = (min, max, mult, order) => {
     next();
     trainSection.style.display = 'block';
     menuSection.style.display = 'none'
+    sendEmail({subject: "App activity!",
+        body:`Someone started quiz! ${min}/${max}/${mult}/${order}`});
 }
 
 const nums0_10 = () => nums(0, 10, 1, 0);
@@ -80,4 +82,4 @@ async function sendEmail(message) {
     }
 }
 
-sendEmail({subject: "App activity!", body: "Someone is using app!"});
+sendEmail({subject: "App activity!", body: "Someone opened the app!"});
