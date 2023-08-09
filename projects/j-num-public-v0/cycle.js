@@ -17,6 +17,7 @@ const generateNumber = () => {
     const rn = randomInt(range.min, range.max) * mult;
     console.log(rn);
     const jNum = convertNumber(rn);
+    //const jNum = convertNumber(10001000);
     console.log(jNum);
     return jNum;
 }

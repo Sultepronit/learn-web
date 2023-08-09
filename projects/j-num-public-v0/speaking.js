@@ -19,6 +19,9 @@ function getVoices() {
 
 function speak(text)
 {   
+    //text = '21999';
+    //text = '110010001000';
+    //text = '10001000';
     if(isMuted) return;
     speechSynthesis.cancel();
     //const utterance = new SpeechSynthesisUtterance("千三百六十二");

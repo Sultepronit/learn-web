@@ -28,6 +28,7 @@ const nums = (min, max, mult, order) => {
     next();
     trainSection.style.display = 'block';
     menuSection.style.display = 'none'
+    
     sendEmail({subject: "App activity!",
         body:`Someone started quiz! ${min}/${max}/${mult}/${order}`});
 }
@@ -73,13 +74,13 @@ async function sendEmail(message) {
         body: JSON.stringify(message)
     }
 
-    try {
+    /* try {
         const resp = await fetch(url, parameters);
         const val = await resp.json();
         console.log(val);
     } catch(err) {
         console.log(err);
-    }
+    } */
 }
 
 sendEmail({subject: "App activity!", body: "Someone opened the app!"});
