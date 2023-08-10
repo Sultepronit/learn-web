@@ -83,4 +83,4 @@ async function sendEmail(message) {
     }
 }
 
-sendEmail({subject: "App activity!", body: "Someone opened the app!"});
+//sendEmail({subject: "App activity!", body: "Someone opened the app!"});

@@ -1,0 +1,28 @@
+/* .field {
+    display: grid;
+    grid-template-columns: 1.5em auto;
+} */
+
+html {
+    font-size: 1.8vw;
+}
+
+.field {
+    width: max-content;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+.counter {
+    font-size: 4rem;
+    float: left;
+}
+
+.number {
+    margin-bottom: -0.3em;
+}
+
+.furi-roma {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
