@@ -193,13 +193,13 @@ let timer = 0;
 setInterval(() => {
 	timer += 2;
 	console.log(timer);
-	if(timer === 14) {
+	if(timer === 10) {
 		timer = 0;
-		const prom = fetch('https://dic0.onrender.com/?dic=glosbe&word=get');
+		const prom = fetch('https://dic0.onrender.com/get');
 		console.log(prom);
 	}
 	
-}, 1 * 60 * 1000);
+}, 2 * 60 * 1000);
 
 </script>
 </body>
