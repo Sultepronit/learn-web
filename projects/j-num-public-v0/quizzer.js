@@ -6,7 +6,7 @@ function randomInt(from, to) {
 
 const field = document.querySelector('.field');
 
-const quiz = [759000, 14500, 63100000, 8620000];
+const quiz = [847000, 14500, 63100000, 8620000];
 for(let i = 0; i < quiz.length; i++) {
     const jNum = convertNumber(quiz[i]);
     console.log(jNum);
@@ -16,7 +16,7 @@ for(let i = 0; i < quiz.length; i++) {
     /* let block = '<ol>';
     block += '<li>';*/
     block += '<section>'; 
-    block += `<p class="counter">${i + 1})</p>`;
+    //block += `<p class="counter">${i + 1})</p>`;
 
     const numb = '<p class="number">?</p>';
     //field.innerHTML += numb;
