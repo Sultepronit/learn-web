@@ -9,3 +9,4 @@
 2023.07.27	10:45:20	d6b8cb0e-dd34-407f-987f-6da8f5191947	JsonWebTokenError: verify must be called asynchronous if secret or public key is provided as a callback
 2023.07.28	16:27:01	107057cd-266f-465b-9f0f-0e90771cbf93	ReferenceError: sendStatus is not defined
 2023.08.10	15:58:44	1e95ddb5-1d7c-4a51-93c4-0dccf5dadcd5	ReferenceError: sendStatus is not defined
+2023.08.12	22:11:41	5729ecbe-995c-43a8-9257-bd05b12c0f44	SyntaxError: Unexpected end of JSON input
