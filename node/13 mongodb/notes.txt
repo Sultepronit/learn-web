@@ -1,0 +1,2 @@
+to create tokens, in the node console:
+require('crypto').randomBytes(64).toString('hex')
