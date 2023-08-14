@@ -1,0 +1,74 @@
+html {
+    font-size: 0.5rem;
+}
+
+.field {
+    width: max-content;
+    margin: 2rem;
+
+    /* border: 1px solid gray;
+    border-left: none;
+    border-right: none; */
+
+    display: grid;
+    /* grid-auto-flow: column; */
+    /* grid-template-columns: 1fr 2fr 3fr; */
+    /* grid-template-columns: repeat(3, 2fr); */
+    grid-template-columns: repeat(3, auto);
+    
+}
+
+/* .row {
+    display: flex;
+    border-bottom: 1px solid gray;
+    padding-inline-end: 2rem;
+}
+
+.row p {
+    margin-inline: 1rem;
+} */
+
+.number {
+    /* width: 1em; */
+    /* border: 1px solid gray; */
+    border-left: none;
+    border-right: none;
+    /* padding-left: 1rem; */
+    padding-inline-start: 1rem;
+    text-align: left;
+}
+
+.kanji {
+    text-align: left;
+    /* width: 3em; */
+    /* width: max-content; */
+    font-size: 5rem;
+    /* border: 1px solid gray;
+    border-left: none;
+    border-right: none; */
+    /*  margin-inline: 1em; */
+    padding-inline: 4rem;
+    margin-top: -0.5rem;
+}
+
+.fr-extended {
+    display: flex;
+    /* border-bottom: 1px solid gray; */
+    padding-right: 1rem;
+}
+
+.furi-roma {
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.divid {
+    font-size: 6rem;
+    margin: 1rem;
+    margin-bottom: -0.1em;
+    margin-top: 0.1em;
+}
+
+.table-horizontal {
+    grid-column: 1/4;
+}
