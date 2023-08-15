@@ -16,7 +16,8 @@ for(let i = 1; i <= 10; i++) {
     //const n = i * 10000 * 1000;
     //const n = randomInt(11, 10000);
     //const n = randomInt(i * 900, (i + 1) * 900);
-    const n = (i * 100 + randomInt(0, 99)) * 100000;
+    //const n = (i * 100 + randomInt(0, 99)) * 100000;
+    const n = (i * 100 + randomInt(0, 99)) * 1;
     const jNum = convertNumber(n);
     console.log(jNum);
 
