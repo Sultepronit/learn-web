@@ -1,9 +1,4 @@
-const usersDB = {
-    users: require('../model/users.json'),
-    setUsers: function (data) { this.users = data }
-}
-const { writeFile } = require('fs').promises;
-const path = require('path');
+const User = require('../model/User');
 
 const handleLogout = async (req, res) => {
     // on client, also delete the accessToken
@@ -13,17 +8,13 @@ const handleLogout = async (req, res) => {
     const refreshToken = cookies.jwt;
 
     // is there refreshToken in DB?
-    const foundUser = usersDB.users.find(card => card.refreshToken === refreshToken);
+    const foundUser = await User.findOne({ refreshToken }).exec();
 
     if(foundUser) {
         // delete refreshToken in DB 
-        const otherUsers = usersDB.users.filter(card => card.refreshToken !== refreshToken);
-        const currentUser = { ...foundUser, refreshToken: '' };
-        usersDB.setUsers([...otherUsers, currentUser]);
-        await writeFile(
-            path.join(__dirname, '..', 'model', 'users.json'),
-            JSON.stringify(usersDB.users)
-        );
+        foundUser.refreshToken = '';
+        const result = await foundUser.save();
+        console.log(result);
     }
 
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true});

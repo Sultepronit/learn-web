@@ -1,29 +1,25 @@
-const data = {
-    employees: require('../model/employees.json'),
-    setEmployees: function (data) { this.employees = data }
+const Employee = require('../model/Employee');
+
+const getAllEmployees = async (req, res) => {
+    const employees = await Employee.Find();
+    if(!employees) return res.status(204).json({ message: 'No employees found.'});
+    res.json(employees);
 }
 
-const getAllEmployees = (req, res) => {
-    res.json(data.employees);
-}
-
-const createNewEmployee = (req, res) => {
-    const lei = data.employees.length - 1;
-    const newEmployee = {
-        id: lei < 0 ? 1 : data.employees[lei].id + 1,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName
+const createNewEmployee = async (req, res) => {
+    if(!req?.body?.firstName || !req.body.lastName) {
+        return res.status(400).json({ message: 'Frist and last names are required'});
     }
 
-    if(!newEmployee.firstName || !newEmployee.lastName) {
-        return res.status(400).json({message: 'First and last names are required!'});
+    try {
+        const result = await Employee.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        });
+        res.status(201).json(result);
+    } catch(err) {
+        console.error(err);
     }
-
-    data.setEmployees([...data.employees, newEmployee]);
-
-    // here we can save results
-
-    res.status(201).json(data.employees);
 }
 
 const updateEmployee = (req, res) => {
