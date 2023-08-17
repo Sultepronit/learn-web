@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /*font-size: 0.5em;*/
+   /*  font-size: 1.9vw; */
+   font-size: calc(0.3vw + 0.9vh);
+}
+
+button {
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.menu button {
+    font-size: 2.5rem;
+    width: 44%;
+    min-width: max-content;
+    margin: 2%;
+    padding: 0.5em;
+}
+
+.divider {
+    width: 70%;
+    /* background: gray; */
+    border-bottom: 2px solid gray;
+    margin: 1rem;
+}
+
+.train {
+    display: none;
+}
+
+.train-options {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 2px solid gray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.train-options p {
+    width: 3em;
+    text-align: center;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.speak-options {
+    display: flex;
+}
+
+.number {
+    font-size: 6rem;
+    text-align: center
+}
+
+.kanji {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 6rem;
+    text-align: center;
+}
+
+.furi-roma {
+    font-size: 3rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0.5em 0.1em;
+}
+
+#minor {
+    opacity: 70%;
+}
+
+button.next {
+    position: fixed;
+    bottom: 0;
+    width: 98%;
+    margin: 1%;
+    height: 80px;
+    max-height: 10vh;
+}
+
+.jap-word {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.jap-symb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.fu-r {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 0.6em;
+    /* text-align: center; */
+}
+
+.kana {
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-top: -0.35em;
+}
+
+.rule {
+    color: green;
+}
+
+.reduct {
+    color: blue;
+}
+
+.exept {
+    color: red;
+}

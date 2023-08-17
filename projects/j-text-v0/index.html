@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Japanese Numbers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/go2.png">
+    <script src="speaking.js"></script>
+    <script src="convertNumber.js"></script>
+    <script src="detailedKana.js"></script>
+    <script src="processKana.js"></script>
+    <script src="createFuriRoma.js"></script>
+    <script defer src="cycle.js"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section class="menu">
+            <button onclick="nums0_10()">0 - 10</button>
+            <button onclick="nums11_20()">11 - 20</button>
+            <button onclick="nums10_100()">10 - 100</button>
+            <button onclick="nums100_1000()">100 - 1000</button>
+            <button onclick="nums1000_10000()">1000 - 10 000</button>
+            <button onclick="nums10000_200000()">10 000 - 200 000</button>
+            <button onclick="nums20man_100man()">200 000 - 1 000 000</button>
+            <button onclick="nums100man_1oku()">1 000 000 - 100 000 000</button>
+            <button onclick="nums1oku_20oku()">100 000 000 - 2 000 000 000</button>
+            <button onclick="nums20oku_200oku()">2 000 000 000 - 20 000 000 000</button>
+            <button onclick="nums200oku_9000oku()">20 000 000 000 - 900 000 000 000</button>
+            <!-- <button>100 000 - 1 000 000</button>
+            <button>1 000 000 - 10 000 000</button> -->
+            <!-- <hr> -->
+            <div class="divider"></div>
+            <button onclick="nums0_100()">0 - 100</button>
+            <button onclick="nums0_1000()">0 - 1000</button>
+            <button onclick="nums10_10000()">10 - 10 000</button>
+            <button onclick="nums100_100000()">100 - 100 000</button>
+            <button onclick="nums1000_100man()">1000 - 1 000 000</button>
+            <button onclick="nums1000_10oku()">1000 - 1 000 000 000</button>
+            <button onclick="nums100man_1000oku()">1000 000 - 100 000 000 000</button>
+        </section>
+
+        <section class="train">
+            <div class="train-options">
+                <p class="back-button" onclick="backToMenu()">🔙</p>
+                <div class="speak-options">
+                    <p class="mute-button" onclick="toggleMute()">🔇</p>
+                    <p class="play-button" onclick="readNumber()">🔈</p>
+                </div>
+            </div>
+            <p class="number">123</p>
+            <p class="kanji">---</p>
+            <article class="furi-roma" id="main">----</article>
+            <article class="furi-roma" id="minor">----</article>
+            <button class="next" onclick="next()"></button>
+        </section>
+        <!-- <p class="version">v0.1.2</p> -->
+    </main>
+    
+</body>
+</html>

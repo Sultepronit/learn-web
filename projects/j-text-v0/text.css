@@ -1,0 +1,34 @@
+html {
+    font-size: 2rem;
+}
+
+.j-sent {
+    display: flex;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.space {
+    width: 0.7em;
+}
+
+.no-roma {
+    font-size: 1.2em;
+}
+
+.jap-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.furig {
+    font-size: 0.3em;
+    font-size: 0.45em;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+.char-block {
+    margin-top: -0.40rem;
+}
