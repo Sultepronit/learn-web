@@ -4,12 +4,18 @@ html {
 
 .j-sent {
     display: flex;
+    flex-wrap: wrap;
     font-family: 'Noto Sans JP', sans-serif;
 }
 
-.space {
-    width: 0.7em;
+.jap-word {
+    display: flex;
+   margin-right: 0.7em;
 }
+
+/* .space {
+    width: 0.7em;
+} */
 
 .no-roma {
     font-size: 1.2em;
@@ -17,9 +23,7 @@ html {
 
 .jap-block {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .furig {

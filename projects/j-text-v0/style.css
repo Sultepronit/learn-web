@@ -94,12 +94,8 @@ button.next {
     max-height: 10vh;
 }
 
-.jap-word {
-    display: flex;
-    /* flex-wrap: wrap; */
-}
-
-.jap-symb {
+/*.jap-symb {*/
+.furi-block {
     display: flex;
     flex-direction: column;
     align-items: center;

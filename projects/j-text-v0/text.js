@@ -17,6 +17,7 @@ for(let sent of text) {
     const sent1 = processSentence(sent);
 
     let sentence = '<div class="j-sent">';
+    sentence += '<div class="jap-word">'
     for(let i = 0; i < sent1.length; i++) {
         console.log(sent1[i]);
         const furiRomaWord = createFuriRoma(sent1[i].furi);
@@ -24,12 +25,15 @@ for(let sent of text) {
         if(i + 1 === sent1.length) break;
         //console.log(sent1[i + 1].space);
         if(sent1[i + 1].space === 'remove') continue;
-        sentence += '<div class="space"></div>';
+        sentence += '</div>';
+        /* sentence += '<div class="space"></div>'; */
+        sentence += '<div class="jap-word">';
     }
     sentence += '</div>';
     field.innerHTML += sentence;
 
     sentence = '<div class="j-sent no-roma">';
+    sentence += '<div class="jap-word">'
     for(let i = 0; i < sent1.length; i++) {
         //console.log(sent1[i]);
         const furiRomaWord = createColoredFurigana(sent1[i]);
@@ -37,7 +41,9 @@ for(let sent of text) {
         if(i + 1 === sent1.length) break;
         //console.log(sent1[i + 1].space);
         if(sent1[i + 1].space === 'remove') continue;
-        sentence += '<div class="space"></div>';
+        sentence += '</div>';
+        /* sentence += '<div class="space"></div>'; */
+        sentence += '<div class="jap-word">';
     }
     sentence += '</div>';
     field.innerHTML += sentence;

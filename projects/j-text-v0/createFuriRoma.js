@@ -1,5 +1,5 @@
 const createFuriRoma = (sentence) => {
-    let re = '<div class="jap-word">';
+    let re = '<div class="jap-block">';
     for(let char of sentence) {
         if(char.type === 'kana') {
             const kana = char.hiragana === true ? char.h : char.k;
@@ -7,23 +7,23 @@ const createFuriRoma = (sentence) => {
             const furiDiv = `<div class="fu-r">${furi}</div>`;
             const kanaDiv = `<div class="kana">${kana}</div>`;
             if(char.rule) {
-                re += `<div class="jap-symb rule">${furiDiv}${kanaDiv}</div>`;
+                re += `<div class="furi-block rule">${furiDiv}${kanaDiv}</div>`;
                 continue;
             }
             if(char.reduct) {
-                re += `<div class="jap-symb reduct">${furiDiv}${kanaDiv}</div>`;
+                re += `<div class="furi-block reduct">${furiDiv}${kanaDiv}</div>`;
                 continue;
             }
             if(char.exept) {
-                re += `<div class="jap-symb exept">${furiDiv}${kanaDiv}</div>`;
+                re += `<div class="furi-block exept">${furiDiv}${kanaDiv}</div>`;
                 continue;
             }
-            re += `<div class="jap-symb">${furiDiv}${kanaDiv}</div>`;
+            re += `<div class="furi-block">${furiDiv}${kanaDiv}</div>`;
             continue;
         }
         if(char.type === 'special') {
             if(char.value === 'space') {
-                re += '</div><div class="jap-word">';
+                re += '</div><div class="jap-block">';
             }
             continue;
         }

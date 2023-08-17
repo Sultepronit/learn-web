@@ -1,6 +1,6 @@
 const createColoredFurigana = (block) => {
     console.log(block);
-    let re = '<div class="jap-block">';
+    let re = '<div class="furi-block">';
         let kanaBlock = '';
         for(let char of block.furi) {
             console.log(char);
