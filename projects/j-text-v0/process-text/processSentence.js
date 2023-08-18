@@ -6,7 +6,8 @@ const splitter = (line) => {
     for(let char of line) {
         const lei = prepared0.length - 1;
         if(lei >= 0) {
-            if(prepared0[lei] !== ' ' && prepared0[lei] !== '_') {
+            if(char !== ' ' && char !== '_' && prepared0[lei] !== ' ' && prepared0[lei] !== '_') {
+                //console.log(prepared0[lei], char);
                 if(isKanji(char) != isKanji(prepared0[lei])) {
                     prepared0 += '_';
                 }
@@ -27,9 +28,13 @@ const splitter = (line) => {
         if(sp.length < 2) {
             result2.push({ word });
         } else {
-            result2.push({ word: sp[0]});
+            result2.push({ word: sp[0], nextSymb: sp[1]});
             for(let i = 1; i < sp.length; i++) {
-                result2.push({ word: sp[i], space: 'remove'});
+                result2.push({
+                    word: sp[i],
+                    space: 'remove',
+                    nextSymb: sp[i + 1]
+                });
             }
         }
     }
@@ -60,7 +65,12 @@ const processFuri = (sentence) => {
     for(let word of sentence) {
         //console.log(word);
         if(word.kana) {
-            word.furi = processKana(word.kana);
+            if(word.nextSymb) {
+                word.furi = processKana(word.kana + word.nextSymb[0]);
+                word.furi.length = word.kana.length;
+            } else {
+                word.furi = processKana(word.kana);
+            }
         } else {
             word.furi = processKana(word.word);
         }

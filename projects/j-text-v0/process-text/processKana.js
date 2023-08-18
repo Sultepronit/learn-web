@@ -1,7 +1,7 @@
 'use strict';
 
-const getKana = (sentence) => {
-    const sentenceKana = sentence.split('').map(char => {
+const getKana = (word) => {
+    const wordKana = word.split('').map(char => {
         //console.log(char);
         if(char === ' ') return { type: 'special', value: 'space' };
         //if(char === '_') return { type: 'special', value: 'ignored-space' };
@@ -11,10 +11,8 @@ const getKana = (sentence) => {
         }
         return { type: 'symbol', value: char };
     });
-    console.log(sentenceKana);
-    sentenceKana.forEach(e => console.log(e));
-    //console.log(detailedKana);
-    return sentenceKana;
+    //console.log(word);
+    return wordKana;
 }
 
 const hideSpaces = (sentence) => {
@@ -34,10 +32,11 @@ const hadnleRules = (crude) => {
     const result = [];
     for(let char of crude) {
         if(char.type === 'kana') {
+            //console.log(char); 
             if(char.r[0] === 'y') {
                 const lei = result.length - 1;
-                /* console.log(result[lei]);
-                console.log(kana); */
+                //console.log(result[lei]);
+                //console.log(kana); 
                 result[lei].h += char.h;
                 result[lei].k += char.k;
                 //console.log(result[lei]);
@@ -59,6 +58,10 @@ const hadnleRules = (crude) => {
                     le.r = char.r[0] + char.r;
                     le.rule = true;
                     continue;
+                }
+
+                if(char.r === '-') {
+                    char.r = le.r[le.r.length -1];
                 }
 
                 if(char.r === 'I' && (le.r === 'E' || le.r[1] === 'E') ) {
@@ -88,14 +91,15 @@ const hadnleRules = (crude) => {
                     }
                 }
 
-                if(le.r === 'KU') {
-                    if(char.r[0] === 'S' && char.r[1] !== 'H') {
-                        le.r = 'Ku';
+                if(le.r === 'HI') {
+                    if(char.r[0] === 'S' || char.r[0] === 'T') {
+                        le.r = 'Hi';
                         le.reduct = true;
                     }
                 }
+                
                 if(le.r === 'SHI') {
-                    if(char.r[0] === 'C') {
+                    if(char.r[0] === 'C' || char.r[0] === 'T') {
                         le.r = 'SHi';
                         le.reduct = true;
                     }
@@ -105,7 +109,7 @@ const hadnleRules = (crude) => {
         result.push(char);
         //if(char.spaceAfter) result.push({ type: 'special', value: 'space' });
     }
-    console.log(result);
+    //console.log(result);
     return result;
 }
 

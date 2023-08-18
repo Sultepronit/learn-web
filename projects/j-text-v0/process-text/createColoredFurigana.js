@@ -1,9 +1,9 @@
 const createColoredFurigana = (block) => {
-    console.log(block);
+    //console.log(block);
     let re = '<div class="furi-block">';
         let kanaBlock = '';
         for(let char of block.furi) {
-            console.log(char);
+            //console.log(char);
             if(char.type != 'kana') continue;
             const kana = char.hiragana ? char.h : char.k;
             if(char.rule) {
@@ -20,7 +20,7 @@ const createColoredFurigana = (block) => {
             }
             kanaBlock += kana;
         }
-        console.log(kanaBlock);
+        //console.log(kanaBlock);
     if(block.kanjiBlock) {
         re += `<div class="furig">${kanaBlock}</div>`;
         re += `<div class="char-block">${block.word}</div>`;

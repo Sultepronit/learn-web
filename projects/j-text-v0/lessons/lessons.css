@@ -1,0 +1,69 @@
+html {
+    font-size: 2rem;
+}
+
+main {
+    margin: 1rem;
+}
+
+.j-sent {
+    margin-top: 0.2em;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.jap-word {
+    display: flex;
+   margin-right: 0.7em;
+}
+
+/* .space {
+    width: 0.7em;
+} */
+
+.no-roma {
+    font-size: 1.2em;
+}
+
+.jap-block {
+    display: flex;
+    align-items: flex-end;
+}
+
+.furig {
+    font-size: 0.3em;
+    font-size: 0.45em;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+.char-block {
+    margin-top: -0.40rem;
+}
+
+.transl {
+    /* margin-bottom: 1em; */
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid gray;
+}
+
+.b-thin {
+    border-bottom: 3px solid;
+}
+
+.b-bold {
+    border-bottom: 5px solid;
+}
+
+.b-double {
+    border-bottom: 5px double;
+}
+
+.b-dashed {
+    border-bottom: 3px dashed;
+}
+
+.b-dotted {
+    border-bottom: 3px dotted;
+}
