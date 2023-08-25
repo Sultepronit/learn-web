@@ -23,6 +23,22 @@ body {
     min-height: 100vh;
 }
 
+.container {
+    background: gray;
+    background-image: url('img/pat1.png');
+    background-repeat: no-repeat;
+    background-repeat: repeat-y; /* only vertically */
+    background-repeat: repeat-x; /* only horizontally */
+    background-repeat: repeat; /* default */
+    background-position: bottom center;
+
+    background-image: url('img/scenic-2200x1331.png');
+    background-size: contain;
+    background-size: cover;
+    
+    background-image: url('img/map-2176x1451.png');
+}
+
 .hero {
     border-bottom: 2px solid black;
     padding: 20px;
@@ -30,10 +46,14 @@ body {
     justify-content: flex-start;
     align-items: center;
     gap: 30px;
+
+    background: hsla(0, 0%, 100%, 0.4);
 }
 
 .h1 {
     font-size: 500%;
+    color: aliceblue;
+    text-shadow: 2px 2px 5px black;
 }
 
 .profile-pic-figure {
