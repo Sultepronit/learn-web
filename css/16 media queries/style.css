@@ -7,4 +7,84 @@
 body {
     font: 1.5rem;
     min-height: 100vh;
+
+    background: #165f79;
+    background: radial-gradient(whitesmoke, #165f79);
+    display: flex;
+    flex-direction: column;
+}
+
+header, nav, main, footer {
+    display: grid;
+    place-content: center;
+    grid-template-columns: 100%;
+    text-align: center;
+}
+
+header, footer {
+    position: sticky;
+    background: #052405;
+    color: whitesmoke;
+}
+
+header {
+    top: 0;
+}
+
+nav {
+    background: white;
+    color: black;
+    padding: 0.5rem;
+    border-bottom: 2px solid black;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    bottom: 0;
+}
+
+/* for 576px and more */
+@media screen and (min-width: 576px) {
+    body{
+        background: green;
+        background: radial-gradient(whitesmoke, green);
+    }
+
+    nav {
+        display: none;
+    }
+}   
+
+/* for 768px and more */
+@media screen and (min-width: 768px) {
+    body {
+        background: radial-gradient(whitesmoke, gold);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        background: radial-gradient(whitesmoke, firebrick);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        background: radial-gradient(whitesmoke, rebeccapurple);
+    }
+}
+
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+    body {
+        background: radial-gradient(whitesmoke, dodgerblue);
+    }
+
+    h1, h1 {
+        font-size: 1.5rem;
+    }
+
+    nav { display: none }
 }
