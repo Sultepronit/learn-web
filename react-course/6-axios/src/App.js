@@ -6,6 +6,7 @@ import Footer from './Footer';
 import Home from './Home';
 import NewPost from './NewPost';
 import PostPage from './PostPage';
+import EditPost from './EditPost';
 import About from './About';
 import Missing from './Missing';
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -50,22 +51,48 @@ function App() {
     setSearchResults(filteredResults.reverse());
   }, [posts, search]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
     const newPost = { id, title: postTitle, datetime, body: postBody };
-    const allPosts = [ ...posts, newPost ];
-    setPosts(allPosts);
-    setPostTitle('');
-    setPostBody('');
-    navigate('/');
+    try {
+      const response = await api.post('/posts', newPost);
+      //console.log(response);  
+      const allPosts = [ ...posts, newPost ];
+      setPosts(allPosts);
+      setPostTitle('');
+      setPostBody('');
+      navigate('/');
+    } catch(err) {
+      console.error(err);
+    }
   }
 
-  const handleDelete = (id) => {
-    const postList = posts.filter(post => post.id !== id);
-    setPosts(postList);
-    navigate('/');
+  const handleEdit = async (id) => {
+    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+    const updatedPost = { id, title: postTitle, datetime, body: postBody };
+    try {
+      const response = await api.put('/posts/' + id, updatedPost);
+      console.log(response);
+      setPosts(posts.map(post => post.id === id ? updatedPost : post));
+      setPostTitle('');
+      setPostBody('');
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleDelete = async (id) => {
+    try {
+      await api.delete('/posts/' + id);
+      const postList = posts.filter(post => post.id !== id);
+      setPosts(postList);
+      navigate('/');
+    } catch(err) {
+      console.error(err);
+    }
   }
   
   return (
@@ -76,13 +103,25 @@ function App() {
         <Route path="/" element={
           <Home /* posts={posts} */ posts={searchResults} />
         } />
-        <Route path="/post" element={<NewPost
-          handleSubmit={handleSubmit}
-          postTitle={postTitle}
-          setPostTitle={setPostTitle}
-          postBody={postBody}
-          setPostBody={setPostBody}
-        />} />
+        <Route path="/post" element={
+          <NewPost
+            handleSubmit={handleSubmit}
+            postTitle={postTitle}
+            setPostTitle={setPostTitle}
+            postBody={postBody}
+            setPostBody={setPostBody}
+          />
+        } />
+        <Route path="/edit/:id" element={
+          <EditPost 
+            posts={posts}
+            handleEdit={handleEdit}
+            postTitle={postTitle}
+            setPostTitle={setPostTitle}
+            postBody={postBody}
+            setPostBody={setPostBody}
+          />
+        } />
         <Route path="/post/:id" element={
           <PostPage posts={posts} handleDelete={handleDelete} />
         } />
