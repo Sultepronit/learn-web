@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* utility classes */
+.nowrap {
+    white-space: nowrap;
+}
+/* utility classes */
+
+body {
+    font: 1.5rem;
+    min-height: 100vh;
+
+    background: #165f79;
+    background: radial-gradient(whitesmoke, #165f79);
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    position: sticky;
+    background: #052405;
+    color: whitesmoke;
+    text-align: center;
+}
+
+header {
+    top: 0;
+}
+
+nav {
+    background: white;
+    padding: 0.5rem;
+    border-bottom: 2px solid black;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav a {
+    color: black;
+}
+
+nav a:hover, nav a:focus {
+    color: hsla(0, 0%, 20%, 0.6);
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+footer {
+    bottom: 0;
+}
+
+.card {
+    scroll-margin-top: 8rem;
+    width: min(100%, 350px); /* 350px or less */
+    background: #cbd5e1;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card figure {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.card img {
+    border: 5px double #333;
+    border-radius: 50%;
+}
+
+.card figcaption {
+    font-weight: bolder;
+    font-size: 2rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+/* for 576px and more */
+@media screen and (min-width: 576px) {
+    body{
+        background: green;
+        background: radial-gradient(whitesmoke, green);
+    }
+
+    nav {
+        display: none;
+    }
+}   
+
+/* for 768px and more */
+@media screen and (min-width: 768px) {
+    body {
+        background: radial-gradient(whitesmoke, gold);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        background: radial-gradient(whitesmoke, firebrick);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        background: radial-gradient(whitesmoke, rebeccapurple);
+    }
+}
+
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+    body {
+        background: radial-gradient(whitesmoke, dodgerblue);
+    }
+
+    h1, h1 {
+        font-size: 1.5rem;
+    }
+
+    nav { display: none }
+}
