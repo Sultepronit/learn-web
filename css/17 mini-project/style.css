@@ -16,6 +16,10 @@ img {
 }
 /* utility classes */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font: 1.5rem;
     min-height: 100vh;
@@ -98,43 +102,70 @@ footer {
 
 /* for 576px and more */
 @media screen and (min-width: 576px) {
-    body{
-        background: green;
-        background: radial-gradient(whitesmoke, green);
+    main {
+        justify-content: center;
+        flex-flow: row wrap;
+        padding: 1rem;
     }
 
-    nav {
-        display: none;
+    .card {
+        width: min(100%, 400px);
+    }
+
+    .card:last-child {
+        order: -1;
     }
 }   
 
 /* for 768px and more */
 @media screen and (min-width: 768px) {
-    body {
-        background: radial-gradient(whitesmoke, gold);
+    nav {
+        display: none;
+    }
+
+    .card {
+        width: min(100%, 325px);
+    }
+
+    .card figure {
+        flex-flow: column-reverse;
+    }
+    
+    .card p {
+        margin-top: 1rem;
     }
 }
 
 @media screen and (min-width: 992px) {
-    body {
-        background: radial-gradient(whitesmoke, firebrick);
+    .card {
+        width: min(100%, 400px);
     }
 }
 
 @media screen and (min-width: 1200px) {
-    body {
-        background: radial-gradient(whitesmoke, rebeccapurple);
+    .card {
+        width: min(calc(33% - 1rem), 500px);
     }
 }
 
 @media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
-    body {
-        background: radial-gradient(whitesmoke, dodgerblue);
-    }
-
-    h1, h1 {
+    h1 {
         font-size: 1.5rem;
     }
 
     nav { display: none }
+
+    main {
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items: stretch;
+    }
+
+    .card {
+        width: min(calc((33% - 0.25rem)), 200px);
+    }
+
+    .card figcaption, .card p {
+        font-size: 1.25rem;
+    }
 }
