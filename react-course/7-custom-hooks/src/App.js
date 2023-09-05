@@ -14,15 +14,16 @@ import { useState, useEffect } from 'react';
 // npm i date-fns -S
 import { format } from 'date-fns';
 import api from './api/posts';
+import useWindowSize from './hooks/useWindowSize';
 
 function App() {
   const [posts, setPosts] = useState([]);
-
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
   const navigate = useNavigate();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -97,7 +98,7 @@ function App() {
   
   return (
     <div className="App">
-      <Header title="React JS Blog" />
+      <Header title="React JS Blog" width={width} />
       <Nav search={search} setSearch={setSearch} />
       <Routes>
         <Route path="/" element={
