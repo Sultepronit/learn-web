@@ -52,3 +52,21 @@ console.log(completeOrder);
 completeOrder = addCustomer(completeOrder);
 console.log(completeOrder);
 completeOrder('1000');
+
+//--------------------------------------------
+const curry = fn => {
+    const curried = (...args) => {
+        console.log(args);
+        if(fn.length > args.length) {
+            //console.log(curried.bind(null, ...args));
+            return curried.bind(null, ...args);
+        }
+        return fn(...args);
+    };
+    return curried;
+};
+
+const total = (x, y, z) => x + y + z;
+const curriedTotal = curry(total);
+console.log(curriedTotal);
+console.log(curriedTotal(10)(20)(30));
