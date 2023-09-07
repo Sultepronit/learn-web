@@ -1,0 +1,35 @@
+* {
+    font-size: 2rem;
+}
+
+nav a:hover, nav a:focus {
+    color: green;
+}
+
+/* same thing */
+nav :is(a:hover, a:focus) {
+    color: red;
+}
+
+:is(main, .nonexist) {
+    color: green;
+}
+
+/* previous is more specific! */
+main {
+    color: yellow;
+}
+
+/* 0 specificity */
+:where(main, .nonexist) {
+    color: red;
+}
+
+/* last targeted by link */
+p:target {
+    background: yellow;
+}
+
+img {
+    border: 1px solid black;
+}
