@@ -1,5 +1,5 @@
 * {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 nav a:hover, nav a:focus {
@@ -32,4 +32,51 @@ p:target {
 
 img {
     border: 1px solid black;
+}
+
+img[alt] {
+    border: 5px solid red;
+}
+
+img:not([alt]) {
+    border: 5px double green;
+}
+
+/* 2nd of page's p */
+p:nth-child(2) {
+    color: red;
+}
+
+/* p {
+    position: relative;
+    text-align: center;
+} */
+
+.block p::before {
+    content: open-quote;
+    /* font-size: 3em;
+    position: absolute;
+    top: -0.25em;
+    left: -0.5em; */
+}
+
+.block p::after {
+    content: close-quote;
+}
+
+.p1::after {
+    content: ' text from css!';
+    display: block;
+}
+
+img::before {
+    content: ' CSS forever! '
+}
+
+.p1::first-letter {
+    font-size: 1.5em;
+}
+
+.p2::first-line {
+    font-style: italic;
 }
