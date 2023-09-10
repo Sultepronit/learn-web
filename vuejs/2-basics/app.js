@@ -50,7 +50,11 @@ const vm = Vue.createApp({
 	},
 	watch: {
 		age(newVal, oldVal) {
-			console.log(oldVal, newVal);
+			console.log(oldVal, newVal, this.age);
+			oldVal = -1;
+			newVal = -2;
+			//this.age = -3;
+			console.log(oldVal, newVal, this.age);
 		}
 	}
 }).mount('#app');
