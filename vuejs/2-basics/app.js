@@ -47,5 +47,10 @@ const vm = Vue.createApp({
 			console.log('nameAge() is called');
 			return this.firstName + ', ' + this.age;
 		}
+	},
+	watch: {
+		age(newVal, oldVal) {
+			console.log(oldVal, newVal);
+		}
 	}
 }).mount('#app');
