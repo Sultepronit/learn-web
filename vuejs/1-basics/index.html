@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>vue it!</title>
+	<script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+	<!-- basic examples -->
+	<div id="app">First div</div>
+	<div id="app2">Second one</div>
+	<script>
+		//alert(`Vue.version = ${Vue.version}`);
+		console.log('Vue.version = ' + Vue.version);
+		
+		const app = Vue.createApp({ template: '<h1>This div is managed with Vue.js</h1>' });
+		const vm = app.mount('div#app');
+		console.log(app);
+		console.log(vm);
+		
+		const app2 = Vue.createApp({
+			template: 'The counter is: {{count}}',
+			data() {
+				// retrun an object containing the reactive variables
+				return { count: 0 };
+			}
+		});
+		const vm2 = app2.mount('#app2');
+		
+		setInterval(() => { vm2.count++ }, 1000 );
+	</script>
+	
+	<!-- conmponent -->
+	<div id="comp1"></div>
+	<script>
+		const app3 = Vue.createApp({ template: '<counter />' });
+		app3.component('counter', {
+			template: 'The counter is: {{count}}',
+			data() { return { count: 0 } },
+			created() {
+				setInterval(() => { this.count++ }, 1000);
+			}
+		});
+		const vm3 = app3.mount('#comp1');
+	</script>
+	
+</body>
+
+
+
+</html>

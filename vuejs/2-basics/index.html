@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Just Vue it!</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="vue.png">
+</head>
+
+<body>
+	<div id="app" v-cloak>
+		<!-- <p>Hello there!</p>
+		{{ firstName }}
+		{{ lastName }}
+		<p>***</p> -->
+		<p>{{ fullName() }}</p>
+		<p>{{ age }}</p>
+		<p><a v-bind:href="url" target="_blank">Google</a></p>	
+		<p><a :href="github" target="_blank">GitHub</a></p>	
+		<p v-html="raw_url"></p>
+		<hr />
+
+		<label>First Name</label>
+		<input type="text" v-model="firstName" />
+		<label>Last Name</label>
+		<input type="text" :value="lastName" @input="updateLastName" />
+
+		<button type="button" @click="increment">Increment</button>
+		<button type="button" v-on:click="age--">Decrement</button>
+		<hr />
+
+		<label>Another field</label>
+		<input type="text" @input.prevent="updateWithMsg('Here we go!', $event)" />
+
+		<label>keyup.enter field</label>
+		<input type="text" @keyup.enter="keyupEnter" />
+
+		<button @click.ctrl="ctrlClick">click me with ctrl</button>
+	</div>
+	
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
