@@ -36,6 +36,15 @@
 		<input type="text" @keyup.enter="keyupEnter" />
 
 		<button @click.ctrl="ctrlClick">click me with ctrl</button>
+		<hr />
+
+		<label>Number input</label>
+		<input type="number" v-model.number="num" />
+		<p>{{ typeof num }}</p>
+
+		<label>v-model.lazy.trim</label>
+		<input type="text" v-model.lazy.trim="text" />
+		<p>{{ text }}</p>
 	</div>
 	
 	<script src="https://unpkg.com/vue@3"></script>

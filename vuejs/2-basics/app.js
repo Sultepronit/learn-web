@@ -10,7 +10,9 @@ const vm = Vue.createApp({
 			url: 'https://google.com',
 			github: 'https://github.com',
 			raw_url: '<a href="https://github.com" target="_blank">GitHub</a>',
-			age: 20
+			age: 20,
+			num: 1,
+			text: ''
 		};
 	},
 	methods: {
