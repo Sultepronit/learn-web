@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Just Vue it!</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="vue.png">
+</head>
+
+<body>
+	<div id="app" v-cloak>
+		<label><input type="checkbox" v-model="isPurple" /> Purple </label>
+
+		<select v-model="selectedColor">
+			<option value="">White</option>
+			<option value="text-black">Black</option>
+			<option value="text-orange">Orange</option>
+		</select>
+
+		<div class="block" :class="{ purple: isPurple }">(^_^)</div>
+		<div class="block" :class="selectedColor">(^_^)</div>
+		<div class="block" :class="[selectedColor, block_classes]">(^_^)</div>
+		<p>{{ [selectedColor, block_classes] }}</p>
+	</div>
+	
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
