@@ -16,13 +16,17 @@ const vm = Vue.createApp({
 		};
 	},
 	methods: {
+		/* methods called from page directly
+			will run at every change on the page */
 		fullName() {
+			console.log('fullName() is called');
 			return this.firstName + ' ' + this.lastName;
 		},
 		updateLastName(event) {
 			this.lastName = event.target.value;
 		},
 		increment() {
+			console.log('incremen() is called');
 			this.age++;
 		},
 		updateWithMsg(msg, event) {
@@ -35,6 +39,13 @@ const vm = Vue.createApp({
 		},
 		ctrlClick() {
 			console.log('Clicked with ctrl!');
+		}
+	},
+	computed: {
+		/* methods will run at change of any of variables in it's body */
+		nameAge() {
+			console.log('nameAge() is called');
+			return this.firstName + ', ' + this.age;
 		}
 	}
 }).mount('#app');
