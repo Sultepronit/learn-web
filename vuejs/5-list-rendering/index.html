@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Just Vue it!</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="vue.png">
+</head>
+
+<body>
+	<div id="app" v-cloak>
+		<ul>
+			<li v-for="(bird, index) in birds" :key="bird">
+				{{ index }} > {{ bird }}
+			</li>
+		</ul>
+
+		<hr />
+
+		<ul>
+			<li v-for="person in people">
+				{{ person.name }}, {{ person.age }}
+			</li>
+		</ul>
+
+		<hr />
+
+		<ul>
+			<li v-for="person in people">
+				<p v-for="(value, key, index) in person">
+					{{ index }}: {{ key }} - {{ value }}
+				</p>
+			</li>
+		</ul>
+	</div>
+
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
