@@ -3,11 +3,20 @@
 }
 
 :root {
-    --BGCOLOR: rgb(144, 217, 144);
+    --BGCOLOR: #90d990;
     --FS: 1.5rem;
     --PADDING1: 0.5rem;
     --SHADOW: 0 6px 5px -5px gray;
     --RED-BORDER: 2px solid red;
+    /* chose maximum of the two values */
+    --SQUARE-SIZE: max(200px, 30vw);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color: white;
+        --BGCOLOR: rgb(3, 40, 3);
+    }
 }
 
 body {
@@ -21,10 +30,18 @@ body {
 .block {
     padding: var(--PADDING1);
     border: var(--RED-BORDER);
+    width: var(--SQUARE-SIZE);
+    height: var(--SQUARE-SIZE);
 }
 
 img {
-    display: box;
+    display: block;
     max-width: 300px;
+    height: auto;
     box-shadow: var(--SHADOW);
+    border: var(--RED-BORDER);
+}
+
+img:not([alt]) {
+    --RED-BORDER: 2px dashed red;
 }
