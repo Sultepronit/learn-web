@@ -10,5 +10,11 @@ const vm = Vue.createApp({
 				{ name: 'Amy', age: 33 }
 			]
 		};
+	}, 
+	methods: {
+		move() {
+			const first = this.people.shift();
+			this.people.push(first);
+		}
 	}
 }).mount('#app');

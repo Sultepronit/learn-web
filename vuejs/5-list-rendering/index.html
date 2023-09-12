@@ -32,6 +32,15 @@
 				</p>
 			</li>
 		</ul>
+
+		<hr />
+
+		<button @click="move">Move to Bottom</button>
+		<div v-for="person in people" :key="person.name">
+			<h3>{{ person.name }}</h3>
+			<p>{{ person.age }}</p>
+			<input type="text" />
+		</div>
 	</div>
 
 	<script src="https://unpkg.com/vue@3"></script>
