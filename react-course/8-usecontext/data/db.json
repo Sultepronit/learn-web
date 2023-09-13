@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "first",
+      "datetime": "29/07/2023",
+      "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      "id": 2,
+      "title": "Second post, now edited!",
+      "datetime": "August 29, 2023 9:48:45 AM",
+      "body": "Asperiores voluptate iusto natus obcaecati aliquam aperiam culpa perferendis repellat nam quaerat."
+    },
+    {
+      "id": 4,
+      "title": "Test post",
+      "datetime": "August 28, 2023 12:02:53 PM",
+      "body": "Here we go!"
+    },
+    {
+      "id": 5,
+      "title": "One more!",
+      "datetime": "August 29, 2023 9:49:54 AM",
+      "body": "What a good weather! It's summer, baby!"
+    }
+  ]
+}
