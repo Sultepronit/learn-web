@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Just Vue it!</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="vue.png">
+</head>
+
+<body>
+	<div id="app" v-cloak>
+		<h1>CSS Perspective Playground</h1>
+		<main>
+			<section class="settings">
+				<div class="settings-container">
+					<label>perspective: {{ perspective }}px;</label>
+					<input type="range" min="0" max="999" v-model="perspective">
+					<label>rotateX: {{ rotateX }}deg;</label>
+					<input type="range" min="-180" max="180" v-model="rotateX">
+					<label>rotateY: {{ rotateY }}deg;</label>
+					<input type="range" min="-180" max="180" v-model="rotateY">
+					<label>rotateZ: {{ rotateZ }}deg;</label>
+					<input type="range" min="-180" max="180" v-model="rotateZ">
+
+					<button @click="reset">Reset</button>
+					<button @click="copy">Copy</button>
+				</div>
+			</section>
+			<section class="output">
+				<div class="box-container">
+					<div class="box" :style="box"></div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<script src="https://unpkg.com/vue@3"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
