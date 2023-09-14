@@ -1,0 +1,75 @@
+* {
+    /* choses minimal of the two values */
+    font-size: min(2.5rem, 3vh);
+    /* choses the middle value as optimal, if it is not less than first one
+        or larger that last one */
+    font-size: clamp(1rem, 3vh, 2.5rem);
+}
+
+:root {
+    --BGCOLOR: #90d990;
+    --FS: min(3.5rem, 4vh);
+    --FS: clamp(3rem, 3vw, 3vh);
+    --PADDING1: 0.5rem;
+    --SHADOW: 0 6px 5px -5px gray;
+    --RED-BORDER: 2px solid red;
+    /* chose maximum of the two values */
+    --SQUARE-SIZE: max(200px, 30vw);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color: white;
+        --BGCOLOR: rgb(3, 40, 3);
+    }
+}
+
+body {
+    background: var(--BGCOLOR);
+}
+
+a {
+    color: green;
+}
+a:hover, a:focus {
+    filter: brightness(150%);
+    filter: hue-rotate(180deg);
+}
+
+.tooltip {
+    border-bottom: 1px dashed red;
+    position: relative;
+}
+
+.tooltip:hover::before {
+    content: attr(class);
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -1em;
+    background: yellow;
+    white-space: nowrap;
+    padding-inline: 0.4em;
+}
+
+.p1 {
+    font-size: var(--FS);
+}
+
+.block {
+    padding: var(--PADDING1);
+    border: var(--RED-BORDER);
+    width: var(--SQUARE-SIZE);
+    height: var(--SQUARE-SIZE);
+}
+
+img {
+    display: block;
+    max-width: 300px;
+    height: auto;
+    box-shadow: var(--SHADOW);
+    border: var(--RED-BORDER);
+}
+
+img:not([alt]) {
+    --RED-BORDER: 2px dashed red;
+}
