@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue it!</title>
+    <link rel="icon" href="vue.png" type="image/x-icon">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ msg }}</h1>
+        <section>
+            <div v-for="(card, index) in cards" :key="card.id">
+                <h2>{{ card.title }}</h2>
+                <p>{{ card.body }}</p>
+                <p v-if="card.accessed">{{ card.accessed }}</p>
+                <button @click="clicked(index)">click me</button>
+                <button @click="deleteMe(index)">delete me</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
