@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 // npm i date-fns -S
 import { format } from 'date-fns';
 import api from '../api/posts';
-import useWindowSize from '../hooks/useWindowSize';
 import useAxiosFetch from '../hooks/useAxiosFetch';
 
 const DataContext = createContext({});
@@ -15,7 +14,6 @@ const DataProvider = ({ children }) => {
     const [postTitle, setPostTitle] = useState('');
     const [postBody, setPostBody] = useState('');
     const navigate = useNavigate();
-    const { width } = useWindowSize();
 
     const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
 
@@ -80,7 +78,10 @@ const DataProvider = ({ children }) => {
 
     return (
         <DataContext.Provider value={{
-            width, search, setSearch, 
+            search, setSearch, 
+            searchResults, fetchError, isLoading,
+            handleSubmit, postTitle, setPostTitle, postBody, setPostBody,
+            posts, handleEdit, handleDelete
         }}>
             {children}
         </DataContext.Provider>

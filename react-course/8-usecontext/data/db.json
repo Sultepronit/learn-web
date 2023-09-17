@@ -1,12 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "first",
-      "datetime": "29/07/2023",
-      "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-    },
-    {
       "id": 2,
       "title": "Second post, now edited!",
       "datetime": "August 29, 2023 9:48:45 AM",
@@ -23,6 +17,12 @@
       "title": "One more!",
       "datetime": "August 29, 2023 9:49:54 AM",
       "body": "What a good weather! It's summer, baby!"
+    },
+    {
+      "id": 6,
+      "title": "Refactored editing",
+      "datetime": "September 17, 2023 12:55:31 PM",
+      "body": "Not so good.... And now?\n"
     }
   ]
 }
