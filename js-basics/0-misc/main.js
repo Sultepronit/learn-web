@@ -21,3 +21,25 @@ const timer0 = setInterval(() => {
     console.log(sec);
     if(sec % 10 === 0) clearInterval(timer0);
 }, 1000);
+
+//////////////////////////////////////////////
+
+const data = { name: 'Stefko' };
+const observedData = new Proxy(data, {
+	set(target, key, value) {
+        console.log(target); // {name: 'Stefko'}
+        console.log(key); // name
+        console.log(value); // Mihal
+		target[key] = value;
+		console.log(target); // {name: 'Mihal'}
+	}
+});
+console.log(observedData);
+try {
+    observedData.name = 'Mihal'; // TypeError: 'set' on proxy: trap returned falsish for property 'name' at main.js:39:23
+} catch (error) {
+    console.log(error);
+}
+
+console.log(observedData.name); // Mihal
+console.log(data.name); // Mihal
