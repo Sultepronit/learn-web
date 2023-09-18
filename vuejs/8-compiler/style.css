@@ -1,0 +1,21 @@
+* {
+    font-size: 1.2rem;
+   /*  margin: 0; */
+}
+
+input {
+    display: block;
+}
+
+.box-container {
+    background: yellow;
+    padding: 30px;
+    width: fit-content;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    background: green;
+}
