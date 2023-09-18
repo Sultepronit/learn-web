@@ -31,25 +31,6 @@ const DataProvider = ({ children }) => {
         setSearchResults(filteredResults.reverse());
     }, [posts, search]);
 
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-        const newPost = { id, title: postTitle, datetime, body: postBody };
-        try {
-            const response = await api.post('/posts', newPost);
-            //console.log(response);  
-            const allPosts = [ ...posts, newPost ];
-            setPosts(allPosts);
-            setPostTitle('');
-            setPostBody('');
-            navigate('/');
-        } catch(err) {
-            console.error(err);
-        }
-    }
-
     const handleEdit = async (id) => {
         const datetime = format(new Date(), 'MMMM dd, yyyy pp');
         const updatedPost = { id, title: postTitle, datetime, body: postBody };
@@ -80,8 +61,8 @@ const DataProvider = ({ children }) => {
         <DataContext.Provider value={{
             search, setSearch, 
             searchResults, fetchError, isLoading,
-            handleSubmit, postTitle, setPostTitle, postBody, setPostBody,
-            posts, handleEdit, handleDelete
+            postTitle, setPostTitle, postBody, setPostBody,
+            posts, setPosts, handleEdit, handleDelete
         }}>
             {children}
         </DataContext.Provider>
