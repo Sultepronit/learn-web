@@ -3,6 +3,7 @@
 // setInterval clearInterval
 // new Proxy()
 // tag function
+// this
 
 const fn = new Function(
     'a, b, c',
@@ -70,6 +71,7 @@ const obj1 = {
     }
 }
 obj1.showThis();
+// looks like now it is the only use of "this"
 
 var var1 = 'something...';
 function showThis() {
