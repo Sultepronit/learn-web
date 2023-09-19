@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 2.5rem;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+div {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: grid;
+    place-content: center;
+}
+
+div:first-child {
+    background: dodgerblue;
+    transform: translateX(50%); /* move element to the right, by it's 50% width */
+    transform: rotateX(40deg);
+    transform: scaleX(150%);
+    transform: skewX(-10deg);
+}
+
+div:nth-child(2) {
+    background: yellow;
+    transform: translateY(-2rem); /* move up */
+    transform: rotateY(140deg);
+    transform: scaleY(70%);
+    transform: skewY(10deg);
+}
+
+div:last-child {
+    background: limegreen;
+    transform: translate(-100px, -50px);
+    transform: rotateZ(45deg);
+    transform: rotate(45deg); /* doing the same thing as previous */
+    transform: scale(90%, 110%);
+    transform: skew(5deg, 5deg);
+}
