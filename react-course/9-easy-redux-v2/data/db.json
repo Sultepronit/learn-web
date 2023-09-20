@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "title": "Second post, now edited!",
+      "datetime": "August 29, 2023 9:48:45 AM",
+      "body": "Asperiores voluptate iusto natus obcaecati aliquam aperiam culpa perferendis repellat nam quaerat."
+    },
+    {
+      "id": 4,
+      "title": "Test post",
+      "datetime": "August 28, 2023 12:02:53 PM",
+      "body": "Here we go!"
+    },
+    {
+      "id": 5,
+      "title": "One more!",
+      "datetime": "August 29, 2023 9:49:54 AM",
+      "body": "What a good weather! It's summer, baby!"
+    },
+    {
+      "id": 6,
+      "title": "Refactored editing",
+      "datetime": "September 17, 2023 12:55:31 PM",
+      "body": "Not so good.... And now?\n"
+    },
+    {
+      "id": 8,
+      "title": "One more! & here!",
+      "datetime": "September 19, 2023 8:38:58 AM",
+      "body": "Here we go!\nOne more time!"
+    }
+  ]
+}
