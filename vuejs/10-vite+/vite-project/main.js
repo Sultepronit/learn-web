@@ -1,7 +1,8 @@
 // npm create vite$latest
 // npm install sass
+import './style.scss';
+// npm i autoprefixer --save-dev
 
-import './style.scss'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
