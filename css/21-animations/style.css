@@ -55,3 +55,17 @@ div:last-child {
     transform: scale(90%, 110%);
     transform: skew(5deg, 5deg);
 }
+
+div:hover {
+    background-color: blue;
+    transition-property: background-color, transform;
+    /* ease -- deafult, slows in the middle */
+    transition-timing-function: linear;
+    transition-duration: 2s, 3s;
+    transition-delay: 0.5s;
+    transition: all 2s ease-out 0.5s;
+}
+
+div:last-child:hover {
+    transform: rotate(180deg);
+}
