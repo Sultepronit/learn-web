@@ -1,0 +1,12 @@
+{
+    "rules": {
+        "quotes": [2, "single", { "avoidEscape": true }]               
+    },
+    "env": {
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2022,
+        "sourceType": "module"
+    }
+}

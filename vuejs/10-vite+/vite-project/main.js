@@ -2,6 +2,8 @@
 // npm install sass
 import './style.scss';
 // npm i autoprefixer --save-dev
+// npm i eslint
+// npm i vite-lugin-eslint
 
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
