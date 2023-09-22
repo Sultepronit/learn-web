@@ -104,7 +104,35 @@ echo '<br>'; var_dump((float) '75.4abd'); # float(75.4)
 echo '<br>'; var_dump((float) '75,4abd'); # float(75)
 echo '<br>'; var_dump((float) 't75,4abd'); # float(0)
 
+#################################
+echo '<br>----------------string----------------';
+$name = 'Stefko';
+echo "<br>{$name[0]}"; # S
+echo "<br>{$name[-1]}"; # o
+$name[-1] = 'O';
+echo "<br>{$name}"; # StefkO
+$name[10] = 'M';
+echo '<br>'; var_dump($name); # string(11) "StefkO M"
+echo "<br>[{$name[20]}]"; # []
 
+# Heredoc
+# acts like "" - can contain variables
+$heredoc = <<<TEXT
+line 1
+"Moe's"
+$name
+TEXT;
+echo "<br>{$heredoc}"; # line 1 "Moe's" StefkO M
+echo '<br>' . nl2br($heredoc); # line 1<br>...
 
+# Nowdoc
+# acts like '' - can not contain variables
+$nowdoc = <<<'TEXT'
+line 1
+"Moe's"
+$name
+TEXT;
+echo "<br>{$nowdoc}"; # line 1 "Moe's" $name
+echo '<br>' . nl2br($nowdoc); # line 1<br>...
 
-
+echo "<h1>-</h1><br>";
