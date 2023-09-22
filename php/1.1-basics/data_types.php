@@ -113,7 +113,7 @@ $name[-1] = 'O';
 echo "<br>{$name}"; # StefkO
 $name[10] = 'M';
 echo '<br>'; var_dump($name); # string(11) "StefkO M"
-echo "<br>[{$name[20]}]"; # []
+echo "<br>[{$name[20]}]"; # [] # + warning!
 
 # Heredoc
 # acts like "" - can contain variables
@@ -134,5 +134,27 @@ $name
 TEXT;
 echo "<br>{$nowdoc}"; # line 1 "Moe's" $name
 echo '<br>' . nl2br($nowdoc); # line 1<br>...
+
+#################################
+echo '<br>----------------null----------------';
+$x = null;
+echo "<br>$x";
+var_dump($x); # NULL
+echo '<br>' . gettype($x); # NULL
+echo '<br>' . is_null($x); # 1
+echo '<br>' . ($x === null); # 1
+
+###### little experiment
+function pl($arg) {
+    echo "<br> $arg";
+}
+######
+echo '<br>'; var_dump($noexist); # NULL # + warning!
+$y = 5;
+pl($y); # 5
+unset($y);
+pl('');
+var_dump($y); # NULL
+
 
 echo "<h1>-</h1><br>";
