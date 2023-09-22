@@ -1,14 +1,15 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <greeting></greeting>
 </template>
 
 <script>
+//import Greeting from '@/components/Greeting.vue';
+import Greeting from './components/Greeting.vue';
+
 export default {
   name: 'App',
-  data() {
-    return {
-      msg: 'Hello there!'
-    }
+  components: {
+    Greeting
   }
 }
 </script>
