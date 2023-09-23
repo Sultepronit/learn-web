@@ -1,16 +1,26 @@
 <template>
-  <p>Konnichiwa!</p>
-  <greeting></greeting>
+  <h3>Konnichiwa!</h3>
+  <greeting :age="age"></greeting>
+  <user :age="age"></user>
+
+  <button @click="age++">Update Age</button>
 </template>
 
 <script>
 //import Greeting from '@/components/Greeting.vue';
 import Greeting from './components/Greeting.vue';
+import User from './components/User.vue';
 
 export default {
   name: 'App',
   components: {
-    Greeting
+    Greeting,
+    User
+  }, 
+  data() {
+    return {
+      age: 20
+    }
   }
 }
 </script>
