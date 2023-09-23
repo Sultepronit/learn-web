@@ -1,5 +1,5 @@
 <template>
-    <h1>{{ msg }}</h1>
+    <p>{{ msg }}</p>
 </template>
 
 <script>
@@ -12,3 +12,15 @@
         }
     }
 </script>
+
+<style>
+p {
+    font-style: italic;
+}
+</style>
+
+<style scoped>
+p {
+    color: red;
+}
+</style>

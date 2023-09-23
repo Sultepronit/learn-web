@@ -1,4 +1,5 @@
 <template>
+  <p>Konnichiwa!</p>
   <greeting></greeting>
 </template>
 
