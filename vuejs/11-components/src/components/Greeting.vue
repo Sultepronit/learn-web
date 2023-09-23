@@ -19,8 +19,8 @@ p {
 }
 </style>
 
-<style scoped>
-p {
-    color: red;
+<style scoped lang="scss">
+p:hover {
+    color: darken(red, 15%);
 }
 </style>
