@@ -1,31 +1,26 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
-import api from './api/posts';
-import DataContext from './context/DataContext';
+import { useStoreState, useStoreActions } from 'easy-peasy';
 
 function NewPost() {
-  const {
-    posts, setPosts, postTitle, setPostTitle, postBody, setPostBody
-  } = useContext(DataContext);
   const navigate = useNavigate();
 
+  const posts = useStoreState(state => state.posts);
+  const postTitle = useStoreState(state => state.postTitle);
+  const postBody = useStoreState(state => state.postBody);
+
+  const savePost = useStoreActions(actions => actions.savePost);
+  const setPostTitle = useStoreActions(actions => actions.setPostTitle);
+  const setPostBody = useStoreActions(actions => actions.setPostBody);
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-    const newPost = { id, title: postTitle, datetime, body: postBody };
-    try {
-        const response = await api.post('/posts', newPost);
-        //console.log(response);  
-        const allPosts = [ ...posts, newPost ];
-        setPosts(allPosts);
-        setPostTitle('');
-        setPostBody('');
-        navigate('/');
-    } catch(err) {
-        console.error(err);
-    }
+      e.preventDefault();
+      const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+      const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+      const newPost = { id, title: postTitle, datetime, body: postBody };
+      console.log(newPost);
+      savePost(newPost);
+      navigate('/');
   } 
 
   return (

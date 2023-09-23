@@ -5,15 +5,14 @@ import { useStoreState, useStoreActions } from 'easy-peasy';
 function Nav() {
   const posts = useStoreState(state => state.posts);
   const search = useStoreState(state => state.search);
-  const setSearch = useStoreState(actions => actions.setSearch);
-  const setSearchResults = useStoreState(actions => actions.setSearchResults);
+  const setSearch = useStoreActions(actions => actions.setSearch);
+  const setSearchResults = useStoreActions(actions => actions.setSearchResults);
 
   useEffect(() => {
       const filteredResults = posts.filter(post => 
-      post.body.toLowerCase().includes(search.toLowerCase())
-      || post.title.toLowerCase().includes(search.toLowerCase())
+        post.body.toLowerCase().includes(search.toLowerCase())
+        || post.title.toLowerCase().includes(search.toLowerCase())
       );
-
       setSearchResults(filteredResults.reverse());
   }, [posts, search, setSearchResults]);
 
