@@ -8,7 +8,7 @@ function PostPage() {
   const getPostById = useStoreState(state => state.getPostById);
   const post = getPostById(id);
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     deletePost(id);
     navigate('/');
   }
