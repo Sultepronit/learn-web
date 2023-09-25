@@ -1,7 +1,11 @@
 <template>
   <h3>Konnichiwa!</h3>
   <greeting :age="age"></greeting>
-  <user :age="age"></user>
+  <user
+    :age="age"
+    @age-increment="age++"
+    @age-increment-args="incrementAgeBy"
+  ></user>
 
   <button @click="age++">Update Age</button>
 </template>
@@ -20,6 +24,11 @@ export default {
   data() {
     return {
       age: 20
+    }
+  },
+  methods: {
+    incrementAgeBy(num) {
+      this.age += num;
     }
   }
 }
