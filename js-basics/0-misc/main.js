@@ -4,6 +4,7 @@
 // new Proxy()
 // tag function
 // this
+// check data types
 
 const fn = new Function(
     'a, b, c',
@@ -98,3 +99,21 @@ const arrow = () => {
     // Node.js gives: {}, undefined, undefined
 }
 arrow();
+
+/////////////////////////////////////////////////
+// check data types
+
+const obj3 = { a: 'A', b: 'B', c: 'C' };
+const array1 = [1, 2, 3, 4, 5];
+function f1() {
+    console.log('function!');
+}
+
+console.log(obj3 instanceof Object); // true
+console.log(array1 instanceof Object); // true
+console.log(f1 instanceof Object); // true
+console.log(obj3 instanceof Array); // false
+console.log(array1 instanceof Array); // true
+console.log(typeof array1); // object
+console.log(f1 instanceof Function); // true
+console.log(typeof f1); // function
