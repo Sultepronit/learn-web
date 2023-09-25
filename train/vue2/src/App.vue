@@ -1,47 +1,36 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+import getData from '@/getdb.js';
+export default {
+  name: 'App',
+  data() {
+    return {
+      db: [],
+      index: 0,
+      kanji: ''
+    }
+  },
+  created() {
+    getData('kanji', 'A', 'F').then(response => {
+      this.db = response;
+      this.kanji2();
+    });
+  },
+  methods: {
+    kanji2() {
+      this.kanji = this.db[this.index++][0];
+    }
+  }
+}
+  
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <button @click="kanji2">next</button>
+  <!-- <h1>{{ db[index][0] }}</h1> -->
+  <h1>{{ kanji }}</h1>
+  <p v-for="card in db">{{ card }}</p>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
