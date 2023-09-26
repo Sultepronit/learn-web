@@ -9,16 +9,25 @@ export default {
       kanji: ''
     }
   },
-  created() {
-    getData('kanji', 'A', 'F').then(response => {
-      this.db = response;
-      this.kanji2();
-    });
-  },
   methods: {
     kanji2() {
       this.kanji = this.db[this.index++][0];
     }
+  },
+  beforeCreate() {
+    console.timeLog('tt', 'before create!');
+  },
+  created() {
+    console.timeLog('tt', 'created!');
+    getData('kanji', 'A', 'F').then(response => {
+      console.timeLog('tt', 'data!');
+      this.db = response;
+      this.kanji2();
+      console.timeLog('tt', 'send data!');
+    });
+  },
+  mounted() {
+    console.timeLog('tt', 'mounted!');
   }
 }
   
