@@ -14,21 +14,14 @@ export default {
       this.kanji = this.db[this.index++][0];
     }
   },
-  beforeCreate() {
-    console.timeLog('tt', 'before create!');
-  },
   created() {
     console.timeLog('tt', 'created!');
-    getData('kanji', 'A', 'F').then(response => {
-      console.timeLog('tt', 'data!');
+    getData('kanji', 'A', 'D').then(response => {
       this.db = response;
       this.kanji2();
-      console.timeLog('tt', 'send data!');
+      console.timeLog('tt', 'received data!');
     });
   },
-  mounted() {
-    console.timeLog('tt', 'mounted!');
-  }
 }
   
 </script>
