@@ -19,5 +19,11 @@
         <p>less than 100!</p>
     <?php endif ?>
 
+    <?php $i = 0 ?>
+    <?php while($i < 10): ?>
+        <?= $i++ ?>
+        <span> * </span>
+    <?php endwhile ?>
+
 </body>
 </html>
