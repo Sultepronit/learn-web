@@ -5,6 +5,7 @@
     :age="age"
     @age-increment="age++"
     @age-increment-args="incrementAgeBy"
+    :setAge="incrementAgeCB"
   ></user>
 
   <button @click="age++">Update Age</button>
@@ -28,6 +29,9 @@ export default {
   },
   methods: {
     incrementAgeBy(num) {
+      this.age += num;
+    },
+    incrementAgeCB(num) {
       this.age += num;
     }
   }

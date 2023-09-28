@@ -4,6 +4,7 @@
     <button @click="age++">Update Age?</button>
     <button @click="onClickAge">Update Age!</button>
     <button @click="onClickAge3">Update Age 3!</button>
+    <button @click="setAge(5)">Set another +5!</button>
     
 </template>
 
@@ -20,7 +21,8 @@ export default {
             validator(value) {
                 return value < 130;
             }
-        }
+        },
+        setAge: Function
     },
     emits: ['age-increment', 'age-increment-args'],
     methods: {
