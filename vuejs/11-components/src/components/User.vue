@@ -10,7 +10,18 @@
 <script>
 export default {
     name: 'User',
-    props: ['age'],
+    //props: ['age'],
+    props: {
+        age: {
+            //type: [Number, String]
+            type: Number,
+            //required: true
+            //default: 20
+            validator(value) {
+                return value < 130;
+            }
+        }
+    },
     emits: ['age-increment', 'age-increment-args'],
     methods: {
         onClickAge() {
