@@ -11,8 +11,8 @@
 <script>
 export default {
     name: 'User',
-    //props: ['age'],
-    props: {
+    props: ['age', 'setAge'],
+    /* props: {
         age: {
             //type: [Number, String]
             type: Number,
@@ -23,7 +23,7 @@ export default {
             }
         },
         setAge: Function
-    },
+    }, */
     emits: ['age-increment', 'age-increment-args'],
     methods: {
         onClickAge() {
