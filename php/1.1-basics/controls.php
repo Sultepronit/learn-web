@@ -129,3 +129,45 @@ switch(5) {
         echo 'something big!';
 } # 3-5
 
+echo '<br><br>------------------match------------------<br>';
+$result = match(2) {
+    0 => 'nothing',
+    1 => 'one',
+    2 => 'two',
+    3 => 'tree'
+};
+echo $result; # two
+
+echo '<br>';
+match(4) {
+    0 => print 'nothing',
+    1 => print 'one',
+    2 => print 'two',
+    3, 4, 5 => print 'something big'
+}; # something big
+
+echo '<br>';
+match(100) {
+    0 => print 'nothing',
+    1 => print 'one',
+    2 => print 'two',
+    3, 4, 5 => print 'something big',
+    default => print 'without this will be error!'
+}; # without this will be error!
+
+echo '<br>';
+switch('1') {
+    case 1:
+        echo "1 == '1'";
+} # 1 == '1'
+
+echo '<br>';
+match('1') {
+    1 => print "1 == '1'",
+    default => print "1 !== '1'"
+}; # 1 !== '1'
+
+echo '<br>';
+match(true) {
+    10 > 2 => print 'it works!'
+}; # it works!
