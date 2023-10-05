@@ -64,3 +64,37 @@ function returnMixed(): mixed {
     return [1, 2, $random];
 }
 echo '<br>'; var_dump(returnMixed()); # string* | float(*) | array(3) {*}
+
+# sisce php 8
+function product(int|float $x, int|float $y) {
+    return $x * $y;
+}
+echo '<br>'; var_dump(product(2, 3.5));  # float(7)
+
+function args(string $a, string $b, string $c = 'C'): string {
+    return $a . $b . $c;
+}
+echo '<br>' . args('I ', 'love ', 'U'); # I love U
+echo '<br>' . args('aaa', 'bbb'); # aaabbbC
+//echo '<br>' . args('aaa'); # Error!
+echo '<br>' . args('A ', 'B ', 'C ', 'D '); # A B C
+
+# variadic functions, splat operator
+function sum(int|float $first, int|float ...$numbers): int|float {
+    echo $first, '<br>'; # 100
+    return(array_sum($numbers));
+}
+$arr1 = [5, 15, 20];
+echo '<br>', sum(100, 5, 33, 0.8, ...$arr1); # 78.8
+
+# named arguments
+function quotient(int|float $dividend, int|float $divisor): float {
+    return $dividend / $divisor;
+}
+echo '<br>', quotient(15, 50); # 0.3
+echo '<br>', quotient(divisor: 15, dividend: 50); # 3.3333333333333
+$arr2 = ['dividend' => 256, 'divisor' => 4];
+echo '<br>', quotient(...$arr2); # 64
+
+setcookie(name: 'smth', value: 'val', httponly: true);
+setcookie('smth2', 'val', httponly: true);
