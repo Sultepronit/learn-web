@@ -98,3 +98,35 @@ echo '<br>', quotient(...$arr2); # 64
 
 setcookie(name: 'smth', value: 'val', httponly: true);
 setcookie('smth2', 'val', httponly: true);
+
+# global scope
+$global = 'this is global var!';
+$global2 = 1754;
+# are awailable everywhere, including imported files
+function fn1() {
+    # but invisible form inside the function by defalut!
+    global $global; 
+    echo '<br>' . $global; # this is global var!
+    echo "<br>" . $GLOBALS['global2']; # 1754
+}
+fn1();
+
+function process() {
+    echo '<br> processing...';
+    return 145;
+}
+
+function handleStatic() {
+    # thiv var is created one time and is saved for the next
+    static $staticVar = null;
+
+    if($staticVar === null) {
+        $staticVar = process();
+    }
+
+    echo '<br>' . $staticVar;
+}
+
+handleStatic();
+handleStatic();
+handleStatic();
