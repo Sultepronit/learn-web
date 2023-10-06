@@ -5,6 +5,7 @@
 // tag function
 // this
 // check data types
+// Object.fromEntries()
 
 const fn = new Function(
     'a, b, c',
@@ -117,3 +118,13 @@ console.log(array1 instanceof Array); // true
 console.log(typeof array1); // object
 console.log(f1 instanceof Function); // true
 console.log(typeof f1); // function
+
+////////////////////////////////////////////////////////////////
+// Object.fromEntries()
+const arr1 = [
+    ['a', 10],
+    ['b', 100],
+    ['f', () => a + b]
+];
+const obj4 = Object.fromEntries(arr1);
+console.log(obj4); // {a: 10, b: 100, f: ƒ}
