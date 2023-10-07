@@ -130,3 +130,74 @@ function handleStatic() {
 handleStatic();
 handleStatic();
 handleStatic();
+
+# variable functions
+function pl($arg) {
+    echo "<br> $arg";
+}
+$vfn1 = 'pl';
+$vfn1('variable function!'); # variable function!
+$nothing = 145;
+echo '<br>', is_callable($vfn1); # 1
+echo '<br>:', is_callable($nothing); # :
+
+# anonimous functions
+# can be assigned to variables, returned, or used as arguments
+$anvar = function() {
+    echo '<br> anominus function assigned to variable!';
+};
+
+$anvar(); # anonymous function assigned to variable!
+
+# closure can be used with anonimous functions
+# it works like another parameter - you get a acopy of it
+# at a moment of function creation!!!
+$smth = 456;
+$anvar2 = function() use($smth) {
+    $smth += 100;
+    echo "<br> $smth";
+};
+$anvar2(); # 556
+echo "<br>", ++$smth; # 457
+$anvar2(); # 556
+
+# you though can create a reference to actual variable
+$anvar3 = function() use(&$smth) {
+    $smth += 50;
+    echo "<br> $smth";
+};
+$anvar3(); # 507
+echo "<br>", ++$smth; # 508
+$anvar3(); # 558
+
+# type of return:
+$anvar4 = function() use($smth): int|float {
+    return $smth + random_int(1, 100);
+};
+echo "<br>", $anvar4(); # (558+)
+
+# callbacks: anonymous functions, callable variables,
+# functions, with names represented as string
+$arr3 = [1, 2, 3, 4];
+$arr6 = array_map(function($e) {
+    return $e * 2;
+}, $arr3);
+echo '<br>'; print_r($arr6); # Array ( [0] => 2 [1] => 4 [2] => 6 [3] => 8 )
+
+function byThree($arg) {
+    return $arg * 3;
+}
+
+$arr9 = array_map('byThree', $arr3);
+echo '<br>'; print_r($arr9); # Array ( [0] => 3 [1] => 6 [2] => 9 [3] => 12 )
+
+# arrow functions
+# since PHP 7.4
+$arr10 = array_map(fn($e) => $e * $e, $arr3);
+echo '<br>'; print_r($arr10); # Array ( [0] => 1 [1] => 4 [2] => 9 [3] => 16 )
+
+# arrow functions can directly get copies of global variables
+$num = 222;
+$arvar1 = fn() => $num/=3;
+echo '<br>', $arvar1(); # 74
+echo "<br> $num"; # 222
