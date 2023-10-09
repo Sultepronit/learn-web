@@ -1,47 +1,36 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue';
+
+const text1 = ref('some text!');
+const text2 = ref('This text is <u><i>formatted</u></i>');
+const p1class = ref('red');
+//const p2class = ref('blue');
+const p2class = 'blue'; //at this point don't know what the ref() does
+const p3classId = {
+  id: 'third-p',
+  class: 'green'
+}
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>Hello there!</h1>
+  <p v-bind:class="p1class">{{ text1 }}</p>
+  <p :class="p2class" v-html="text2" />
+  <p v-bind="p3classId">Another text</p>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  .red {
+    color: red;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  .blue {
+    color: blue;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .green {
+    color: green;
   }
-}
+  #third-p {
+    font-size: 1.5rem;
+  }
 </style>
