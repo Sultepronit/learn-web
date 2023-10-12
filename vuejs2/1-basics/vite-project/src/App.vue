@@ -10,6 +10,14 @@ const p3classId = {
   id: 'third-p',
   class: 'green'
 }
+const show = true;
+const url = 'https://google.com';
+const hrefPlaceholder = 'href';
+const clickPlaceholder = 'click';
+
+function clicked() {
+  console.log('Here we go!');
+}
 
 </script>
 
@@ -18,6 +26,16 @@ const p3classId = {
   <p v-bind:class="p1class">{{ text1 }}</p>
   <p :class="p2class" v-html="text2" />
   <p v-bind="p3classId">Another text</p>
+  <p v-if="show">This message is shown</p>
+  <p v-if="!show">And this one - no</p>
+  <a v-bind:href="url" target="_blank">google</a>
+  <p>
+    <a :[hrefPlaceholder]="url">more google!</a>
+  </p>
+  <button v-on:[clickPlaceholder]="clicked()">
+    Click me!
+  </button>
+  
 </template>
 
 <style scoped>
