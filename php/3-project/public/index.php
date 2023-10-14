@@ -17,5 +17,8 @@ echo '<br>'; */
 $transactions = readCSVFiles($fileNames, FILES_PATH);
 /* echo '<pre>';
 print_r($transactions); */
+$formatted = formatTableData($transactions);
 
 include VIEWS_PATH . 'transactions.php';
+
+

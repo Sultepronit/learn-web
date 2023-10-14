@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Transactions</title>
+        <title>formatted</title>
         <style>
             table {
                 width: 100%;
@@ -21,6 +21,14 @@
             tfoot tr th {
                 text-align: right;
             }
+
+            .green {
+                color: green;
+            }
+
+            .red {
+                color: red;
+            }
         </style>
     </head>
     <body>
@@ -35,6 +43,22 @@
             </thead>
             <tbody>
                 <!-- YOUR CODE -->
+                <!-- <?= 'hello' ?> -->
+                <!-- <tr>
+                    <td>
+                        <?= 'hello' ?>
+                    </td>
+                </tr> -->
+
+                <?php foreach($formatted as $row):?>
+                    <tr>
+                        <?php foreach($row as $cell): ?>
+                            <td>
+                                <?= $cell ?>
+                            </td>
+                        <?php endforeach ?>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
             <tfoot>
                 <tr>

@@ -31,3 +31,33 @@ function readCSVFiles(array $fileNames, string $path): array {
     }
     return $transactions;
 }
+
+function formatTableData(array $rawData): array {
+    $formatted = [];
+    foreach($rawData as $transaction) {
+        if((int) $transaction[0] === 0) continue;
+        $row = [];
+
+        $time = strtotime($transaction[0]);
+        //echo $time, '<br>';
+        $date = date('M j, Y', $time);
+        //echo $date, '<br>';
+        //$row[] = $transaction[0];
+        $row[] = $date;
+
+        $row[] = $transaction[1];
+        $row[] = $transaction[2];
+
+        if($transaction[3][0] === '$') {
+            //echo 'green ';
+            $row[] = "<span class='green'>{$transaction[3]}</span>";
+        } else if($transaction[3][0] === '-' && $transaction[3][1] === '$') {
+            //echo 'red ';
+            $row[] = "<span class='red'>{$transaction[3]}</span>";
+        }
+        //echo $transaction[3], '<br>';
+        //print_r($row); echo '<br>';
+        $formatted[] = $row;
+    }
+    return $formatted;
+}
