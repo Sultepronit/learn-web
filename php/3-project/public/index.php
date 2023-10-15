@@ -8,16 +8,17 @@ define('APP_PATH', $root . 'app' . DIRECTORY_SEPARATOR);
 define('FILES_PATH', $root . 'transaction_files' . DIRECTORY_SEPARATOR);
 define('VIEWS_PATH', $root . 'views' . DIRECTORY_SEPARATOR);
 
-/* YOUR CODE (Instructions in README.md) */
 include APP_PATH . 'App.php';
 
 $fileNames = getTransactionFiles(FILES_PATH);
-/* print_r($fileNames);
-echo '<br>'; */
+
 $transactions = readCSVFiles($fileNames, FILES_PATH);
-/* echo '<pre>';
-print_r($transactions); */
-$formatted = formatTableData($transactions);
+
+$parsedTransactions = parseTransactions($transactions);
+
+$total = getTotals($parsedTransactions);
+
+include APP_PATH . 'helpers.php';
 
 include VIEWS_PATH . 'transactions.php';
 

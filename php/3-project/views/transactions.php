@@ -43,35 +43,35 @@
             </thead>
             <tbody>
                 <!-- YOUR CODE -->
-                <!-- <?= 'hello' ?> -->
-                <!-- <tr>
-                    <td>
-                        <?= 'hello' ?>
-                    </td>
-                </tr> -->
-
-                <?php foreach($formatted as $row):?>
+                <?php foreach($parsedTransactions as $row):?>
                     <tr>
-                        <?php foreach($row as $cell): ?>
-                            <td>
-                                <?= $cell ?>
-                            </td>
-                        <?php endforeach ?>
+                        <td>
+                            <?= formatDate($row['time']) ?>
+                        </td>
+                        <td>
+                            <?= $row['check'] ?>
+                        </td>
+                        <td>
+                            <?= $row['description'] ?>
+                        </td>
+                        <td>
+                            <?= formatAndStyleAmount($row['amount']) ?>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
             <tfoot>
                 <tr>
                     <th colspan="3">Total Income:</th>
-                    <td><!-- YOUR CODE --></td>
+                    <td><?= formatAmount($total['income']) ?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Total Expense:</th>
-                    <td><!-- YOUR CODE --></td>
+                    <td><?= formatAmount($total['expense']) ?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Net Total:</th>
-                    <td><!-- YOUR CODE --></td>
+                    <td><?= formatAmount($total['net']) ?></td>
                 </tr>
             </tfoot>
         </table>
