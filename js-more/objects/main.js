@@ -1,4 +1,4 @@
-//'use strict';
+'use strict';
 // Object.fromEntries()
 const arr1 = [
     ['a', 10],
@@ -78,14 +78,92 @@ const obj5 = Object.create(Object.prototype, {
     }
 });
 console.log(obj5); // {a: 1, b: 2, f: ƒ}
-obj5.a = 11; // in scrict mode would be Uncaught TypeError
-// but either way, result doesn't change!
+try {
+    obj5.a = 11;
+} catch (error) {
+    console.warn(error); // TypeError: Cannot assign to read only property 'a' of object '#<Object>'
+}
+// without strict mode result silently doesn't change
+
 obj5.b = 22;
 console.log(obj5); // {a: 1, b: 22, f: ƒ}
-for(key in obj5) {
+for(const key in obj5) {
     console.log(key);
 } // b / f
 
 const propertyDescriptors = Object.getOwnPropertyDescriptors(obj5);
 console.log(propertyDescriptors); // {a: {…}, b: {…}, f: {…}}
 console.log(propertyDescriptors.a); // {value: 1, writable: false, enumerable: false, configurable: false}
+
+/////////////////////////////////////////////////////////////////////////
+// get/set/functions
+const obj6 = {
+    _a: 5,
+    f: function() { console.log(this._a) },
+    f2: () => console.log(this._a),
+    f3: function() { console.log(_a) },
+    set a(val) {
+        if(typeof val === 'number') {
+            console.log(`a updated form ${this._a} to ${val}`);
+            this._a = val;
+        } else {
+            console.log(val + ' is not a number!');
+            //throw new TypeError(val + ' is not a number!');
+        }
+    },
+    get a() {
+        console.log('get _a!');
+        return this._a;
+    }
+}
+
+console.log(obj6.a);
+// get _a!
+// 5
+obj6.a = 'six'; // six is not a number!
+console.log(obj6); // {_a: 5, f: ƒ, f2: ƒ, f3: ƒ}
+obj6.a = 9; // _a updated form 5 to 9
+console.log(obj6); // {_a: 9, f: ƒ, f2: ƒ, f3: ƒ}
+
+obj6._a = 'sixteen';
+console.log(obj6); // {_a: 'sixteen', f: ƒ, f2: ƒ, f3: ƒ}
+
+obj6.f(); // sixteen
+obj6.f2(); // undefined
+try {
+    obj6.f3(); 
+} catch (error) {
+    console.warn(error); // ReferenceError: _a is not defined
+}
+
+///////////////////////////////////////////////////////////////
+// Object.create() & get/set
+const obj7 = Object.create(Object.prototype, {
+    a: {
+        // value: 'A', // TypeError: Cannot both specify accessors and a value or writable attribute
+        set: function(val) {
+            if(typeof val === 'string') {
+                console.log(`a updated form ${this._a} to ${val}`);
+                this._a = val;
+            } else {
+                console.warn(val + ' is not a string!');
+            }  
+        },
+        get: function() {
+            console.log('get a!');
+            return this._a;
+        }
+    }
+});
+obj7.a = 'A'; // a updated form undefined to A
+console.log(obj7); // {_a: 'A'}
+console.log(obj7.a);
+// get a!
+// A
+obj7.a = 77; // 77 is not a string!
+console.log(obj7._a); // A
+obj7._a = 77;
+console.log(obj7._a); // 77
+console.log(obj7.a);
+// get a!
+// 77
