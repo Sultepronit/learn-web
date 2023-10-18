@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { reactive } from 'vue';
 
 const text1 = ref('some text!');
 const text2 = ref('This text is <u><i>formatted</u></i>');
@@ -33,8 +34,17 @@ function changeColor() {
   }
 }
 
-const count0 = 0;
-const count1 = ref(0);
+const count = ref(0);
+
+const countWrapper = { count: 0 };
+const state = reactive(countWrapper);
+console.log(state); // Proxy(Object) {count: 0}
+// this way we made previously created countWrapper object reactive
+
+const item1 = { id: ref(17) };
+const { id: item1Id } = item1;
+
+const item2 = ref({ id: 22 });
 
 </script>
 
@@ -57,11 +67,18 @@ const count1 = ref(0);
     Change me!
   </button>
 
-  <p>{{ count0 }}</p>
-  <button @click="count0++">increment?</button>
+  <p>{{ count }}</p>
+  <button @click="count++">increment!</button>
 
-  <p>{{ count1 }}</p>
-  <button @click="count1++">increment!</button>
+  <p>{{ state.count }}</p>
+  <button @click="state.count++">increment!</button>
+
+  <p>{{ item1.id }}</p> <!-- 17 -->
+  <p>{{ item1.id + 1 }}</p> <!-- [object Object]1 -->
+  <p>{{ item1Id + 1 }}</p> <!-- 18 -->
+
+  <p>{{ item2.id }}</p> <!-- 22 -->
+  <p>{{ item2.id + 1 }}</p> <!-- 23 -->
   
 </template>
 
