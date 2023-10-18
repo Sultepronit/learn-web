@@ -102,6 +102,21 @@ var_dump((object) null);
 # object(stdClass)#5 (0) { }
 echo '<br>';
 
-echo 'The end! <br>';
-# Destruct unneeded
+################################################
+# constructor property promotion, since php 8
 
+require_once 'Promotion.php';
+
+$promoted = new Promotion(44, 77);
+# default val
+# default val
+var_dump($promoted);
+# object(Promotion)#5 (4) { ["str":"Promotion":private]=> string(43) "constructor property promotion, since php 8" ["int":"Promotion":private]=> int(44) ["flo":"Promotion":private]=> float(77) ["def":"Promotion":private]=> string(11) "default val" }
+echo '<br>';
+
+
+
+
+
+echo '<br> The end! <br>';
+# Destruct unneeded
