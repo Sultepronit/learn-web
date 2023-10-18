@@ -104,7 +104,6 @@ echo '<br>';
 
 ################################################
 # constructor property promotion, since php 8
-
 require_once 'Promotion.php';
 
 $promoted = new Promotion(44, 77);
@@ -114,6 +113,19 @@ var_dump($promoted);
 # object(Promotion)#5 (4) { ["str":"Promotion":private]=> string(43) "constructor property promotion, since php 8" ["int":"Promotion":private]=> int(44) ["flo":"Promotion":private]=> float(77) ["def":"Promotion":private]=> string(11) "default val" }
 echo '<br>';
 
+##################################################
+# nested classes & nullsafe operator
+require_once 'Nest.php';
+
+$nest = new Nest();
+var_dump($nest);
+# object(Nest)#6 (2) { ["a"]=> string(2) "A!" ["nestedNull"]=> NULL }
+echo '<br>';
+
+//echo $nest->nestedNull->d;
+# Warning: Attempt to read property "d" on null
+echo "[ {$nest->nestedNull?->d} ] <br>"; # [ ]
+echo "[ {$nest->nested?->d} ] <br>"; # [ D! ]
 
 
 
