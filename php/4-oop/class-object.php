@@ -127,7 +127,44 @@ echo '<br>';
 echo "[ {$nest->nestedNull?->d} ] <br>"; # [ ]
 echo "[ {$nest->nested?->d} ] <br>"; # [ D! ]
 
+#############################################
+# namespaces
 
+require_once './dir1/Tween.php';
+require_once './dir2/Tween.php';
+require_once './dir1/Nested.php';
+
+$tween1 = new dir1\Tween();
+var_dump($tween1); # object(dir1\Tween)#8 (0) { }
+echo '<br>';
+$tween1->useExplode();
+
+use dir2\Tween;
+$tween2 = new Tween();
+var_dump($tween2); # object(dir2\Tween)#8 (0) { }
+echo '<br>';
+$tween2->useExplode();
+$tween2->useGlobalExplode();
+
+//use dir1\Tween;
+# we can use use only once with the same classname!
+use dir1\Tween as Tween1;
+$tween1_2 = new Tween1();
+
+# several classes from the same namespace
+use dir1\{Tween as Tween1_, Nested};
+
+/*
+we can use:
+use dir1\dir2\dir3\Class;
+new Class();
+or:
+use dir1\dir2\dir3;
+new dir3\Class();
+or: 
+use dri1\dir2\dir3 as dirs;
+new dirs\Class();
+*/
 
 
 echo '<br> The end! <br>';
