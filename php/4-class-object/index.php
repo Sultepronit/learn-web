@@ -166,6 +166,39 @@ use dri1\dir2\dir3 as dirs;
 new dirs\Class();
 */
 
+########################################################
+# constants
+
+const CONSTANT1 = '"const" outside of a class in PHP may result in a parse error';
+echo CONSTANT1, '<br>';
+
+require_once 'Constants.php';
+echo Constants::CONST_ONE, '<br>'; # This is constant!
+
+$consts1 = new Constants();
+echo $consts1::CONST_ONE, '<br>'; # This is constant!
+
+$consts1->printPrivate();
+# This is private territory!
+# This is private territory!
+
+# magic constants:
+echo $consts1::class, '<br>'; # Constants
+
+# using class constants as enum:
+require_once 'EnumLike.php';
+require_once 'Enums/Status.php';
+use Enums\Status;
+$object4 = new EnumLike();
+var_dump($object4);
+# object(EnumLike)#18 (1) { ["status":"EnumLike":private]=> string(7) "pending" }
+echo '<br>';
+//$object4->setStatus(EnumLike::STATUS_PAID);
+$object4->setStatus(Status::PAID);
+var_dump($object4);
+echo '<br>';
+# object(EnumLike)#18 (1) { ["status":"EnumLike":private]=> string(4) "paid" }
+
 
 echo '<br> The end! <br>';
 # Destruct unneeded
