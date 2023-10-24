@@ -1,0 +1,13 @@
+.table {
+    display: flex;
+}
+
+.mainTable {
+    border: 1px solid;
+}
+
+td {
+    /* border: 1px solid; */
+    margin: 0;
+    padding: 0 0.4rem;
+}
