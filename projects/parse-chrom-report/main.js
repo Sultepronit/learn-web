@@ -201,7 +201,7 @@ function process() {
             continue;
         }
         if(words[0] === 'wobbe,' && words[1] === 'МДж/м3') {
-            results[19] = ['--', ...(valForm2(words, 2, 2))];
+            results[19] = ['!!!', ...(valForm2(words, 2, 2))];
             continue;
         }
     }
@@ -210,12 +210,17 @@ function process() {
     let mainColumns = '<table><tbody>';
     for(let line of results) {
         console.log(line);
-        nameColumns += `<tr><td>${line[0]}</td><tr>`;
-        mainColumns += `<tr><td>${line[1]}</td><td>${line[2]}</td><tr>`;
+        nameColumns += `<tr><td>${line[0]}</td></tr>`;
+        if(line[0] === '!!!') {
+            document.querySelector('.lastRow').innerHTML
+                = `<span>${line[1]}</span><span>${line[2]}</span>`;
+            break;
+        }
+        mainColumns += `<tr><td>${line[1]}</td><td>${line[2]}</td></tr>`;
     }
     nameColumns += '</tbody></table>';
     mainColumns += '</tbody></table>';
     document.querySelector('.nameTable').innerHTML = nameColumns;
-    document.querySelector('.mainTable').innerHTML = mainColumns;
+    document.querySelector('.editTable').innerHTML = mainColumns;
 }
 process();

@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <textarea id="the-input" cols="80" rows="10"></textarea>
-    <button onclick="process()">process</button>
+    <textarea id="the-input" cols="90" rows="10"></textarea>
+    <button onclick="process()">Обробити</button>
     <div class="table">
         <div class="nameTable"></div>
-        <div class="mainTable" contenteditable></div>
+        <div class="mainTable">
+            <div class="editTable" contenteditable></div>
+            <div class="lastRow"></div>
+        </div>
     </div>
 
     <script src="main.js"></script>
