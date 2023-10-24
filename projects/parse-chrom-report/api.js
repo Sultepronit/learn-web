@@ -24,5 +24,19 @@ function postData(data) {
 		alert(error);
 	}
 }
-
 //postData([['A4', 'Hello there!']]);
+
+function getData() {
+    const url = `${urlBase}?sheet=${sheet}&firstCol=A&lastCol=A`;
+	try {
+		fetch(url).then(function(resp) {
+            resp.json().then(function(data) {
+                //console.log(data[0][0]);
+                theInput.value = data[0][0];
+                process(data[0][0]);
+            })
+        });
+	} catch(err) {
+		alert(err);
+	}
+}

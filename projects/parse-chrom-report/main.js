@@ -2,18 +2,25 @@
 
 const theInput = document.querySelector("#the-input");
 
-function process() {
-    console.log('Do it!');
-    let text = theInput.value;
-    //text = temp;
-    //console.log(text);
+function processLast() {
+    getData();
+    theInput.readOnly = true;
+}
+
+function process(text) {
     text = text.replace('Диоксид углерода', 'Диоксид-углерода');
-    text = text.replaceAll('Объемная теплота сгорания высшая', 'higher');
-    text = text.replaceAll('Объемная теплота сгорания низшая', 'lower');
-    text = text.replaceAll('Число Воббе высшее', 'wobbe');
+    //text = text.replaceAll('Объемная теплота сгорания высшая', 'higher');
+    text = text.replace('Объемная теплота сгорания высшая', 'higher');
+    text = text.replace('Объемная теплота сгорания высшая', 'higher');
+    //text = text.replaceAll('Объемная теплота сгорания низшая', 'lower');
+    text = text.replace('Объемная теплота сгорания низшая', 'lower');
+    text = text.replace('Объемная теплота сгорания низшая', 'lower');
+    //text = text.replaceAll('Число Воббе высшее', 'wobbe');
+    text = text.replace('Число Воббе высшее', 'wobbe');
+    text = text.replace('Число Воббе высшее', 'wobbe');
 
     const lines = text.split('\n');
-    console.log(lines);
+    //console.log(lines);
 
     function commDot(inp) {
         return inp.replace(',', '.');
@@ -129,7 +136,6 @@ function process() {
     let nameColumns = '<table><tbody>';
     let mainColumns = '<table><tbody>';
     for(let line of results) {
-        console.log(line);
         nameColumns += `<tr><td>${line[0]}</td></tr>`;
         if(line[0] === '!!!') {
             document.querySelector('.lastRow').innerHTML
@@ -143,4 +149,3 @@ function process() {
     document.querySelector('.nameTable').innerHTML = nameColumns;
     document.querySelector('.editTable').innerHTML = mainColumns;
 }
-//process();

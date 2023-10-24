@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <textarea id="the-input" cols="90" rows="10"></textarea>
     <button onclick="sendRawData()">Надіслати</button>
-    <button onclick="process()">Обробити</button>
+    <button onclick="processLast()">Обробити останній</button>
+    <textarea id="the-input" cols="110" rows="20"></textarea>
     <div class="table">
         <div class="nameTable"></div>
         <div class="mainTable">
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <script src="main-.js"></script>
+    <script src="main.js"></script>
     <script src="api.js"></script>
     <script src="sendRawData.js"></script>
 </body>
