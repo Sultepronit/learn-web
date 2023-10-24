@@ -1,6 +1,9 @@
-const urlBase = 'https://script.google.com/macros/s/AKfycbxSifZzh0G8Y95_mSfnLsErqS8RUrx73IgJmQvl1Oq81e08p_YeSKDrvoWo_MvljP0sBw/exec';
+"use strict";
 
-function postData(sheet, data) {
+const urlBase = 'https://script.google.com/macros/s/AKfycbxSifZzh0G8Y95_mSfnLsErqS8RUrx73IgJmQvl1Oq81e08p_YeSKDrvoWo_MvljP0sBw/exec';
+const sheet = 'kg';
+
+function postData(data) {
 	console.log('saving...');
 	const url = urlBase + '?sheet=' + sheet;
 	const params = {
@@ -22,5 +25,4 @@ function postData(sheet, data) {
 	}
 }
 
-const sheet = 'kg';
-postData(sheet, [['A4', 'Hello there!']]);
+//postData([['A4', 'Hello there!']]);
