@@ -135,7 +135,7 @@ function process(text) {
 
     let nameColumns = '<table><tbody>';
     let mainColumns = '<table><tbody>';
-    for(let line of results) {
+    for(const line of results) {
         nameColumns += `<tr><td>${line[0]}</td></tr>`;
         if(line[0] === '!!!') {
             document.querySelector('.lastRow').innerHTML
@@ -148,4 +148,22 @@ function process(text) {
     mainColumns += '</tbody></table>';
     document.querySelector('.nameTable').innerHTML = nameColumns;
     document.querySelector('.editTable').innerHTML = mainColumns;
+
+    const archList = [];
+    for(let i = 0; i < 18; i++) {
+        console.log(i);
+        console.log(results[i]);
+        if(i === 14) {
+            archList.push( String(results[19][1]).replace('.', ',') );
+            continue;
+        }
+        if(i === 16) continue;
+        archList.push( String(results[i][1]).replace('.', ',') );
+    }
+
+    let archive = '';
+    for(const item of archList) {
+        archive += `<tr><td>${item}</td></tr>`;
+    }
+    document.querySelector('#archive-tbody').innerHTML = archive;
 }

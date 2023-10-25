@@ -9,13 +9,20 @@
 <body>
     <button onclick="sendRawData()">Надіслати</button>
     <button onclick="processLast()">Обробити останній</button>
-    <textarea id="the-input" cols="110" rows="20"></textarea>
-    <div class="table">
-        <div class="nameTable"></div>
-        <div class="mainTable">
-            <div class="editTable" contenteditable></div>
-            <div class="lastRow"></div>
+    <div class="blocks">
+        <textarea id="the-input" cols="90" rows="40"></textarea>
+
+        <div class="table">
+            <div class="nameTable"></div>
+            <div class="mainTable">
+                <div class="editTable" contenteditable></div>
+                <div class="lastRow"></div>
+            </div>
         </div>
+
+        <table class="for-the-archive">
+            <tbody id="archive-tbody" contenteditable></tbody>
+        </table>
     </div>
 
     <script src="main.js"></script>

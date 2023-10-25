@@ -16,6 +16,7 @@ function postData(data) {
         fetch(url, params).then(function(resp){
             console.log('Success!');
             console.log(resp);
+			alert('Успішно!');
         });
 		//const report = await resp.json();
 		/* console.log('saved:');

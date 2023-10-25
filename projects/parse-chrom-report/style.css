@@ -5,16 +5,32 @@ button {
     margin: 0 0.4rem 0.8rem 0;
 }
 
-.table {
-    margin-top: 0.5rem;
+.blocks {
     display: flex;
-    border: 1px solid;
-    width: max-content;
 }
 
+#the-input {
+    display: block;
+    height: 90vh;
+}
+
+.table {
+    /* margin-top: 0.5rem; */
+    margin-left: 1rem;
+    border: 1px solid;
+    width: max-content;
+    height: max-content;
+    display: flex;
+}
 
 .mainTable {
     border-left: 1px solid;
+}
+
+.for-the-archive {
+    height: max-content;
+    margin-left: 1rem;
+    border: 1px solid;
 }
 
 td {
