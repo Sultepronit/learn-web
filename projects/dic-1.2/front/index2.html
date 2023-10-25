@@ -146,9 +146,15 @@ const handleLingvo = async (encoded) => {
 
 const handleGlosbe = async (encoded) => {
 	//const urlGO = 'https://uk.glosbe.com/en/uk/';
-	const urlGO = 'http://lihand.infinityfreeapp.com/?dic=glosbe&word=';
+	const urlGO = 'https://lihand.infinityfreeapp.com/?dic=glosbe&word=';
 	//const urlGO = 'http://localhost:5050/?dic=glosbe&word=';
-	const resp0 = await fetch(urlGO + encoded);
+	const resp0 = await fetch(urlGO + encoded, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		credentials: 'include'
+	});
 	console.log(resp0);
 	const data0 = await resp0.text();
 	console.log(data0);
