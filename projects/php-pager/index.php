@@ -34,7 +34,9 @@ echo '<br>';
 echo $_GET['word'];
 echo '<br>'; */
 
-//$url ='';
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET');
+
 if($_GET['dic'] === 'glosbe') {
     $url = 'https://uk.glosbe.com/en/uk/' . $_GET['word'];
 } else if($_GET['dic'] === 'lingvo') {
