@@ -150,10 +150,10 @@ const handleGlosbe = async (encoded) => {
 	//const urlGO = 'http://localhost:5050/?dic=glosbe&word=';
 	const resp0 = await fetch(urlGO + encoded, {
 		method: 'GET',
-		headers: {
+		/* headers: {
 			'Content-Type': 'application/json'
-		},
-		credentials: 'include'
+		}, */
+		/* credentials: 'include' */
 	});
 	console.log(resp0);
 	const data0 = await resp0.text();
