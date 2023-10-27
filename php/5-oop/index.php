@@ -50,3 +50,23 @@ echo '<br>';
 #cli: composer dump-autoload -o
 #> Generated optimized autoload files containing 160 classes
 # It should be done for every new class of course
+
+###################################################################
+# OOP
+# Encapsulation
+# Reflection API to brake encapsulation!
+use App\Class3;
+$class31 = new Class3(15);
+var_dump($class31);
+# object(App\Class3)#27 (1) { ["priv1":"App\Class3":private]=> string(22) "This is private field!" }
+echo '<br>';
+
+$reflectedPriv1 = new ReflectionProperty(Class3::class, 'priv1');
+
+echo $reflectedPriv1->getValue($class31); # Privare field #15
+echo '<br>';
+
+$reflectedPriv1->setValue($class31, 'Owerwritten, though private!!!');
+var_dump($class31);
+# object(App\Class3)#27 (1) { ["priv1":"App\Class3":private]=> string(30) "Owerwritten, though private!!!" }
+echo '<br>';
