@@ -183,7 +183,7 @@ $consts1->printPrivate();
 # This is private territory!
 
 # magic constants:
-echo $consts1::class, '<br>'; # Constants
+echo $consts1::class, '<br>'; # Constants # class name
 
 # using class constants as enum:
 require_once 'EnumLike.php';
@@ -198,6 +198,20 @@ $object4->setStatus(Status::PAID);
 var_dump($object4);
 echo '<br>';
 # object(EnumLike)#18 (1) { ["status":"EnumLike":private]=> string(4) "paid" }
+
+########################################################
+# static fields
+
+echo Constants::$instanceCount, '<br>'; # 1
+$const2 = new Constants();
+echo $const2::$instanceCount, '<br>'; # 2
+
+# singleton pattern
+require_once 'Singleton.php';
+$singleton1 = Singleton::getInstance(null);
+var_dump($singleton1); # object(Singleton)#20 (1) { ["param"]=> NULL }
+// $singleton2 = new Singleton(); # Uncaught Error: Call to private Singleton::__construct() ...
+
 
 
 echo '<br> The end! <br>';
