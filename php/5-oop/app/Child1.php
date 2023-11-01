@@ -33,6 +33,9 @@ class Child1 extends Parent1
     // public function printNext(int $arg) {} 
     # Declaration of App\Child1::printNext(int $arg) must be compatible with App\Parent1::printNext()
 
+    public function printNext(int $arg = 0) {}
+    # it is valid if all the new arguments have default values
+
     // public function finalMethod() {}
     # Cannot override final method App\Parent1::finalMethod()
 

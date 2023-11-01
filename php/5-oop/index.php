@@ -115,3 +115,8 @@ function useChild(App\Child1 $child) {
 # conposition example
 $nephew1 = new Nephew1($parent11);
 $nephew1->finalMethod(); # This method is final, and cannot be overridden!
+echo '<br>';
+
+$absImpl1 = new App\AbstractImpl1();
+echo $absImpl1->abstractMethod(), '<br>';
+# Now this method isn't abstract anymore
