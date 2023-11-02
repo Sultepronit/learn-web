@@ -9,6 +9,8 @@ class Parent1
     protected $protStr1 = 'This is parent\'s protected property';
     private $privStr1 = 'This is parent\'s private property';
 
+    public const CONST1 = 'This is parent\'s constant!';
+
     public function getAll()
     {
         echo $this->pubStr1, '<br>';

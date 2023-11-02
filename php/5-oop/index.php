@@ -101,9 +101,14 @@ function useParent(App\Parent1 $parent) {
     echo '<br>';
 }
 useParent($parent11);
-# object(App\Parent1)#29 (5) { ["pubStr1"]=> string(32) "This is parent's public property" ["protStr1":protected]=> string(35) "This is parent's protected property" ["privStr1":"App\Parent1":private]=> string(33) "This is parent's private property" ["protStr2":protected]=> string(10) "second one" ["protStr3":protected]=> string(9) "third one" }
+# object(App\Parent1)#29 (5) { ["pubStr1"]=> string(32) "This is parent's public property" ...
 useParent($child11);
-# object(App\Child1)#30 (6) { ["pubStr1"]=> string(31) "This is child's public property" ["protStr1":protected]=> string(34) "This is child's protected property" ["privStr1":"App\Parent1":private]=> string(33) "This is parent's private property" ["protStr2":protected]=> string(28) "Second one, child's edition!" ["protStr3":protected]=> string(9) "third one" ["privStr1":"App\Child1":private]=> string(32) "This is child's private property" }
+# object(App\Child1)#30 (6) { ["pubStr1"]=> string(31) "This is child's public property" ...
+
+# you can override constants:
+echo $parent11::CONST1, '<br>'; # This is parent's constant!
+echo $child11::CONST1, '<br>'; # This is childs's constant!
+
 
 function useChild(App\Child1 $child) {
     var_dump($child);
@@ -120,3 +125,15 @@ echo '<br>';
 $absImpl1 = new App\AbstractImpl1();
 echo $absImpl1->abstractMethod(), '<br>';
 # Now this method isn't abstract anymore
+
+###################################################################
+# interfeces
+
+$intImpl1 = new App\InterfaceImpl1();
+var_dump($intImpl1); # object(App\InterfaceImpl1)#33 (0) { }
+echo '<br>';
+echo $intImpl1::CONST1, '<br>'; # This is constant!
+echo $intImpl1->fn1(); # This is implementation of Interface1 method!
+
+$intImpl2 = new App\InterfaceImpl2();
+echo $intImpl2->fn2(); # This is implementation of method from Interface3/2!

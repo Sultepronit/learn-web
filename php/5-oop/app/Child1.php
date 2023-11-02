@@ -7,6 +7,8 @@ class Child1 extends Parent1
     protected $protStr1 = 'This is child\'s protected property';
     private $privStr1 = 'This is child\'s private property';
 
+    public const CONST1 = 'This is childs\'s constant!';
+
     public function getLocalPriv() {
         # will print child's property
         echo $this->privStr1, '<br>';
