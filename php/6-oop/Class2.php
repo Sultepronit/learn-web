@@ -6,17 +6,21 @@ class Class2
     private $privField = 'private!';
     public function __get($name)
     {
+        echo '__get() is working!', PHP_EOL;
         if(property_exists($this, $name)) {
             return $this->$name;
-        } else {
-            echo "No existing {$name} filed was requested!", PHP_EOL;
-            return null;
         }
-        
+        echo "No existing {$name} filed was requested!", PHP_EOL;
+        return null;
     }
 
     public function __set($name, $value)
     {
-        echo "set {$value} to no existing {$name}", PHP_EOL;
+        echo '__set() is working!', PHP_EOL;
+        if(property_exists($this, $name)) {
+            $this->$name = $value;
+        } else {
+            echo "Try to set {$value} to no existing {$name}!", PHP_EOL;
+        }
     }
 }
