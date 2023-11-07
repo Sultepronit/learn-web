@@ -1,8 +1,6 @@
-<!-- <h1><?= $heading ?></h1>
-<?php foreach($listings as $listing): ?>
-    <h2><?= $listing['title'] ?></h2>
-    <p><?= $listing['description'] ?></p>
-<?php endforeach ?> -->
+@extends('layout')
+
+@section('content')
 
 @php
     $test = 111;
@@ -25,3 +23,5 @@
 @else
     <p>No listings found</p>
 @endunless
+
+@endsection
