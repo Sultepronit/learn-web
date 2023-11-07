@@ -17,13 +17,15 @@ class DatabaseSeeder extends Seeder
         # php artisan migrate:refresh --seed
 
         \App\Models\User::factory(5)->create();
+
+        Listing::factory(6)->create();
         
         /* \App\Models\User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]); */
 
-        Listing::create([
+        /* Listing::create([
             'title' => 'Laravel developer',
             'tags' => 'laravel, javascript',
             'company' => 'Acme Crop',
@@ -41,6 +43,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'mihal@dom.com',
             'website' => 'acme.com',
             'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde vero autem animi omnis esse aut. Earum repellat, ex et dolor officiis modi facere praesentium dolores architecto. Nobis tenetur nulla deserunt.'
-        ]);
+        ]); */
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+# php artisan make:factory LisingFactory
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
