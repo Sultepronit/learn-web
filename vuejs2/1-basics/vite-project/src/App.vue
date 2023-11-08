@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue';
-import { reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
+//import {  } from 'vue';
 
 const text1 = ref('some text!');
 const text2 = ref('This text is <u><i>formatted</u></i>');
@@ -46,6 +46,28 @@ const { id: item1Id } = item1;
 
 const item2 = ref({ id: 22 });
 
+// computed properties
+const computed1 = computed(() => {
+  console.log(item2.value.id);
+  return item2.value.id * 10;
+});
+console.log(computed1.value); // 220
+
+// writable computed property
+const firstName = ref('Step');
+const lastName = ref('Muts');
+const fullname = computed({
+  get() {
+    return firstName.value + ' ' + lastName.value;
+  },
+  set(newValue) {
+    [firstName.value, lastName.value] = newValue.split(' ');
+  }
+});
+console.log(fullname.value); // Step Muts
+fullname.value = 'John Doe';
+console.log(firstName.value, lastName.value); // John Doe
+
 </script>
 
 <template>
@@ -79,23 +101,31 @@ const item2 = ref({ id: 22 });
 
   <p>{{ item2.id }}</p> <!-- 22 -->
   <p>{{ item2.id + 1 }}</p> <!-- 23 -->
+
+  <p>Computed: {{ computed1 }}</p>
+  <p>Writable computed: {{ fullname }}</p>
   
 </template>
 
 <style scoped>
-  button {
-    font-size: 1.5rem;
-  }
-  .red {
-    color: red;
-  }
-  .blue {
-    color: blue;
-  }
-  .green {
-    color: green;
-  }
-  #third-p {
-    font-size: 1.5rem;
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-size: 1.5rem;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+.green {
+  color: green;
+}
+#third-p {
+  font-size: 1.5rem;
+}
 </style>
