@@ -75,3 +75,25 @@ $obj4->printArgs('one', 2);
 Class4::staticMethod1(457);
 # try to call static staticMethod1(457...)
 
+######################
+# __toString()
+require_once 'Class5.php';
+$obj5 = new Class5();
+echo $obj5; # __toString()!
+
+var_dump($obj5 instanceof Stringable); # bool(true)
+
+######################
+# __invoke()
+$obj5(); # invoked!
+var_dump(is_callable($obj5)); # bool(true)
+
+######################
+# __debugInfo() - hiding private properties
+var_dump($obj5);
+// object(Class5)#5 (2) {
+//     ["id"]=>
+//     int(77)
+//     ["codeName"]=>
+//     string(10) "****cherry"
+// }
