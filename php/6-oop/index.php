@@ -120,3 +120,36 @@ var_dump(ClassA::multyply());
 
 var_dump(ClassB::multyply());
 # object(ClassB)#6 (0) { }
+
+#############################################################################
+# traits
+echo 'the php traits!', PHP_EOL;
+
+require_once 'CoffeeMaker.php';
+require_once 'LatteTrait.php';
+require_once 'LatteMaker.php';
+require_once 'CappuccinoTrait.php';
+require_once 'CappuccinoMaker.php';
+require_once 'AllInOneCoffeeMaker.php';
+
+$latteMaker = new LatteMaker();
+$latteMaker->makeCoffee(); # LatteMaker is making coffee
+$latteMaker->makeLatte(); # LatteMaker is making latte
+$cappuccinoMaker = new CappuccinoMaker();
+$cappuccinoMaker->makeCappuccino(); # LatteMaker is making latte
+$allInOneCoffeeMaker = new AllInOneCoffeeMaker();
+$allInOneCoffeeMaker->makeCoffee(); # AllInOneCoffeeMaker is making coffee
+$allInOneCoffeeMaker->makeLatte(); # AllInOneCoffeeMaker is making latte
+$allInOneCoffeeMaker->makeCappuccino(); # AllInOneCoffeeMaker is making cappuccino
+
+$cappuccinoMaker->prepareCoffee(); # preparing coffee!
+# methods form traits override inherited methods:
+$latteMaker->prepareCoffee(); # preparing coffee for the latte!
+# method inside the class override the method from a trait:
+$allInOneCoffeeMaker->prepareCoffee(); # turbo preparing coffee!
+
+$cappuccinoMaker->makeLatte(); # making latte cappuccino way!
+$allInOneCoffeeMaker->makeLatte(); # AllInOneCoffeeMaker is making latte
+# the conflict was resolved by unsing LatteTrait::makeLatte insteadof CappuccinoTrait;
+$allInOneCoffeeMaker->makeLatteCap(); # vmaking latte cappuccino way!
+# and here was used CappuccinoTrait::makeLatte as makeLatteCap;
