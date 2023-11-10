@@ -97,3 +97,26 @@ var_dump($obj5);
 //     ["codeName"]=>
 //     string(10) "****cherry"
 // }
+
+#############################################################################
+# late static binding
+echo "the late static binding!", PHP_EOL;
+require_once 'ClassA.php';
+require_once 'ClassB.php';
+
+ClassA::printName();
+// self::class: ClassA
+// self::$name: A
+// get_called_class(): ClassA
+// static::$name: A
+ClassB::printName();
+// self::class: ClassA
+// self::$name: A
+// get_called_class(): ClassB
+// static::$name: B
+
+var_dump(ClassA::multyply());
+# object(ClassA)#6 (0) { }
+
+var_dump(ClassB::multyply());
+# object(ClassB)#6 (0) { }
