@@ -11,4 +11,9 @@ trait LatteTrait
     {
         echo 'preparing coffee for the latte!', PHP_EOL;
     }
+
+    private function secretTechnique()
+    {
+        echo 'this is private method inside the latte trait', PHP_EOL;
+    }
 }

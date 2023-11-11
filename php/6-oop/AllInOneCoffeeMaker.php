@@ -7,6 +7,7 @@ class AllInOneCoffeeMaker extends CoffeeMaker
     }
     use LatteTrait {
         LatteTrait::makeLatte insteadof CappuccinoTrait;
+        LatteTrait::secretTechnique as public;
     }
 
     public function prepareCoffee()

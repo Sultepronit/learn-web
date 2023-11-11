@@ -151,5 +151,8 @@ $allInOneCoffeeMaker->prepareCoffee(); # turbo preparing coffee!
 $cappuccinoMaker->makeLatte(); # making latte cappuccino way!
 $allInOneCoffeeMaker->makeLatte(); # AllInOneCoffeeMaker is making latte
 # the conflict was resolved by unsing LatteTrait::makeLatte insteadof CappuccinoTrait;
-$allInOneCoffeeMaker->makeLatteCap(); # vmaking latte cappuccino way!
+$allInOneCoffeeMaker->makeLatteCap(); # making latte cappuccino way!
 # and here was used CappuccinoTrait::makeLatte as makeLatteCap;
+
+$allInOneCoffeeMaker->secretTechnique(); # this is private method inside the latte trait
+# we changed visibility of private method using LatteTrait::secretTechnique as public;
