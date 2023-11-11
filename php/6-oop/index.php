@@ -129,8 +129,10 @@ require_once 'CoffeeMaker.php';
 require_once 'LatteTrait.php';
 require_once 'LatteMaker.php';
 require_once 'CappuccinoTrait.php';
+require_once 'AnotherTrait.php';
 require_once 'CappuccinoMaker.php';
 require_once 'AllInOneCoffeeMaker.php';
+
 
 $latteMaker = new LatteMaker();
 $latteMaker->makeCoffee(); # LatteMaker is making coffee
@@ -156,3 +158,10 @@ $allInOneCoffeeMaker->makeLatteCap(); # making latte cappuccino way!
 
 $allInOneCoffeeMaker->secretTechnique(); # this is private method inside the latte trait
 # we changed visibility of private method using LatteTrait::secretTechnique as public;
+
+$allInOneCoffeeMaker->printMilkStatus(); # bool(false)
+# we can declare a property inside a trait with setter, because we caanot change the proterty directly
+
+$allInOneCoffeeMaker->abstractExample(); # This is implementation of abstract method declared in a trait!
+
+# the "final" KEYWORD can be used inside a trait, BUT DOESN'T DO A THING!
