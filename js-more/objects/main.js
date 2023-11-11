@@ -167,3 +167,38 @@ console.log(obj7._a); // 77
 console.log(obj7.a);
 // get a!
 // 77
+
+///////////////////////////////////////////////////////////////
+// add, check % delete fields
+// Object.defineProperty()
+
+const obj8 = {};
+Object.defineProperty(obj8, 'a', { value: 'A' });
+Object.defineProperty(obj8, 'b', { value: 'B' });
+Object.defineProperty(obj8, 'c', { value: 'C' });
+console.log(obj8); // {a: 'A', b: 'B', c: 'C'}
+
+// Object.defineProperties()
+const obj9 = {};
+Object.defineProperties(obj9, {
+    d: { value: 'D' },
+    e: { value: 'E' },
+    f: {
+        value: function() {
+            console.log('Here we go!');
+        }
+    }
+});
+console.log(obj9); // {d: 'D', e: 'E', f: ƒ}
+
+// check/delete
+const obj10 = {
+    a: 'A',
+    b: null
+};
+console.log(obj10.b); // null
+console.log(obj10.c); // undefined
+console.log('b' in obj10); // true
+delete obj10.a;
+console.log(obj10.a); // undefined
+console.log('a' in obj10); // false
