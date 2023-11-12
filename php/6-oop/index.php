@@ -133,7 +133,6 @@ require_once 'AnotherTrait.php';
 require_once 'CappuccinoMaker.php';
 require_once 'AllInOneCoffeeMaker.php';
 
-
 $latteMaker = new LatteMaker();
 $latteMaker->makeCoffee(); # LatteMaker is making coffee
 $latteMaker->makeLatte(); # LatteMaker is making latte
@@ -165,3 +164,16 @@ $allInOneCoffeeMaker->printMilkStatus(); # bool(false)
 $allInOneCoffeeMaker->abstractExample(); # This is implementation of abstract method declared in a trait!
 
 # the "final" KEYWORD can be used inside a trait, BUT DOESN'T DO A THING!
+
+#############################################################################
+# anonymous classes
+$obj6 = new class('A', 'B') {
+    public function __construct(public string $a, public string $b)
+    {
+        
+    }
+};
+
+var_dump($obj6); # object(class@anonymous)#9 (2) { ["a"]=> string(1) "A" ["b"]=> string(1) "B" }
+echo get_class($obj6), PHP_EOL; # class@anonymous/home/step/WEB/php/6-oop/index.php:170$0
+echo get_class($allInOneCoffeeMaker), PHP_EOL; # AllInOneCoffeeMaker
