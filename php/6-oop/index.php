@@ -168,12 +168,29 @@ $allInOneCoffeeMaker->abstractExample(); # This is implementation of abstract me
 #############################################################################
 # anonymous classes
 $obj6 = new class('A', 'B') {
-    public function __construct(public string $a, public string $b)
-    {
-        
-    }
+    public function __construct(public string $a, public string $b) {}
 };
 
 var_dump($obj6); # object(class@anonymous)#9 (2) { ["a"]=> string(1) "A" ["b"]=> string(1) "B" }
 echo get_class($obj6), PHP_EOL; # class@anonymous/home/step/WEB/php/6-oop/index.php:170$0
 echo get_class($allInOneCoffeeMaker), PHP_EOL; # AllInOneCoffeeMaker
+
+##################################################################
+# object comparison
+echo 'object comparison', PHP_EOL;
+require_once 'Class7.php';
+$obj71 = new Class7(77, 'hello');
+$obj72 = new Class7(77, 'world');
+
+# comparison operator
+echo '== ', $obj71 == $obj72, PHP_EOL; # == 
+$obj72->text = 'hello';
+echo '== ', $obj71 == $obj72, PHP_EOL; # == 1
+
+# identity operator
+echo '=== ', $obj71 === $obj72, PHP_EOL; # ===
+$obj72 = $obj71;
+echo '=== ', $obj71 === $obj72, PHP_EOL; # === 1
+
+$obj73 = new Class7(99, 'st');
+echo '> ', $obj73 > $obj72, PHP_EOL; # > 1
