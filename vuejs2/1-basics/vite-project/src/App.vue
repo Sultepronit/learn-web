@@ -68,6 +68,14 @@ console.log(fullname.value); // Step Muts
 fullname.value = 'John Doe';
 console.log(firstName.value, lastName.value); // John Doe
 
+// Class & Style Binding
+const mouseIsOver = ref(false);
+const togleClick = ref(false);
+const classesObject = {
+  blue: true,
+  bigger: true
+};
+
 </script>
 
 <template>
@@ -104,6 +112,19 @@ console.log(firstName.value, lastName.value); // John Doe
 
   <p>Computed: {{ computed1 }}</p>
   <p>Writable computed: {{ fullname }}</p>
+
+  <p
+    @mouseover="mouseIsOver = true"
+    @mouseleave="mouseIsOver = false"
+    @click="togleClick = !togleClick"
+    class="bigger"
+    :class="{ 'underline': mouseIsOver, clicked: togleClick }"
+  >
+    Class & Style Binding
+  </p>
+  <p :class="classesObject">Classes tumblers can be gathered in an object </p>
+  <p :class="['red', 'underline']">Styles can be listed as an array</p>
+  <p :class="[{green: true}, 'bigger']">And array can contain object with a tumbler</p>
   
 </template>
 
@@ -127,5 +148,15 @@ button {
 }
 #third-p {
   font-size: 1.5rem;
+}
+
+.bigger {
+  font-size: 1.5em;
+}
+.underline {
+  text-decoration: underline;
+}
+.clicked {
+  font-weight: bolder;
 }
 </style>
