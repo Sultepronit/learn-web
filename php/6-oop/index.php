@@ -194,3 +194,20 @@ echo '=== ', $obj71 === $obj72, PHP_EOL; # === 1
 
 $obj73 = new Class7(99, 'st');
 echo '> ', $obj73 > $obj72, PHP_EOL; # > 1
+
+##################################################################
+# DockBlock
+require_once 'DockBlock.php';
+new DockBlock();
+
+##################################################################
+# cloning
+echo 'cloning!', PHP_EOL;
+require_once 'Class8.php';
+$obj81 = new Class8();
+$obj82 = new Class8();
+echo $obj81->id, PHP_EOL; # 1
+echo $obj82->id, PHP_EOL; # 2
+$obj83 = clone $obj81;
+echo $obj83->id, PHP_EOL; # 3
+# but without magit method __clone it would be 1
