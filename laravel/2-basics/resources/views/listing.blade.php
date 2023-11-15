@@ -23,6 +23,7 @@
             <div class="text-xl font-bold mb-4">
                 {{$listing->company}}
             </div>
+            
             <ul class="flex">
                 <li
                     class="bg-black text-white rounded-xl px-3 py-1 mr-2"
