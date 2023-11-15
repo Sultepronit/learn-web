@@ -211,3 +211,26 @@ echo $obj82->id, PHP_EOL; # 2
 $obj83 = clone $obj81;
 echo $obj83->id, PHP_EOL; # 3
 # but without magit method __clone it would be 1
+
+##################################################################
+# serialization
+echo 'serialization!', PHP_EOL;
+echo serialize(true), PHP_EOL; # b:1;
+echo serialize('hello there'), PHP_EOL; # s:11:"hello there";
+echo serialize([1, 2, 3]), PHP_EOL; # a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}
+echo serialize(['a' => false, 'b' => 1.5, 'c' => 'C']), PHP_EOL;
+# a:3:{s:1:"a";b:0;s:1:"b";d:1.5;s:1:"c";s:1:"C";}
+var_dump(unserialize('a:3:{s:1:"a";b:0;s:1:"b";d:1.5;s:1:"c";s:1:"C";}'));
+
+require_once 'Class9.php';
+$obj9 = new Class9();
+$ser1 = serialize($obj9);
+echo $ser1, PHP_EOL;
+// O:6:"Class9":3:{
+//     s:18:"Class9privateInt";i:99; # Class9 = private
+//     s:18:"*protectedString";s:5:"text!"; # * = protected
+//     s:11:"publicFloat";d:3.15;
+// }
+$obj9ser = unserialize($ser1);
+var_dump($obj9ser); # object(Class9)#16 (3) { ...
+echo $obj9 == $obj9ser, PHP_EOL; # 1
