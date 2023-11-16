@@ -234,3 +234,19 @@ echo $ser1, PHP_EOL;
 $obj9ser = unserialize($ser1);
 var_dump($obj9ser); # object(Class9)#16 (3) { ...
 echo $obj9 == $obj9ser, PHP_EOL; # 1
+
+# __sleep() __wakeup() __serialize() __unserialize()
+require_once 'Class10.php';
+$obj10 = new Class10();
+$ser2 = serialize($obj10);
+echo $ser2, PHP_EOL; # O:7:"Class10":4:{s:2:"id";i:11;s:4:"name";s:4:"Anna";s:3:"pin";s:8:"MTQ1Ng==";s:9:"something";s:3:"new";}
+$obj10ser = unserialize($ser2);
+/* Array
+(
+    [id] => 11
+    [name] => Anna
+    [pin] => MTQ1Ng==
+    [something] => new
+) */
+var_dump($obj10ser); # object(Class10)#18 (3) { ...
+var_dump($obj10 == $obj10ser); # bool(true)
