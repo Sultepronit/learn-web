@@ -250,3 +250,23 @@ $obj10ser = unserialize($ser2);
 ) */
 var_dump($obj10ser); # object(Class10)#18 (3) { ...
 var_dump($obj10 == $obj10ser); # bool(true)
+
+########################################################################
+# exceptions
+echo 'exceptions!', PHP_EOL;
+require_once 'InvalidDataException.php';
+require_once 'InvalidDataException2.php';
+$x = -1;
+if($x < 0) {
+    //throw new \Exception('Value should be more than 0!');
+    # PHP Fatal error:  Uncaught Exception: Value should be more than 0! in ...
+    
+    //throw new \InvalidArgumentException('Value should be more than 0!');
+    # PHP Fatal error:  Uncaught InvalidArgumentException: Value should be more than 0! in ...
+    
+    //throw new InvalidDataException('Value should be more than 0!');
+    # Fatal error: Uncaught InvalidDataException: Value should be more than 0! in ...
+
+    throw new InvalidDataException2();
+    # Fatal error: Uncaught InvalidDataException2: Wrong data! in ...
+}
