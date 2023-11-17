@@ -256,17 +256,97 @@ var_dump($obj10 == $obj10ser); # bool(true)
 echo 'exceptions!', PHP_EOL;
 require_once 'InvalidDataException.php';
 require_once 'InvalidDataException2.php';
-$x = -1;
-if($x < 0) {
-    //throw new \Exception('Value should be more than 0!');
-    # PHP Fatal error:  Uncaught Exception: Value should be more than 0! in ...
-    
-    //throw new \InvalidArgumentException('Value should be more than 0!');
-    # PHP Fatal error:  Uncaught InvalidArgumentException: Value should be more than 0! in ...
-    
-    //throw new InvalidDataException('Value should be more than 0!');
-    # Fatal error: Uncaught InvalidDataException: Value should be more than 0! in ...
+//throw new \Exception('Value should be more than 0!');
+# PHP Fatal error:  Uncaught Exception: Value should be more than 0! in ...
 
-    throw new InvalidDataException2();
-    # Fatal error: Uncaught InvalidDataException2: Wrong data! in ...
+//throw new \InvalidArgumentException('Value should be more than 0!');
+# PHP Fatal error:  Uncaught InvalidArgumentException: Value should be more than 0! in ...
+
+//throw new InvalidDataException('Value should be more than 0!');
+# Fatal error: Uncaught InvalidDataException: Value should be more than 0! in ...
+
+//throw new InvalidDataException2();
+# Fatal error: Uncaught InvalidDataException2: Wrong data! in ...
+
+try {
+    throw new \Exception('message!');
+} catch(\Exception $e) {
+    var_dump($e);
+    /* object(Exception)#19 (7) {
+        ["message":protected]=>
+        string(8) "message!"
+        ["string":"Exception":private]=>
+        string(0) ""
+        ["code":protected]=>
+        int(0)
+        ["file":protected]=>
+        string(34) "/home/step/WEB/php/6-oop/index.php"
+        ["line":protected]=>
+        int(272)
+        ["trace":"Exception":private]=>
+        array(0) {
+        }
+        ["previous":"Exception":private]=>
+        NULL
+    } */
 }
+
+try {
+    throw new InvalidDataException2();
+} catch(\InvalidArgumentException|InvalidDataException) {
+    echo 'InvalidArgumentException or InvalidDataException cahught!', PHP_EOL;
+} catch(InvalidDataException2) {
+    echo 'InvalidDataException2 cahught!', PHP_EOL;
+}
+# InvalidDataException2 cahught!
+
+function tryCatchFin($arg) {
+    try {
+        if($arg > 10) {
+            throw new \Exception();
+        }
+        echo 'everithing\'s good!', PHP_EOL;
+        return 'try!';
+    } catch (\Exception) {
+        echo 'exception!', PHP_EOL;
+        return 'catch!';
+    } finally {
+        if($arg > 20 || $arg < 1) {
+            return 'finally!';
+        }
+    }
+}
+echo tryCatchFin(5), PHP_EOL;
+# everithing's good! / try!
+
+echo tryCatchFin(0), PHP_EOL;
+# everithing's good! / finally!
+
+echo tryCatchFin(11), PHP_EOL;
+# exception! / catch!
+
+echo tryCatchFin(22), PHP_EOL;
+# exception! / finally!
+# return in the finally block overwrite others, but it still works!
+
+# Throwable interface are implemented in Error class & it's children,
+# and in Exception class & it's children
+try {
+    array_rand([], 2);
+} catch(\Exception $e) {
+    echo $e->getMessage(), PHP_EOL;
+    # does'nt work, because it's not an exception!
+} catch(\Error $e) {
+    echo $e->getMessage(), PHP_EOL;
+    # array_rand(): Argument #1 ($array) cannot be empty
+}
+# catch(\Throwable) { ... is universal!
+
+##############################
+# global exception handler
+set_exception_handler(function(\Throwable $e) {
+    //echo $e->getMessage(), PHP_EOL;
+    echo $e->__toString(), PHP_EOL;
+});
+array_rand([], 2);
+# ValueError: array_rand(): Argument #1 ($array) cannot be empty in ...
