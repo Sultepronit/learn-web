@@ -345,8 +345,45 @@ try {
 ##############################
 # global exception handler
 set_exception_handler(function(\Throwable $e) {
-    //echo $e->getMessage(), PHP_EOL;
     echo $e->__toString(), PHP_EOL;
 });
-array_rand([], 2);
+//array_rand([], 2);
 # ValueError: array_rand(): Argument #1 ($array) cannot be empty in ...
+# ok, this thing soesn't solve a thing, and the app breaks!!!
+
+#####################################################################
+# DateTime
+echo 'DateTime!', PHP_EOL;
+$currentTime = new DateTime();
+var_dump($currentTime); # object(DateTime)#21 (3) { ...
+$tomorrow = new DateTime('tomorrow');
+var_dump($tomorrow); 
+var_dump(new DateTime('tomorrow 3:55pm')); 
+var_dump(new DateTime('tomorrow noon')); 
+$someTime = new DateTime('07/08/2020 3:55am', new DateTimeZone('Europe/Amsterdam'));
+var_dump($someTime); 
+
+$currentTime->setTimezone(new DateTimeZone('Europe/Amsterdam'));
+var_dump($currentTime);
+
+echo $currentTime->format('d.m.Y g:i A'), PHP_EOL; # *18.11.2023 6:00 PM
+//echo $currentTime->getTimezone();
+echo $tomorrow->getTimezone()->getName(), PHP_EOL; # Europe/Helsinki
+
+$someTime->setDate(2025, 10, 17);
+echo $someTime->format('d.m.Y'), PHP_EOL; # 17.10.2025
+$someTime->setDate(2024, 1, 12)->setTime(17, 33);
+echo $someTime->format('d.m.Y G:i'), PHP_EOL; # 12.01.2024 17:33
+
+$someTime = new DateTime('05.10.2020');
+echo $someTime->format('Y-m-d'), PHP_EOL; # 2020-10-05
+$someTime = new DateTime('05-10-2020');
+echo $someTime->format('Y-m-d'), PHP_EOL; # 2020-10-05
+
+$someTime = new DateTime('05/10/2020');
+echo $someTime->format('Y-m-d'), PHP_EOL; # 2020-05-10
+$someTime = DateTime::createFromFormat('d/m/Y', '05/10/2020');
+echo $someTime->format('Y-m-d'), PHP_EOL; # 2020-10-05
+
+# the createFromFormat() method uses current time, and not 00:00:00!!!
+echo $someTime->format('Y-m-d g:i:s A'), PHP_EOL; # 2020-10-05 3:35:14 PM
