@@ -387,3 +387,62 @@ echo $someTime->format('Y-m-d'), PHP_EOL; # 2020-10-05
 
 # the createFromFormat() method uses current time, and not 00:00:00!!!
 echo $someTime->format('Y-m-d g:i:s A'), PHP_EOL; # 2020-10-05 3:35:14 PM
+
+$time1 = new DateTime('13:15');
+echo $time1->format('Y-m-d g:i:s A'), PHP_EOL; # *2023-11-20 1:15:00 PM
+$time2 = new DateTime('13:16');
+echo $time1 <=> $time2, PHP_EOL; # -1
+
+var_dump($time1->diff($time2));
+# object(DateInterval)#26 (16) { ... ["i"]=> int(1) ... ["invert"]=> int(0)
+$dif1 = $time2->diff($time1);
+echo $dif1->i, '/', $dif1->invert, PHP_EOL; # 1/1
+
+$bd = new DateTime('31.12.1990');
+$dif2 = $currentTime->diff($bd);
+echo $dif2->format('%d'), PHP_EOL; # 20 !!!!
+echo $dif2->format('%Y years, %m months, %d days, %h hours, %i minutes, %s seconds'), PHP_EOL;
+# 32 years, 10 months, 20 days, 11 hours, 20 minutes, 53 seconds
+echo $dif2->format('%a'), PHP_EOL; # 12012 # all the days
+echo $dif2->format('%R%a'), PHP_EOL; # -12012 
+
+$hundredDays = new DateInterval('P100D');
+$bd->add($hundredDays);
+echo $bd->format('Y.m.d') , PHP_EOL; # 1991.04.10
+
+$bd->sub($hundredDays);
+echo $bd->format('Y.m.d') , PHP_EOL; # 1990.12.31
+
+$hundredDays->invert = 1; # now its -100 days!
+$bd->add($hundredDays);
+echo $bd->format('Y.m.d') , PHP_EOL; # 1990.09.22
+$bd->sub($hundredDays);
+echo $bd->format('Y.m.d') , PHP_EOL; # 1990.12.31
+
+$immutableDate = new DateTimeImmutable('22.03.1995');
+$interv = new DateInterval('P2M20D');
+$newDate = $immutableDate->add($interv);
+echo $immutableDate->format('d.m.y'), ' -> ', $newDate->format('d.m.y'), PHP_EOL; # 22.03.95 -> 11.06.95
+
+#######################
+# iteration, DatePeriod
+$from = new DateTime('11/25/2007');
+$to = new DateTime('11/28/2007');
+$period = new DatePeriod($from, new DateInterval('P1D'), $to);
+foreach($period as $date) {
+    echo $date->format('d.m.Y'), PHP_EOL;
+}
+# 25.11.2007 / 26.11.2007 / 27.11.2007
+
+$period2 = new DatePeriod($from, new DateInterval('P1D'), $to->modify('+1 day'));
+foreach($period2 as $date) {
+    echo $date->format('d.m.Y'), PHP_EOL;
+}
+# 25.11.2007 ... 28.11.2007
+echo $to->format('d.m.Y'), PHP_EOL; # 29.11.2007
+
+$period3 = new DatePeriod($from, new DateInterval('P5D'), 3, DatePeriod::EXCLUDE_START_DATE);
+foreach($period3 as $date) {
+    echo $date->format('d.m.Y'), PHP_EOL;
+}
+# 30.11.2007 / 05.12.2007 / 10.12.2007
