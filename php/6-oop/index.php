@@ -446,3 +446,46 @@ foreach($period3 as $date) {
     echo $date->format('d.m.Y'), PHP_EOL;
 }
 # 30.11.2007 / 05.12.2007 / 10.12.2007
+
+######################################################################
+# iteration
+echo 'iteration!', PHP_EOL;
+/*  private int $privateInt = 99;
+    protected string $protectedString = 'text!';
+    public float $publicFloat = 3.15; */
+foreach($obj9 as $value) {
+    echo "{$value}", PHP_EOL;
+}
+# 3.15
+foreach($obj9 as $key => $value) {
+    echo "{$key} = {$value}", PHP_EOL;
+}
+# publicFloat = 3.15
+# iterates through public properties
+
+##########################
+# custom inerable class
+require_once 'Iter1.php';
+$iter1 = new Iter1();
+foreach($iter1 as $item) {
+    echo "{$item}", PHP_EOL;
+}
+
+foreach($iter1 as $key => $value) {
+    echo "{$key} = {$value}", PHP_EOL;
+}
+
+##########################
+# halfcuston inerable class
+require_once 'Iter2.php';
+$iter2 = new Iter2();
+foreach($iter2 as $item) {
+    echo "{$item}", PHP_EOL;
+}
+# first / second / third
+
+foreach($iter2 as $key => $value) {
+    echo "{$key} = {$value}", PHP_EOL;
+}
+# 0 = first / 1 = second / 2 = third
+
