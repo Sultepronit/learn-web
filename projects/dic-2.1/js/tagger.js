@@ -15,8 +15,12 @@ const getBlock = (tags, tagName, tagAttribute = null, getAll = false, stopTag = 
     let addingContent = false;
     let nested = 0;
     for(let tag of tags) {
-        if(tag.details[0] === stopTag) break;
-
+        try {
+            if(tag.details[0] === stopTag) break;
+        } catch (error) {
+            console.log(tag);
+        }
+        
         if(tag.details[0] === tagName) {
             if(!addingContent) {
                 if(tagAttribute === tag.details[1] || !tagAttribute) {
@@ -59,18 +63,6 @@ const getDifferentBlocks = (tags, wantedTags = {name: 'div', attribute: null}) =
     //let tagAttribute = '';
     for(let tag of tags) {
         //if(tag.details[0] === stopTag) break;
-
-        /* if(tag.details[0] === tagName) {
-            if(!addingContent) {
-                if(tagAttribute === tag.details[1] || !tagAttribute) {
-                    //console.log(tag.details[0], tag.details[1]);
-                    addingContent = true;
-                    nested++;
-                }
-            } else {
-                nested++;
-            }
-        } */
 
         if(!addingContent) {
             for(const wantedTag of wantedTags) {

@@ -2,11 +2,13 @@
 
 import handleLingvo from "./handleLingvo.js";
 import handleCambridge from "./handleCambridge.js";
+import processE2u from "./processE2u.js";
 import handleGlosbe from "./handleGlosbe.js";
 
 const input = document.querySelector('input');
 const found = document.querySelector('.found');
 const lingvo = document.querySelector('.lingvo');
+const e2u = document.querySelector('.e2u');
 const cambridge = document.querySelector('.cambridge');
 const images = document.querySelector('.images');
 const glosbe = document.querySelector('.glosbe')
@@ -21,6 +23,7 @@ const newRequest = async () => {
 
 	input.select();
 	found.textContent = '';
+	e2u.innerHTML = '';
 	lingvo.innerHTML = '';
 	images.innerHTML = '';
 	glosbe.innerHTML = '';
@@ -44,15 +47,19 @@ const newRequest = async () => {
 		lingvo.innerHTML = lin.article;
 	}); */
 
-	console.log('cambridge request!');
+	/* console.log('cambridge request!');
 	handleCambridge(encoded).then((camb) => {
 		console.log('SUCCESS!');
-		//console.log(camb);
 		if(camb) {
 			cambridge.innerHTML = camb;
 		}
-		/* if(lin.foundCard) found.textContent = lin.foundCard;
-		lingvo.innerHTML = lin.article; */
+	}); */
+
+	console.log('e2u request!');
+	processE2u(encoded, inputted).then((data) => {
+		console.log('SUCCESS!');
+		if(data.mainArticles) e2u.innerHTML = data.mainArticles;
+		if(data.secondaryArticles) e2u.innerHTML += data.secondaryArticles;
 	});
 
 	console.log('glosbe request!');

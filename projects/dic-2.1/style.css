@@ -50,6 +50,12 @@ a.orig {
 	cursor: pointer;
 }
 
+/* e2u */
+td {
+	border: 1px solid;
+}
+/* e2u */
+
 /* cambrigde */
 .def {
 	color: blue;

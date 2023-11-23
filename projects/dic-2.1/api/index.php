@@ -13,6 +13,8 @@ if(isset($_GET['dic'])) {
         $url = 'https://www.lingvolive.com/en-us/translate/en-uk/' . $word;
     } else if($_GET['dic'] === 'cambridge') {
         $url = 'https://dictionary.cambridge.org/dictionary/english-ukrainian/' . $word;
+    } else if($_GET['dic'] === 'e2u') {
+        $url = 'https://e2u.org.ua/s?w=' . $word . '&dicts=all&main_only=on';
     }
     //echo $url;
     $pageContent = file_get_contents($url); 
