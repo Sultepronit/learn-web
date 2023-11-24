@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 }); */
 Route::get('/', [ListingController::class, 'index']);
 
+# create form
+Route::get('/listings/create', [ListingController::class, 'create']);
+
 # single listing
 /* Route::get('/listings/{id}', function($id) {
     $listing = Listing::find($id);
