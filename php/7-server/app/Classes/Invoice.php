@@ -12,6 +12,13 @@ class Invoice
 
     public function create(): string
     {
-        return 'Create Invoice';
+        // return 'Create Invoice';
+        return '<form action="/invoices/create" method="post"><label>Text</label><input type="text" name="text"></input><form>';
+    }
+
+    public function store()
+    {
+        $text = $_POST['text'];
+        echo $text, PHP_EOL;
     }
 }
