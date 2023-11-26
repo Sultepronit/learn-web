@@ -5,8 +5,11 @@ require_once 'app/Router.php';
 require_once 'app/Exceptions/RouteNotFoundException.php';
 require_once 'app/Classes/Home.php';
 require_once 'app/Classes/Invoice.php';
+require_once 'app/Classes/Upload.php';
 
 session_start();
+
+define('STORAGE_PATH', __DIR__ . '/storage');
 
 $router = new App\Router();
 
@@ -21,7 +24,9 @@ $router = new App\Router();
 $router->get('/', [App\Classes\Home::class, 'index'])
     ->get('/invoices', [App\Classes\Invoice::class, 'index'])
     ->get('/invoices/create', [App\Classes\Invoice::class, 'create'])
-    ->post('/invoices/create', [App\Classes\Invoice::class, 'store']);
+    ->post('/invoices/create', [App\Classes\Invoice::class, 'store'])
+    ->get('/upload', [App\Classes\Upload::class, 'load'])
+    ->post('/upload', [App\Classes\Upload::class, 'loaded']);
 
 echo $router->resolve(
     $_SERVER['REQUEST_URI'],
