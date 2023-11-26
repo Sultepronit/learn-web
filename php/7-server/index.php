@@ -6,6 +6,8 @@ require_once 'app/Exceptions/RouteNotFoundException.php';
 require_once 'app/Classes/Home.php';
 require_once 'app/Classes/Invoice.php';
 
+session_start();
+
 $router = new App\Router();
 
 /* $router->register('/', function() {
@@ -32,7 +34,17 @@ print_r($_GET); # array of get arguments
 print_r($_POST); # array of post arguments
 print_r($_REQUEST); # array of get/post arguments
 # post agrument will rewrite get's one with the same name
+
+echo 'session: ';
+print_r($_SESSION);
+
+echo 'cookie: ';
+print_r($_COOKIE);
 echo '</pre>';
+
+// phpinfo();
+
+
 
 
 
