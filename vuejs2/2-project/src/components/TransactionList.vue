@@ -14,17 +14,17 @@
 </template>
 
 <script setup>
-    /* const transactions = [
-        { id: 1, text: 'Flower', amount: -19.99 },
-        { id: 2, text: 'Salary', amount: 30.5 }
-    ]; */
-    import { defineProps } from 'vue';
+/* const transactions = [
+    { id: 1, text: 'Flower', amount: -19.99 },
+    { id: 2, text: 'Salary', amount: 30.5 }
+]; */
+import { defineProps } from 'vue';
 
-    // const props = defineProps({
-    defineProps({
-        transactions: {
-            type: Array,
-            required: true
-        }
-    });
+// const props = defineProps({
+defineProps({
+    transactions: {
+        type: Array,
+        required: true
+    }
+});
 </script>
