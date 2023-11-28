@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 require_once 'app/Router.php';
 require_once 'app/Exceptions/RouteNotFoundException.php';
-require_once 'app/Classes/Home.php';
-require_once 'app/Classes/Invoice.php';
-require_once 'app/Classes/Upload.php';
+require_once 'app/Controllers/HomeController.php';
+require_once 'app/Controllers/InvoiceController.php';
+require_once 'app/Controllers/UploadController.php';
 
 session_start();
 
@@ -21,12 +21,12 @@ $router = new App\Router();
     return 'Invoices';
 }); */
 
-$router->get('/', [App\Classes\Home::class, 'index'])
-    ->get('/invoices', [App\Classes\Invoice::class, 'index'])
-    ->get('/invoices/create', [App\Classes\Invoice::class, 'create'])
-    ->post('/invoices/create', [App\Classes\Invoice::class, 'store'])
-    ->get('/upload', [App\Classes\Upload::class, 'load'])
-    ->post('/upload', [App\Classes\Upload::class, 'loaded']);
+$router->get('/', [App\Controllers\HomeController::class, 'index'])
+    ->get('/invoices', [App\Controllers\InvoiceController::class, 'index'])
+    ->get('/invoices/create', [App\Controllers\InvoiceController::class, 'create'])
+    ->post('/invoices/create', [App\Controllers\InvoiceController::class, 'store'])
+    ->get('/upload', [App\Controllers\UploadController::class, 'load'])
+    ->post('/upload', [App\Controllers\UploadController::class, 'loaded']);
 
 echo $router->resolve(
     $_SERVER['REQUEST_URI'],
