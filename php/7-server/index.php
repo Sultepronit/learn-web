@@ -2,14 +2,17 @@
 declare(strict_types=1);
 
 require_once 'app/Router.php';
-require_once 'app/Exceptions/RouteNotFoundException.php';
+require_once 'app/View.php';
 require_once 'app/Controllers/HomeController.php';
 require_once 'app/Controllers/InvoiceController.php';
 require_once 'app/Controllers/UploadController.php';
+require_once 'app/Exceptions/RouteNotFoundException.php';
+require_once 'app/Exceptions/ViewNotFoundException.php';
 
 session_start();
 
 define('STORAGE_PATH', __DIR__ . '/storage');
+define('VIEW_PATH', __DIR__ . '/views');
 
 $router = new App\Router();
 
