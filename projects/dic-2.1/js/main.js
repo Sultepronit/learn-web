@@ -47,13 +47,13 @@ const newRequest = async () => {
 		lingvo.innerHTML = lin.article;
 	}); */
 
-	/* console.log('cambridge request!');
+	console.log('cambridge request!');
 	handleCambridge(encoded).then((camb) => {
 		console.log('SUCCESS!');
 		if(camb) {
 			cambridge.innerHTML = camb;
 		}
-	}); */
+	});
 
 	console.log('e2u request!');
 	processE2u(encoded, inputted).then((data) => {
