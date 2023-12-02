@@ -13,7 +13,8 @@ async function handleGlosbe (encoded) {
     const examplesOuter = tagger.getBlock(parsedPage, 'div', 'id="tmem_first_examples"');
     const rawExamples = tagger.getBlock(examplesOuter, 'div', 'class="px-1');
     const examples = tagger.stringify(rawExamples);
-    //console.log(examples);
+    // examples = examples.replaceAll('odd:bg-slate-100 px-1', 'gl-examp');
+    // console.log(examples);
 
     const imagesOuter = tagger.getBlock(parsedPage, 'div', 'class="snap');
 	const rawImages = tagger.getSingle(imagesOuter, 'img', null, true);

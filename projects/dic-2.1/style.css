@@ -52,29 +52,66 @@ a.orig {
 
 /* e2u */
 td {
-	border: 1px solid;
+	border-bottom: 2px solid green;
 }
 /* e2u */
 
 /* cambrigde */
+/* .ca_h {
+	display: none;
+} */
 a {
 	color: black;
 	text-decoration: none;
 }
-.def {
-	/* color: blue; */
-	/* font-size: 0.8em; */
+.posgram {
+	color: blue;
 	font-style: italic;
+	/* width: 60%; */
+	border-top: 2px solid blue;
+	margin-top: 0.3em;
 }
-.trans {
+.guideword {
+    display: block;
+    font-style: italic;
+    color: green;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+.def {
+	font-style: italic;
 	font-weight: bold;
 }
+/* .trans {
+	font-weight: bold;
+} */
 .examp {
-	background-color: #cdfbf0;
-	/* color: green; */
-	/* font-size: 0.5em; */
+	background-color: #ffff9b;
 	font-style: italic;
-	/* display: none; */
+}
+.examp::before {
+	content: '-';
+	padding: 0.5em;
+}
+.cam-im {
+	float: right;
+	clear: right;
+	border-left: 1em solid white;
+	border-bottom: 1em solid white;
+}
+.spacer {
+	height: 1.2em;
+}
+.phrase-head {
+	font-size: 1.2em;
+	color: blue;
+}
+.var {
+	font-style: italic;
+	color: blue;
+}
+.daccord {
+	display: none;
 }
 /* cambrigde */
 
@@ -96,16 +133,19 @@ a {
 .icon-dots-vertical {
 	display: none;
 }	
+/* .gl-examp {
+	border-bottom: solid black 2px;
+} */
 .py-2 {
 	padding: 1%;
 	padding-bottom: 0;
-	border-top: solid black 2px;
 	font-style: italic;
+	border-top: solid black 2px;
 }
 
 .dir-aware-pr-1 {
 	/*color: blue;*/
-	/*border-bottom: dotted blue 2px;*/
+	/* border-bottom: dotted blue 2px; */
 	width: fit-content;
 	background-color: #cdfbf0;
 }

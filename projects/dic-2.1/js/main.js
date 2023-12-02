@@ -1,6 +1,6 @@
 // trying adding cambridge dictionary
 
-import handleLingvo from "./handleLingvo.js";
+// import handleLingvo from "./handleLingvo.js";
 import handleCambridge from "./handleCambridge.js";
 import processE2u from "./processE2u.js";
 import handleGlosbe from "./handleGlosbe.js";
@@ -9,11 +9,11 @@ const input = document.querySelector('input');
 const found = document.querySelector('.found');
 const lingvo = document.querySelector('.lingvo');
 const e2u = document.querySelector('.e2u');
-const cambridge = document.querySelector('.cambridge');
 const images = document.querySelector('.images');
-const glosbe = document.querySelector('.glosbe')
+const glosbe = document.querySelector('.glosbe');
+const cambridge = document.querySelector('.cambridge');
 //input.select();
-console.log(input);
+// console.log(input);
 
 let history = JSON.parse(localStorage.getItem('history')) || [];
 
@@ -27,6 +27,7 @@ const newRequest = async () => {
 	lingvo.innerHTML = '';
 	images.innerHTML = '';
 	glosbe.innerHTML = '';
+	cambridge.innerHTML = '';
 	console.log(inputted);
 	
 	if(history[history.length - 1] !== inputted) {

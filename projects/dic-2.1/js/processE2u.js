@@ -2,14 +2,14 @@ import tagger from './tagger.js';
 
 function articleIsMain(article, query) {
     let header = tagger.getSingle(article, 'b').contents;
-    console.log(header);
+    // console.log(header);
     if(!header) return;
     header = header.split(' (-')[0];
     header = header.split(/[0-9]/)[0];
     header = header.trim();
     header = header.replaceAll('|', '');
     header = header.replaceAll('́', '');
-    console.log(header);
+    // console.log(header);
     return header === query;
 }
 

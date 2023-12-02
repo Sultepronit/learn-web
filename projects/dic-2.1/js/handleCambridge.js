@@ -8,63 +8,51 @@ async function handleCambridge (encoded) {
 	//console.log(page);
 
     const parsedPage = tagger.parseHTML(page);
-    //console.log(parsedPage);
-
-        //const smth = tagger.getBlock(parsedPage, 'div', 'class="def-block', true);
-    //              const smth = tagger.getBlock(parsedPage, 'article');
-    //const smth = tagger.getBlock(parsedPage, 'div', 'class="entry-body', false);
-    //const smth = tagger.getBlock(parsedPage, 'div', 'class="def-body', true);
-    //const smth = tagger.getBlock(parsedPage, 'span', 'class="trans', true);
-    //const smth = tagger.getBlock(parsedPage, 'div', null, true);
-
-    // all the articles +
-    //const smth = tagger.getBlock(parsedPage, 'div', 'class="d', true);
-    
-    // translation + examples
-    //const smth = tagger.getBlock(parsedPage, 'div', 'class="sense-block', true);
-    //console.log(smth);
 
     const articleTags = [
-        {name: 'span', attribute: 'class="pos'},
-        {name: 'span', attribute: 'class="lab'},
-        {name: 'b', attribute: 'class="inf'},
+        {name: 'div', attribute: 'class="posgram'},
+        {name: 'span', attribute: 'class="region'},
         {name: 'span', attribute: 'class="pron'},
+        {name: 'span', attribute: 'class="irreg-infls'},
+        {name: 'span', attribute: 'class="guideword'},
+        // {name: 'span', attribute: 'class="def-info'},
+        {name: 'span', attribute: 'class="lab'},
         {name: 'div', attribute: 'class="def'},
-        {name: 'div', attribute: 'class="def-body'},
-        //{name: 'div', attribute: 'class="sense-block'}
+        {name: 'div', attribute: 'class="def-body'},        
+        {name: 'script', attribute: 'type="application/json"'}, // actually there in image's url!
+        {name: 'div', attribute: 'class="phrase-head'},
+        {name: 'span', attribute: 'class="var'},
     ];
-    const smth = tagger.getDifferentBlocks(parsedPage, articleTags);
+    const blocks = tagger.getDifferentBlocks(parsedPage, articleTags);
 
-    /* let lines = '';
-    for(const block of smth) {
-        const divs = tagger.getBlock(block, 'div', null, true);
-        console.log(divs);
-        for(const div of divs) {
-            console.log(tagger.getTextContent(div));
-            lines += '<p>' + tagger.getTextContent(div) + '</p>';
+    // const strBlocks = [];
+    let result = '';
+    for(const block of blocks) {
+        // console.log(block);
+        for(const tag of block) {
+            // console.log(tag);
+            if(tag.details[0] === 'script') {
+                if(tag.contents.includes('/images/')) {
+                    // console.log(tag.contents);
+                    const url = (JSON.parse(tag.contents)).src;
+                    // console.log(url);
+                    const head = 'https://dictionary.cambridge.org';
+                    // console.log(head+url);
+                    result += '<img class="cam-im" src="' + head + url + '">';
+                    result += '<p class=spacer></p>';
+                }
+            } else {
+                result += '<' + tag.details.join(' ') + '>';
+                result += tag.contents;
+            }
         }
-    }
-    return lines; */
-
-    const strBlocks = [];
-    for(const block of smth) {
-        console.log(block);
-        strBlocks.push(tagger.stringify(block));
+        // strBlocks.push(tagger.stringify(block));
     }
     //console.log(strBlocks);
-    const singleblock = strBlocks.join(' ');
+    // const singleblock = strBlocks.join(' ');
 
-    /*const examplesOuter = tagger.getBlock(parsedPage, 'div', 'id="tmem_first_examples"');
-    const rawExamples = tagger.getBlock(examplesOuter, 'div', 'class="px-1');
-    const examples = tagger.stringify(rawExamples);
-    //console.log(examples);
-
-    const imagesOuter = tagger.getBlock(parsedPage, 'div', 'class="snap');
-	const rawImages = tagger.getSingle(imagesOuter, 'img', null, true);
-	const images = tagger.stringify(rawImages);
-
-    return { examples, images }; */
-    return singleblock;
+    // return singleblock;
+    return result;
 }
 
 export default handleCambridge;
