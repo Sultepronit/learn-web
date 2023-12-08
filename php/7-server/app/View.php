@@ -11,6 +11,11 @@ class View
         
     }
 
+    public static function make(string $view, array $params = []): static
+    {
+        return new static($view, $params);
+    }
+
     public function render(): string
     {
         $viewPath = VIEW_PATH . '/' . $this->view . '.php';
@@ -23,5 +28,10 @@ class View
         ob_start();
         include $viewPath;
         return (string) ob_get_clean();
+    }
+
+    public function __toString()
+    {
+        return $this->render();
     }
 }

@@ -2,9 +2,11 @@
 declare(strict_types=1);
 namespace App\Controllers;
 
+use \App\View;
+
 class UploadController
 {
-    public function load()
+    /* public function load()
     {
         return <<<FORM
 <form action="/upload" method="post" enctype="multipart/form-data">
@@ -13,7 +15,11 @@ class UploadController
     <button type="submit">Upload</button>
 </form>
 FORM;
+    } */
 
+    public function load()
+    {
+        return View::make('upload');
     }
 
     public function loaded()
