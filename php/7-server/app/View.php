@@ -23,6 +23,12 @@ class View
         if(!file_exists($viewPath)) {
             throw new Exceptions\ViewNotFoudException();
         }
+
+        // foreach($this->params as $key => $value) {
+        //     $$key = $value;
+        //     # now we have every of the params as separate variable
+        // }
+        extract($this->params); # ok, the same thing
         
         # this way we return the file's contents
         ob_start();

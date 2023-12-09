@@ -24,7 +24,9 @@ class HomeController
 
         // return (new \App\View('index'))->render();
         // return \App\View::make('index')->render();
-        return \App\View::make('index');
+        // return \App\View::make('index');
         # this works because _toString returns the render() method
+
+        return \App\View::make('index', ['param' => 'value of param!']);
     }
 }
