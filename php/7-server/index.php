@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use App\Exceptions\RouteNotFoundException;
+
 require_once 'app/Router.php';
 require_once 'app/View.php';
 require_once 'app/Controllers/HomeController.php';
@@ -14,27 +16,28 @@ session_start();
 define('STORAGE_PATH', __DIR__ . '/storage');
 define('VIEW_PATH', __DIR__ . '/views');
 
-$router = new App\Router();
+try {
+    $router = new App\Router();
 
-/* $router->register('/', function() {
-    return 'Home';
-}); */
+    $router->get('/', [App\Controllers\HomeController::class, 'index'])
+        ->get('/invoices', [App\Controllers\InvoiceController::class, 'index'])
+        ->get('/invoices/create', [App\Controllers\InvoiceController::class, 'create'])
+        ->post('/invoices/create', [App\Controllers\InvoiceController::class, 'store'])
+        ->get('/upload', [App\Controllers\UploadController::class, 'upload'])
+        ->post('/upload', [App\Controllers\UploadController::class, 'loaded'])
+        ->get('/download', [App\Controllers\UploadController::class, 'download']);
 
-/* $router->register('/invoices', function() {
-    return 'Invoices';
-}); */
+    echo $router->resolve(
+        $_SERVER['REQUEST_URI'],
+        strtolower($_SERVER['REQUEST_METHOD'])
+    );
+} catch(RouteNotFoundException $e) {
+    // echo $e->getMessage();
 
-$router->get('/', [App\Controllers\HomeController::class, 'index'])
-    ->get('/invoices', [App\Controllers\InvoiceController::class, 'index'])
-    ->get('/invoices/create', [App\Controllers\InvoiceController::class, 'create'])
-    ->post('/invoices/create', [App\Controllers\InvoiceController::class, 'store'])
-    ->get('/upload', [App\Controllers\UploadController::class, 'load'])
-    ->post('/upload', [App\Controllers\UploadController::class, 'loaded']);
-
-echo $router->resolve(
-    $_SERVER['REQUEST_URI'],
-    strtolower($_SERVER['REQUEST_METHOD'])
-);
+    // header('HTTP/1.1 404 Not Found');
+    http_response_code(404);
+    echo \App\View::make('error/404');
+}
 
 echo '<pre>';
 // print_r($_SERVER);

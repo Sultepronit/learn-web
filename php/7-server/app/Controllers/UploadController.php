@@ -17,7 +17,7 @@ class UploadController
 FORM;
     } */
 
-    public function load()
+    public function upload()
     {
         return View::make('upload');
     }
@@ -33,8 +33,18 @@ FORM;
         $filePath = STORAGE_PATH . '/' . $_FILES['receipt']['name'];
         move_uploaded_file($_FILES['receipt']['tmp_name'], $filePath);
 
-        echo '<pre>';
-        print_r(pathinfo($filePath));
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r(pathinfo($filePath));
+        // echo '</pre>';
+        header('Location: /upload'); # code 302
+        exit;
+    }
+
+    public function download()
+    {
+        header('Conent-Type: application/pdf');
+        header('Content-Disposition: attachment;filename="cv.pdf"');
+
+        readfile(STORAGE_PATH . '/Mutsikivskyi.pdf');
     }
 }
