@@ -54,6 +54,38 @@ print_r($_COOKIE);
 echo '</pre>';
 
 // phpinfo();
+// $db = new PDO('mysql:host=localhost;dmname=php_db', 'root', 'password-');
+# may show sensitive information!
+
+# default PDO::FETCH_BOTH gets an array with both types indexes for all the fields
+
+try {
+    $db = new PDO('mysql:host=localhost;dbname=php_db', 'root', 'password', [
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+    ]);
+    $query = 'SELECT * FROM users';
+    // $stmt = $db->query($query);
+
+    $query2 = 'SELECT * FROM users WHERE email LIKE ?';
+    $stmt = $db->prepare($query2);
+    $param = 'Jo%';
+    $stmt->execute([$param]);
+    
+    // $allTheData = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $allTheData = $stmt->fetchAll();
+
+    
+    
+    echo '<pre>';
+    print_r($allTheData);
+    echo '</pre>';
+    
+} catch(\PDOException $e) {
+    // throw new \PDOException($e->getMessage(), $e->getCode());
+    print_r($e);
+}
+
+// print_r($db);
 
 
 
