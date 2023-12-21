@@ -27,5 +27,17 @@ function update($table, $id, $changes, ) {
         // print_r($e);
     }
 
+    # proper way, by the chat:
+    // $columns = array_keys($changes);
+    // $values = array_values($changes);
+
+    // $setClause = implode(' = ?, ', $columns) . ' = ?'; // 'column1 = ?, column2 = ?, ...'
+
+    // $query = "UPDATE {$table} SET {$setClause} WHERE id = ?";
+    // $values[] = $id; // Add $id to the values array
+
+    // $stmt = $pdo->prepare($query);
+    // $stmt->execute($values);
+
 }
 
