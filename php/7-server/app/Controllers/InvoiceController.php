@@ -7,10 +7,10 @@ use \App\View;
 
 class InvoiceController    
 {
-    /* public function index(): string
-    {
-        return 'Invoices';
-    } */
+    // public function index(): string
+    // {
+    //     return 'Invoices';
+    // }
     public function index(): View
     {
         return View::make('invoices/index');

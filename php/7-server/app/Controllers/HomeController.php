@@ -7,6 +7,8 @@ class HomeController
 {
     public function index(): \App\View
     {
+        $db = \App\App::db();
+
         $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
         if($_SESSION['count'] > 3) unset($_SESSION['count']);
 
