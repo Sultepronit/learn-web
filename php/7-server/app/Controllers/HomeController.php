@@ -3,11 +3,33 @@
 declare(strict_types=1);
 namespace App\Controllers;
 
+use App\App;
+use App\View;
+use App\Models\User;
+use App\Models\Invoice;
+use App\Models\SignUp;
+
 class HomeController
 {
-    public function index(): \App\View
+    public function index(): View
     {
-        $db = \App\App::db();
+
+        $email = 'john6@doe.com';
+        $name = 'John Doe';
+        $amount = 257;
+
+        $userModel = new User();
+        $invoiceModel = new Invoice();
+
+        $invoiceId = (new SignUp($userModel, $invoiceModel))->register(
+            [
+                'email' => $email,
+                'name' => $name
+            ],
+            [
+                'amount' => $amount
+            ]
+        );
 
         $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
         if($_SESSION['count'] > 3) unset($_SESSION['count']);
@@ -22,13 +44,9 @@ class HomeController
             // false
         );
 
-        /*return '<form action="/?status=success" method="post"><label>Text</label><input type="text" name="amout"></input><form>'; */
-
-        // return (new \App\View('index'))->render();
-        // return \App\View::make('index')->render();
-        // return \App\View::make('index');
-        # this works because _toString returns the render() method
-
-        return \App\View::make('index', ['param' => 'value of param!']);
+        return View::make(
+            'index',
+            ['invoice' => $invoiceModel->find($invoiceId)]
+        );
     }
 }

@@ -9,6 +9,7 @@ $dotenv->load();
 use App\Router;
 use App\App;
 use App\Controllers;
+use App\Config;
 
 session_start();
 
@@ -29,13 +30,14 @@ $router
 (new App(
     $router,
     ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
-    [
-        'host' => $_ENV['DB_HOST'],
-        'user' => $_ENV['DB_USER'],
-        'pass' => $_ENV['DB_PASS'],
-        'database' => $_ENV['DB_DATABASE'],
-        'driver' => $_ENV['DB_DRIVER'] ?? 'mysql'
-    ]
+    new Config($_ENV)
+    // [
+    //     'host' => $_ENV['DB_HOST'],
+    //     'user' => $_ENV['DB_USER'],
+    //     'pass' => $_ENV['DB_PASS'],
+    //     'database' => $_ENV['DB_DATABASE'],
+    //     'driver' => $_ENV['DB_DRIVER'] ?? 'mysql'
+    // ]
 ))->run();
 
 echo '<pre>';

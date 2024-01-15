@@ -37,7 +37,7 @@ class Router
         $action = $this->routes[$requestMethod][$route] ?? null;
 
         if(!$action) {
-            throw new Exceptions\RouteNotFoundException();
+            throw new RouteNotFoundException();
         }
 
         if(is_callable($action)) {
@@ -56,6 +56,6 @@ class Router
             }
         }
 
-        throw new Exceptions\RouteNotFoundException();
+        throw new RouteNotFoundException();
     }
 }
