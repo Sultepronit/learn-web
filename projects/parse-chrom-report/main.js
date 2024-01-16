@@ -1,6 +1,13 @@
 "use strict";
 
-const theInput = document.querySelector("#the-input");
+let theInput = null;
+document.addEventListener('DOMContentLoaded', () => {
+    theInput = document.querySelector("#the-input");
+    // theInput.value = '';
+    setTimeout(() => {
+        theInput.value = '';
+    }, 10);
+});
 
 function processLast() {
     getData();
@@ -128,7 +135,8 @@ function process(text) {
             continue;
         }
         if(words[0] === 'wobbe,' && words[1] === 'МДж/м3') {
-            results[19] = ['!!!', ...(valForm2(words, 2, 2))];
+            // results[19] = ['!!!', ...(valForm2(words, 2, 2))];
+            results[19] = ['--', ...(valForm2(words, 2, 2))];
             continue;
         }
     }
@@ -137,11 +145,11 @@ function process(text) {
     let mainColumns = '<table><tbody>';
     for(const line of results) {
         nameColumns += `<tr><td>${line[0]}</td></tr>`;
-        if(line[0] === '!!!') {
-            document.querySelector('.lastRow').innerHTML
-                = `<span>${line[1]}</span><span>${line[2]}</span>`;
-            break;
-        }
+        // if(line[0] === '!!!') {
+        //     document.querySelector('.lastRow').innerHTML
+        //         = `<span>${line[1]}</span><span>${line[2]}</span>`;
+        //     break;
+        // }
         mainColumns += `<tr><td>${line[1]}</td><td>${line[2]}</td></tr>`;
     }
     nameColumns += '</tbody></table>';
