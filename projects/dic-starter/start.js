@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
 			<p>Hello there</p>
 			<script>
 				const strWindowFeatures = "location=yes,height=1010,width=500,top=0,left=1500,scrollbars=yes,status=yes";
-				const URL = "http://lihand.infinityfreeapp.com/dic-21";
+				const URL = "http://172.214.75.177/eng-dic/";
 				window.open(URL, "_blank", strWindowFeatures);
 				close();
 			</script>

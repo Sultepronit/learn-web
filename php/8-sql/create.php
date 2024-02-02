@@ -4,6 +4,7 @@ function create() {
     try {
         $db = new PDO('mysql:host=localhost;dbname=php_db', 'root', 'password', []);
         
+        
         $email = 'new@one.com';
         $name = 'Anna Yamada';
         $isActive = 1;
