@@ -13,7 +13,8 @@ async function fetchData(method, query, data) {
     });
     // console.log(fetched);
     try {
-        const result = await fetched.json();
+        // const result = await fetched.json();
+        const result = await fetched.text();
         return result;
     } catch (error) {
         console.log('Not a JSON!');
@@ -35,7 +36,8 @@ const server = http.createServer((req, res) => {
         console.log(postData);
 
         const fetched = await fetchData(req.method, req.url, postData);
-        res.end(JSON.stringify(fetched));
+        // res.end(JSON.stringify(fetched));
+        res.end(fetched); 
     });
 });
 
