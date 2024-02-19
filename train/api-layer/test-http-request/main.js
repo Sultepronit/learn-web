@@ -1,6 +1,7 @@
 // const url = 'http://localhost:8080/';
 // const url = 'http://localhost:5555/';
-const url = 'http://localhost:3000/';
+// const url = 'http://localhost:3000/';
+const url = 'https://example-com-layer.onrender.com/';
 async function get() {
     const json = await fetch(url);
     console.log(json);
@@ -10,7 +11,7 @@ async function get() {
 get();
 
 async function post() {
-    const data = {a: 1, b: 2};
+    const data = {a: 1, b: 2, c: 3};
     const json = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data)
