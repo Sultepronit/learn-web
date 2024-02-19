@@ -1,5 +1,6 @@
 // const url = 'http://localhost:8080/';
-const url = 'http://localhost:5555/';
+// const url = 'http://localhost:5555/';
+const url = 'http://localhost:3000/';
 async function get() {
     const json = await fetch(url);
     console.log(json);
