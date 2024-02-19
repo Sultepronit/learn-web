@@ -1,8 +1,11 @@
 import http from 'http';
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+dotenv.config();
 
 async function fetchData(method, query, data) {
-    const url = 'http://localhost:5555';
+    // const url = 'http://localhost:5555';
+    const url = process.env.URL;
     const body = data || null;
     const fetched = await fetch(url + query, {
         method,
