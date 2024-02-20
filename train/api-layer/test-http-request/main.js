@@ -3,7 +3,7 @@
 // const url = 'http://localhost:3000/';
 const url = 'https://example-com-layer.onrender.com/';
 async function get() {
-    const json = await fetch(url);
+    const json = await fetch(url + '?id=77');
     console.log(json);
     const resp = await json.json();
     console.log(resp);
