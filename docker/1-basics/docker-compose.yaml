@@ -4,3 +4,12 @@ services:
     image: nginx:latest
     ports:
       - "8088:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+
+  # php
+  app:
+    build:
+      dockerfile: ./php/Dockerfile
+    volumes:
+      - ./app:/app
