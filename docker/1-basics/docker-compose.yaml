@@ -3,7 +3,7 @@ services:
   web:
     image: nginx:latest
     ports:
-      - "8088:80"
+      - "8080:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
 
@@ -13,3 +13,21 @@ services:
       dockerfile: ./php/Dockerfile
     volumes:
       - ./app:/app
+
+  # mysql
+  db:
+    image: mysql:8.3.0
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - "3316:3306"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: docker-php
+
+
+volumes:
+  mysqldata:
