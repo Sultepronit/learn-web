@@ -1,29 +1,27 @@
 services:
   # nginx
   web:
-    # image: nginx:latest
-    build:
-      dockerfile: ./nginx/Dockerfile
+    image: nginx:latest
     ports:
       - "8080:80"
-    # volumes:
-    #   - ./nginx/conf.d:/etc/nginx/conf.d
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
 
   # php
   app:
     build:
       dockerfile: ./php/Dockerfile
-    # volumes:
-    #   - /var/www/html/vendor # this vill protect the path from rewriting
-    #   - ./app:/var/www/html
+    volumes:
+      # - /var/www/html/vendor # this vill protect the path from rewriting
+      - ./app:/var/www/html
 
   # mysql
   db:
     image: mysql:8.3.0
     volumes:
       - mysqldata:/var/lib/mysql
-    # ports:
-    #   - "3316:3306"
+    ports:
+      - "3316:3306"
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: secret
