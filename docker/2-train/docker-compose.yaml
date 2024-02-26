@@ -5,20 +5,15 @@ services:
       - "8055:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      # - ./nginx-default.conf:/etc/nginx/conf.d/default.conf
-      # - ./app:/var/www/html
-      # - ./app/english-dictionary-v3:/var/www/html/public/eng-dic
+      
+      - ./app/public:/var/www/html
       - ./app/english-dictionary-v3:/var/www/html/eng-dic
       - ./app/info:/var/www/html/info
       
   
   app:
     image: php:8.1-fpm-alpine
-    # volumes:
-      # - ./app:/var/www/html
-      # - ./app/info:/var/www/html/info
-
-
-volumes:
-  var-www-html:
-    ./app/info:/var/www/html/info
+    volumes:
+      - ./app/public:/var/www/html
+      - ./app/english-dictionary-v3:/var/www/html/eng-dic
+      - ./app/info:/var/www/html/info
