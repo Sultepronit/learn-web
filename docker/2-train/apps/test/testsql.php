@@ -1,12 +1,12 @@
 <?php
 $pdo = new PDO('sqlite:' . __DIR__ . '/db.sqlite');
-// $pdo->exec("
-//     CREATE TABLE test (
-//         a integer,
-//         b integee,
-//         c integer
-//     );
-// ");
+$pdo->exec("
+    CREATE TABLE IF NOT EXISTS test (
+        a integer,
+        b integee,
+        c integer
+    );
+");
 
 $query = "
     INSERT INTO test (a, b, c) VALUES
