@@ -6,19 +6,23 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
-      - ./apps/public:/var/www/html
+      # - ./apps/public:/var/www/html
+      - ./apps/info:/var/www/html/info
       - ./apps/test:/var/www/html/test
       - ./apps/english-dictionary-v3/front-end:/var/www/html/eng-dic  
       - ./apps/english-dictionary-v3/back-end:/var/www/html/eng-dic-b
-      - ./apps/testsql2:/var/www/html/testsql2
+      - ./apps/learn-japanese-v5/front-end:/var/www/html/jap
+      - ./apps/learn-japanese-v5/back-end:/var/www/html/jap-back
   
   app:
     # image: php:8.1-fpm-alpine
     build:
       dockerfile: ./php/Dockerfile
     volumes:
-      - ./apps/public:/var/www/html
+      # - ./apps/public:/var/www/html
+      - ./apps/info:/var/www/html/info
       - ./apps/test:/var/www/html/test
       - ./apps/english-dictionary-v3/front-end:/var/www/html/eng-dic  
       - ./apps/english-dictionary-v3/back-end:/var/www/html/eng-dic-b
-      - ./apps/testsql2:/var/www/html/testsql2
+      - ./apps/learn-japanese-v5/front-end:/var/www/html/jap
+      - ./apps/learn-japanese-v5/back-end:/var/www/html/jap-back
