@@ -6,13 +6,19 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
-      - ./app/public:/var/www/html
-      - ./app/english-dictionary-v3/front-end:/var/www/html/eng-dic  
-      - ./app/english-dictionary-v3/back-end:/var/www/html/eng-dic-b
+      - ./apps/public:/var/www/html
+      - ./apps/test:/var/www/html/test
+      - ./apps/english-dictionary-v3/front-end:/var/www/html/eng-dic  
+      - ./apps/english-dictionary-v3/back-end:/var/www/html/eng-dic-b
+      - ./apps/testsql2:/var/www/html/testsql2
   
   app:
-    image: php:8.1-fpm-alpine
+    # image: php:8.1-fpm-alpine
+    build:
+      dockerfile: ./php/Dockerfile
     volumes:
-      - ./app/public:/var/www/html
-      - ./app/english-dictionary-v3/front-end:/var/www/html/eng-dic  
-      - ./app/english-dictionary-v3/back-end:/var/www/html/eng-dic-b
+      - ./apps/public:/var/www/html
+      - ./apps/test:/var/www/html/test
+      - ./apps/english-dictionary-v3/front-end:/var/www/html/eng-dic  
+      - ./apps/english-dictionary-v3/back-end:/var/www/html/eng-dic-b
+      - ./apps/testsql2:/var/www/html/testsql2
