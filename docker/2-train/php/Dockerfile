@@ -5,4 +5,4 @@ FROM php:8.1-fpm-alpine
 
 # COPY ./apps/learn-japanese-v5/back-end ./jap-back
 
-RUN docker-php-ext-install pdo_mysql
+# RUN docker-php-ext-install pdo_mysql

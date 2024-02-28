@@ -2,9 +2,11 @@ services:
   server:
     image: nginx:latest
     ports:
-      - "8055:80"
+      - "8080:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      # - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
 
       # - ./apps/public:/var/www/html
       - ./apps/info:/var/www/html/info
@@ -26,20 +28,3 @@ services:
       - ./apps/english-dictionary-v3/back-end:/var/www/html/eng-dic-b
       - ./apps/learn-japanese-v5/front-end:/var/www/html/jap
       - ./apps/learn-japanese-v5/back-end:/var/www/html/jap-back
-
-  db:
-    image: mysql:8.3.0
-    volumes:
-      - mysqldata:/var/lib/mysql
-    ports:
-      - "3326:3306"
-    # restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_USER: user
-      MYSQL_PASSWORD: secret
-      MYSQL_DATABASE: jap
-
-
-volumes:
-  mysqldata:
