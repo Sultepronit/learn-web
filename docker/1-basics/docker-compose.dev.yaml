@@ -3,7 +3,7 @@ services:
   web:
     image: nginx:latest
     ports:
-      - "8081:80"
+      - "8080:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
 
@@ -11,7 +11,9 @@ services:
   app:
     build:
       dockerfile: ./php/Dockerfile
-      target: app_dev
+      # target: app_dev
+      # target: app
+      target: ${BUILD_TARGET:-app}
     volumes:
       # - /var/www/html/vendor # this vill protect the path from rewriting
       - ./app:/var/www/html

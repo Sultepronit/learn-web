@@ -1,6 +1,7 @@
 <?php
 
-xdebug_info();
+// xdebug_info();
+phpinfo();
 
 require_once('../src/Database/Connection.php');
 
@@ -11,5 +12,3 @@ $data = $pdo->query('SELECT * FROM items')->fetchAll();
 echo '<pre>';
 print_r($data);
 echo '</pre>';
-
-phpinfo();
