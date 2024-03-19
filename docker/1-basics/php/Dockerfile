@@ -2,13 +2,13 @@
 # FROM php:8.1-fpm-alpine
 FROM php:8.1-fpm-alpine as app
 
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extension /usr/local/bin/
-
-RUN set -eux; \
-    install-php-extensions pdo pdo_mysql;
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 # direct method
 # RUN docker-php-ext-install pdo pdo_mysql
+
+RUN set -eux; \
+    install-php-extensions pdo pdo_mysql;
 
 ### composer ###
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -29,3 +29,6 @@ FROM app as app_dev
 ENV XDEBUG_MODE=off
 
 COPY ./php/conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN SET -eux; \
+    install-php-extensions xdebug

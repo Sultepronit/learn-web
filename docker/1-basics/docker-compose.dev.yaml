@@ -3,7 +3,7 @@ services:
   web:
     image: nginx:latest
     ports:
-      - "8080:80"
+      - "8081:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
 
@@ -11,16 +11,26 @@ services:
   app:
     build:
       dockerfile: ./php/Dockerfile
+      target: app_dev
     volumes:
       # - /var/www/html/vendor # this vill protect the path from rewriting
       - ./app:/var/www/html
+      # I don't get why, cause we already COPY it inside Dockerfile...
+      # btw :ro is read only
+      # - ./php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
     environment:
       MYSQL_HOST: db
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+
       REIDS_HOST: cache
       REDIS_PORT: ${REDIS_PORT}
+
+      XDEBUG_MODE: "${XDEBUG_MODE:-off}"
+
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   # mysql
   db:

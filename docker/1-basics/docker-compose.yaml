@@ -13,6 +13,7 @@ services:
   app:
     build:
       dockerfile: ./php/Dockerfile
+      target: app
     # volumes:
     #   - /var/www/html/vendor # this vill protect the path from rewriting
     #   - ./app:/var/www/html

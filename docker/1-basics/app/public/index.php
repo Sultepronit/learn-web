@@ -1,5 +1,7 @@
 <?php
 
+xdebug_info();
+
 require_once('../src/Database/Connection.php');
 
 $pdo = App\Database\Connection::getInstance()->getPdo();
