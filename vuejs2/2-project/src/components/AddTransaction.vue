@@ -10,7 +10,7 @@
                 Amount <br/>
                 (negative - expense, positive - income)
             </label>
-            <input type="number" id="amount" v-model="amount" placeholder="Enter amount..." />
+            <input type="text" id="amount" v-model="amount" placeholder="Enter amount..." />
         </div>
         <button class="btn">Add transaction</button>
     </form>
@@ -28,12 +28,10 @@ const emit = defineEmits(['transactionSubmitted']);
 const toast = useToast();
 
 function onSubmit() {
-    if(!text.value || !amount.value) {
-        toast.error('Fill both fileds, please');
+    if(!text.value || !amount.value || isNaN(amount.value)) {
+        toast.error('Wrong input');
         return;
     }
-
-    console.log(text.value, amount.value);
 
     const transactionData = {
         text: text.value,
