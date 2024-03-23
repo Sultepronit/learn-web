@@ -1,0 +1,17 @@
+{
+    "name": "lihand777/9-testing",
+    "autoload": {
+        "psr-4": {
+            "Lihand777\\9Testing\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sultepronit",
+            "email": "sultepronit@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
