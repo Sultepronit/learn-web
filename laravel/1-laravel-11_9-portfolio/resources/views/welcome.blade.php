@@ -53,6 +53,13 @@
                             </nav>
                         @endif
                     </header>
+                    
+                    <h1>Here we go!</h1>
+
+                    <div x-data="{ count: 0}">
+                       <span x-text="count"></span> 
+                       <button x-on:click="count++">Click me!</button>
+                    </div>
 
                     <main class="mt-6">
                         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
@@ -168,5 +175,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
