@@ -176,6 +176,6 @@
             </div>
         </div>
 
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script type="module" src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
