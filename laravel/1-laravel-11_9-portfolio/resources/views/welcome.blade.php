@@ -176,6 +176,8 @@
             </div>
         </div>
 
-        <script type="module" src="{{ mix('js/app.js') }}"></script>
+        {{-- <script type="module" src="{{ mix('js/app.js') }}"></script> --}}
+        {{-- <script type="module" src="/js/app.js"></script> --}}
+        <script type="module" src="https://vs28xtp9-5173.euw.devtunnels.ms/js/app.js"></script>
     </body>
 </html>
