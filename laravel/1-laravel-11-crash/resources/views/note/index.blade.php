@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="note-container">
+    <div class="note-container py-12">
         <a href="{{ route('note.create') }}" class="new-note-btn">New Note</a>
         <div class="notes">
             @foreach ($notes as $note)

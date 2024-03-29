@@ -13,7 +13,11 @@ class NoteController extends Controller
     public function index()
     {
         // $notes = Note::query()->orderBy('created_at', 'desc')->get();
-        $notes = Note::query()->orderBy('created_at', 'desc')->paginate();
+        // $notes = Note::query()->orderBy('created_at', 'desc')->paginate();
+        $notes = Note::query()
+            ->where('user_id', request()->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->paginate();
         // dd($notes);
         return view('note.index', ['notes' => $notes]);
     }
@@ -35,7 +39,7 @@ class NoteController extends Controller
             'note' => ['required', 'string']
         ]);
 
-        $data['user_id'] = 1;
+        $data['user_id'] = $request->user()->id;
         $note = Note::create($data);
 
         return to_route('note.show', $note)->with('message', 'Note was created!');
@@ -46,6 +50,9 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
+        if ($note->user_id !== request()->user()->id) {
+            abort(403);
+        }
         return view('note.show', ['note' => $note]);
     }
 
@@ -54,6 +61,9 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
+        if ($note->user_id !== request()->user()->id) {
+            abort(403);
+        }
         return view('note.edit', ['note' => $note]);
     }
 
@@ -62,6 +72,9 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
+        if ($note->user_id !== request()->user()->id) {
+            abort(403);
+        }
         $data = $request->validate([
             'note' => ['required', 'string']
         ]);
@@ -76,6 +89,9 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
+        if ($note->user_id !== request()->user()->id) {
+            abort(403);
+        }
         $note->delete();
 
         return to_route('note.index')->with('message', 'Note was deleted!');
