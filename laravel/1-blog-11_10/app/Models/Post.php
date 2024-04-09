@@ -46,4 +46,10 @@ class Post extends Model
     {
         return Str::words(strip_tags($this->body), 30);
     }
+
+    public function getThumbnail()
+    {
+        return str_starts_with($this->thumbnail,'http')
+            ? $this->thumbnail : "/storage/{$this->thumbnail}";
+    }
 }

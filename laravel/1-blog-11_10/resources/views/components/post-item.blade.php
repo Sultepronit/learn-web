@@ -2,7 +2,7 @@
     <!-- Article Image -->
     <a href="#" class="hover:opacity-75">
         {{-- <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1"> --}}
-        <img src="/storage/{{$post->thumbnail}}">
+        <img src="{{$post->getThumbnail()}}">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
         @foreach ($post->categories as $category)
