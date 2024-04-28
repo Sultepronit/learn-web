@@ -2,8 +2,9 @@
 declare(strict_types=1);
 namespace Tests\Unit;
 
-require_once(__DIR__ . '/../../app/Router.php');
-require_once(__DIR__ . '/../../app/Exceptions/RouteNotFoundException.php');
+// require_once(__DIR__ . '/../../app/Router.php');
+// require_once(__DIR__ . '/../../app/Exceptions/RouteNotFoundException.php');
+# miracles of the "composer dump-autoload"
 
 use PHPUnit\Framework\TestCase;
 use App\Router;
@@ -75,9 +76,10 @@ class RouterTest extends TestCase
         $this->assertEmpty((new Router())->routes());
     }
 
+    # for local function: @dataProvider routeNotFoundCases
     /**
      * @test
-     * @dataProvider routeNotFoundCases
+     * @dataProvider \Tests\DataProviders\RouterDataProvider::routeNotFoundCases
      * */
     public function it_throws_route_not_found_exception(
         string $requestUri,
@@ -98,13 +100,13 @@ class RouterTest extends TestCase
         $this->router->resolve($requestUri, $requestMethod);
     }
 
-    public function routeNotFoundCases(): array
-    { # this will procude 4 tests
-        return [
-            ['/users', 'put'],
-            ['/invoices', 'post'],
-            ['/users', 'get'],
-            ['/users', 'post']
-        ];
-    }
+    // public function routeNotFoundCases(): array
+    // { # this will procude 4 tests
+    //     return [
+    //         ['/users', 'put'],
+    //         ['/invoices', 'post'],
+    //         ['/users', 'get'],
+    //         ['/users', 'post']
+    //     ];
+    // }
 }

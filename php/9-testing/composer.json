@@ -2,7 +2,12 @@
     "name": "lihand777/9-testing",
     "autoload": {
         "psr-4": {
-            "Lihand777\\9Testing\\": "src/"
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "authors": [
